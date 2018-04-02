@@ -1,6 +1,6 @@
 <?php 
-$this->templateci->setTitlePage("Lista de Usuarios");
-$this->templateci->setDescriptionPage("Lista de Usuarios");
+$this->templateci->setTitlePage("Lista de Permisos");
+$this->templateci->setDescriptionPage("Lista de Permisos");
 
 $this->templateci->addJs("public/usuario/listaUsuarios.js");
  ?>
@@ -11,10 +11,9 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
     <section class="content text-right">
       <div class="btn-group">
         <button type="button" class="btn btn-info" id="btnCreate"><i class="glyphicon glyphicon-plus"></i> Crear</button>
-        <button type="button" class="btn btn-info"><i class="glyphicon glyphicon-file"></i> PDF</button>
-        <button type="button" class="btn btn-info"><i class="glyphicon glyphicon-file"></i> EXCEL</button>
       </div>      
     </section>
+
     <!-- Main content -->
     <section class="content">
       <div class="box">
@@ -44,7 +43,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Lista de Usuarios</h3>
+          <h3 class="box-title">Lista de Pemisos</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -59,20 +58,16 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
           <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th>Nombres y Apellidos</th>
-                <th>Email</th>
-                <th>Usuario</th>
-                <th>CI</th>
+                <th>Nombre de Permiso</th>
+                <th>Rutas</th>                
                 <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($usuarios as $usuario): ?>
+              <?php foreach ($permisos as $permiso): ?>
                 <tr>
-                  <td><?php echo $usuario["nombres"].' '.$usuario["paterno"].' '.$usuario["materno"] ?></td>
-                  <td><?php echo $usuario["email"] ?></td>
-                  <td><?php echo $usuario["usuario"] ?></td>
-                  <td><?php echo $usuario["ci"] ?></td>
+                  <td><?php echo $permiso["nombre_permiso"]; ?></td>
+                  <td><?php echo $permiso["nombre_ruta"] ?></td>                  
                   <td>
                     <a href="#" class="btn btn-info btnEditar" data-id="<?php echo $usuario["id_usuario"] ?>">Editar</a>
                     <a href="#" class="btn btn-info btnEliminar" data-id="<?php echo $usuario["id_usuario"] ?>">Eliminar</a>

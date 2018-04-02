@@ -8,6 +8,11 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
   <?php $this->load->view('template/css'); ?>
+  <script type="text/javascript">
+    function site_url(pathUrl){
+      return '<?=site_url()?>'+pathUrl;
+    }
+  </script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -202,3 +207,11 @@
   </aside>
 
   <!-- =============================================== -->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+    <?php $this->load->view('template/notify'); ?>
+    
+    
+    
+    <?php $this->load->view('template/breadcrumb'); ?>

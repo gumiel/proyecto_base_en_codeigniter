@@ -14,6 +14,8 @@ class Usuario extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('usuariorule');
 		$this->load->library('session');
+		$this->load->library('utils');
+		// $this->load->library('lib_log');
 
 		$this->load->model('usuario_model');
 
@@ -49,7 +51,8 @@ class Usuario extends CI_Controller {
 		if ( $this->form_validation->run() ) 
 		{
 			unset($usuario["rep_password"]);
-			
+			$usuario["password"] = md5($usuario["password"]);
+
 			$this->usuario_model->insert($usuario);
 			$this->session->set_flashdata('message', [ "success"=>"Se creo el usuario" ]);
 			redirect('usuario/lista');
@@ -71,7 +74,9 @@ class Usuario extends CI_Controller {
 		if ( isset($usuario["password"]) && $usuario["password"] != '')
 		{
 			$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required');			
-			$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');			
+			$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');		
+			$usuario["password"] = md5($usuario["password"]);
+				
 		} else
 		{
 			unset($usuario["password"]);
@@ -93,6 +98,8 @@ class Usuario extends CI_Controller {
 		redirect('usuario/lista','refresh');
 
 	}
+
+	
 
 
 
@@ -134,6 +141,26 @@ class Usuario extends CI_Controller {
         ->set_output(json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
         ->_display();
 		exit;
+	}
+
+	public function deleteUsuarioAjax()
+	{
+		$usuario = $this->input->post("usuario");
+		$data = array();
+
+		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificarIdUsuario');
+
+		if ( $this->form_validation->run() )
+		{
+			$this->usuario_model->delete($usuario["id_usuario"]);
+			$data["result"] = 1;
+		} else
+		{
+			$data["result"] = 0;
+			$data["msg"] = validation_errors();
+		}
+		
+		$this->utils->json($data);
 	}
 
 
