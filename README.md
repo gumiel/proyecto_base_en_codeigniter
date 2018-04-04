@@ -33,5 +33,7 @@ Este proyecto en CI es un una plantilla para empezar a programar directamente en
 #### Componentes CSS agregados
 
 
+#### Hook (Creados)
+- Tiene una clase que controla toda accion como por ejemplo las sessiones
 
-
+/hooks/SystemSupervisor.php
