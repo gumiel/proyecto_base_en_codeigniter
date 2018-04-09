@@ -10,7 +10,7 @@
   <?php $this->load->view('template/css'); ?>
   <script type="text/javascript">
     function site_url(pathUrl){
-      return '<?=site_url()?>'+pathUrl;
+      return '<?=site_url()?>/'+pathUrl;
     }
   </script>
 
