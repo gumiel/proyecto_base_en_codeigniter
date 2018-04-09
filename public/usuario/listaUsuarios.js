@@ -64,4 +64,17 @@ jQuery(document).ready(function($)
 	});
 
 
+
+
+
+
+	$("#formCreate").validate({
+		rules: {
+			"usuario[nombres]": {
+				required: true
+			}
+		}
+
+	});
+
 });
