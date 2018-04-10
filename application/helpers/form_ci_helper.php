@@ -5,8 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 function addClass( $attributes = array(), $class)
 {
 	// var_dump($attributes);
-	// echo gettype($attributes);
-	if(sizeof($attributes) > 0)
+	// echo sizeof($attributes);
+
+	if(sizeof($attributes) > 0 && is_array($attributes))
 	{
 		$existClass = FALSE;
 		foreach ($attributes as $key => $value) 

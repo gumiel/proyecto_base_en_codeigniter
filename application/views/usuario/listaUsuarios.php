@@ -112,21 +112,23 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
         
             <div class="box-body">
               
-              <?php echo form_input_ci("Nombres", 'usuario[nombres]', "",["class"=> "nombre"]); ?>
+              <?php echo form_input_ci("Nombres", 'usuario[nombres]', ""); ?>
+
+              <?php echo form_input_ci("Nombres", 'usuario[nombres]', ""); ?>
               
-              <?php echo form_input_ci("Apellido Paterno", 'usuario[paterno]', '', ["class"=> "paterno"]); ?>
+              <?php echo form_input_ci("Apellido Paterno", 'usuario[paterno]', ''); ?>
               
-              <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', '', ["class"=> "materno"]); ?>
+              <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', ''); ?>
               
-              <?php echo form_input_ci("Usuario", 'usuario[usuario]', '', ["class"=> "usuario"]); ?>
+              <?php echo form_input_ci("Usuario", 'usuario[usuario]', ''); ?>
 
-              <?php echo form_input_ci("Email", 'usuario[email]', "", ["classd"=> "email"]); ?>
+              <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>
 
-              <?php echo form_input_ci("CI", 'usuario[ci]', '', ["class"=> "ci"]); ?>
+              <?php echo form_input_ci("CI", 'usuario[ci]', ''); ?>
 
-              <?php echo form_password_ci("Contraseña", 'usuario[password]', '', ["class"=> "password"]); ?>
+              <?php echo form_password_ci("Contraseña", 'usuario[password]', ''); ?>
 
-              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_password]', '', ["class"=> "password"]); ?>
+              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_password]', ''); ?>
 
             </div>
 
@@ -152,21 +154,21 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
         <div class="modal-body">
         
             <div class="box-body">
-              <?php echo form_input_ci("Nombres", 'usuario[nombres]', "",["class"=> "nombre"]); ?>
+              <?php echo form_input_ci("Nombres", 'usuario[nombres]', ""); ?>
               
-              <?php echo form_input_ci("Apellido Paterno", 'usuario[paterno]', '', ["class"=> "paterno"]); ?>
+              <?php echo form_input_ci("Apellido Paterno", 'usuario[paterno]', ''); ?>
               
-              <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', '', ["class"=> "materno"]); ?>
+              <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', ''); ?>
               
-              <?php echo form_input_ci("Usuario", 'usuario[usuario]', '', ["class"=> "usuario"]); ?>
+              <?php echo form_input_ci("Usuario", 'usuario[usuario]', ''); ?>
 
-              <?php echo form_input_ci("Email", 'usuario[email]', "", ["class"=> "email"]); ?>
+              <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>
 
-              <?php echo form_input_ci("CI", 'usuario[ci]', '', ["class"=> "ci"]); ?>
+              <?php echo form_input_ci("CI", 'usuario[ci]', ''); ?>
 
-              <?php echo form_password_ci("Contraseña", 'usuario[password]', '', ["class"=> "password"]); ?>
+              <?php echo form_password_ci("Contraseña", 'usuario[password]', ''); ?>
 
-              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_password]', '', ["class"=> "password"]); ?>
+              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_password]', ''); ?>
 
             </div>
 
