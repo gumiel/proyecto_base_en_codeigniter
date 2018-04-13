@@ -1,4 +1,11 @@
+<?php 
+$this->templateci->setTitlePage("Lista de Usuarios");
+$this->templateci->setDescriptionPage("Lista de Usuarios");
 
+$this->templateci->addJs("public/usuario/listaUsuarios.js");
+ ?>
+
+<?php $this->load->view('template/up'); ?>
 
 
 
@@ -46,7 +53,7 @@
     </div>
   </div>
   
-
+<?php $this->load->view('template/down'); ?>
 
 
 
