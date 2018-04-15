@@ -34,10 +34,10 @@ function addClass( $attributes = array(), $class)
 
 function addLabelInput($label = '', $input=""){
 	$inputLabel = 	'<div class="form-group">
-                		<label for="inputEmail3" class="col-sm-2 control-label">'.
+                		<label for="inputEmail3" class="col-sm-4 control-label">'.
                 			$label.
                 		'</label>
-                		<div class="col-sm-10">'.
+                		<div class="col-sm-8">'.
                 			$input.
                 		'</div>
                		</div>';
@@ -534,6 +534,7 @@ if ( ! function_exists('form_submit_ci'))
 			'name' => is_array($data) ? '' : $data,
 			'value' => $value
 		);
+		$extra = addClass( $extra, "btn" );
 
 		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
 	}
@@ -558,6 +559,7 @@ if ( ! function_exists('form_reset_ci'))
 			'name' => is_array($data) ? '' : $data,
 			'value' => $value
 		);
+		$extra = addClass( $extra, "btn" );
 
 		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
 	}
@@ -587,6 +589,7 @@ if ( ! function_exists('form_button_ci'))
 			$content = $data['content'];
 			unset($data['content']); // content is not an attribute
 		}
+		$extra = addClass( $extra, "btn" );
 
 		return '<button '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'
 			.$content

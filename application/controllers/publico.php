@@ -14,6 +14,8 @@ class Publico extends CI_Controller {
 		$this->load->view('publico/login');
 	}
 
+	public function 
+
 }
 
 /* End of file publico.php */

@@ -3,6 +3,17 @@
 
 Este proyecto en CI es un una plantilla para empezar a programar directamente en Codeigniter.
 
+## CODE CONVENTION
+
+Name is function 'CALL_BACK' of validation is underscode at first
+Example.
+
+$this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');
+
+public function _verifyEmail(){
+	.............
+}
+
 #### Plantillas base.
 
 - Tiene como plantilla en PHP al Framework CODEIGNITER 3 de donde puede descargarse => https://codeigniter.com/
