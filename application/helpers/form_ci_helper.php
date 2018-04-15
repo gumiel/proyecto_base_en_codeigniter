@@ -451,7 +451,7 @@ if ( ! function_exists('form_dropdown_ci'))
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('form_checkbox'))
+if ( ! function_exists('form_checkbox_ci'))
 {
 	/**
 	 * Checkbox Field
@@ -462,7 +462,7 @@ if ( ! function_exists('form_checkbox'))
 	 * @param	mixed
 	 * @return	string
 	 */
-	function form_checkbox($data = '', $value = '', $checked = FALSE, $extra = '')
+	function form_checkbox_ci($label = '', $data = '', $value = '', $checked = FALSE, $extra = '')
 	{
 		$defaults = array('type' => 'checkbox', 'name' => ( ! is_array($data) ? $data : ''), 'value' => $value);
 
@@ -495,7 +495,7 @@ if ( ! function_exists('form_checkbox'))
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('form_radio'))
+if ( ! function_exists('form_radio_ci'))
 {
 	/**
 	 * Radio Button
@@ -506,18 +506,18 @@ if ( ! function_exists('form_radio'))
 	 * @param	mixed
 	 * @return	string
 	 */
-	function form_radio($data = '', $value = '', $checked = FALSE, $extra = '')
+	function form_radio_ci($label = '', $data = '', $value = '', $checked = FALSE, $extra = '')
 	{
 		is_array($data) OR $data = array('name' => $data);
 		$data['type'] = 'radio';
 
-		return form_checkbox($data, $value, $checked, $extra);
+		return form_checkbox_ci($label, $data, $value, $checked, $extra);
 	}
 }
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('form_submit'))
+if ( ! function_exists('form_submit_ci'))
 {
 	/**
 	 * Submit Button
@@ -527,7 +527,7 @@ if ( ! function_exists('form_submit'))
 	 * @param	mixed
 	 * @return	string
 	 */
-	function form_submit($data = '', $value = '', $extra = '')
+	function form_submit_ci($data = '', $value = '', $extra = '')
 	{
 		$defaults = array(
 			'type' => 'submit',
@@ -541,7 +541,7 @@ if ( ! function_exists('form_submit'))
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('form_reset'))
+if ( ! function_exists('form_reset_ci'))
 {
 	/**
 	 * Reset Button
@@ -551,7 +551,7 @@ if ( ! function_exists('form_reset'))
 	 * @param	mixed
 	 * @return	string
 	 */
-	function form_reset($data = '', $value = '', $extra = '')
+	function form_reset_ci($data = '', $value = '', $extra = '')
 	{
 		$defaults = array(
 			'type' => 'reset',
@@ -565,7 +565,7 @@ if ( ! function_exists('form_reset'))
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('form_button'))
+if ( ! function_exists('form_button_ci'))
 {
 	/**
 	 * Form Button
@@ -575,7 +575,7 @@ if ( ! function_exists('form_button'))
 	 * @param	mixed
 	 * @return	string
 	 */
-	function form_button($data = '', $content = '', $extra = '')
+	function form_button_ci($data = '', $content = '', $extra = '')
 	{
 		$defaults = array(
 			'name' => is_array($data) ? '' : $data,
@@ -666,7 +666,7 @@ if ( ! function_exists('form_fieldset_close'))
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('form_close'))
+if ( ! function_exists('form_close_ci'))
 {
 	/**
 	 * Form Close Tag
@@ -674,7 +674,7 @@ if ( ! function_exists('form_close'))
 	 * @param	string
 	 * @return	string
 	 */
-	function form_close($extra = '')
+	function form_close_ci($extra = '')
 	{
 		return '</form>'.$extra;
 	}
