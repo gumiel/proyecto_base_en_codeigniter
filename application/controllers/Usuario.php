@@ -12,8 +12,8 @@ class Usuario extends CI_Controller {
 		
 		$this->load->helper('form_ci');
 		$this->load->library('form_validation');
-		// $this->load->library('usuariorule');		
-		// $this->load->library('utils');
+		$this->load->library('UsuarioRule');		
+		$this->load->library('Utils');
 		// $this->load->library('lib_log');
 
 		$this->load->model('usuario_model');

@@ -1,6 +1,6 @@
 <?php 
 
-class usuariorule
+class UsuarioRule
 {
 	public $rule = array(
 		        [

@@ -7,7 +7,7 @@ function addClass( $attributes = array(), $class)
 	// var_dump($attributes);
 	// echo sizeof($attributes);
 
-	if(sizeof($attributes) > 0 && is_array($attributes))
+	if( is_array($attributes) && sizeof($attributes) > 0 )
 	{
 		$existClass = FALSE;
 		foreach ($attributes as $key => $value) 
