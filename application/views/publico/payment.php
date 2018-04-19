@@ -21,7 +21,6 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
             <li class="active"><a href="#tab_1" data-toggle="tab">Buscador</a></li>
             <li><a href="#tab_2" data-toggle="tab">Buscador avanzado</a></li>                        
             <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
@@ -73,50 +72,142 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
   
 
   <section class="content">
-    <div class="box box-primary">
-      <div class="box-header">
-        <h3 class="box-title">Ingresar Pagos</h3>
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                  title="Collapse">
-            <i class="fa fa-minus"></i></button>
-        </div>
-      </div>
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-12">                        
+    <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_11" data-toggle="tab">Pagar</a></li>
+            <li><a href="#tab_21" data-toggle="tab">Ingresar Pago</a></li>                        
+            <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_11">
+              
+              <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Usuario por Pagar</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <table class="table table-bordered">
+                    <tbody><tr>
+                      <th style="width: 10px">#</th>
+                      <th>Task</th>
+                      <th>Progress</th>
+                      <th style="width: 40px">Label</th>
+                    </tr>
+                    <tr>
+                      <td>1.</td>
+                      <td>Update software</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-red">55%</span></td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>Clean database</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-yellow">70%</span></td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>Cron job running</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-light-blue">30%</span></td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>Fix and squish bugs</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-green">90%</span></td>
+                    </tr>
+                  </tbody></table>
+                </div>
+                <!-- /.box-body -->
+              </div>
 
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
 
 
-
-
-
-
-
-
-
-
-
-  <div class="modal fade " id="insertPayment">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Datos de Usuario</h4>
-        </div>
-        <div class="modal-body">
-          <?php echo form_open_ci('url', ''); ?>
+              <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Deudas por Pagar</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <table class="table table-bordered">
+                    <tbody><tr>
+                      <th style="width: 10px">#</th>
+                      <th>Task</th>
+                      <th>Progress</th>
+                      <th style="width: 40px">Label</th>
+                    </tr>
+                    <tr>
+                      <td>1.</td>
+                      <td>Update software</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-red">55%</span></td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>Clean database</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-yellow">70%</span></td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>Cron job running</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-light-blue">30%</span></td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>Fix and squish bugs</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-green">90%</span></td>
+                    </tr>
+                  </tbody></table>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="tab_21">
+              <?php echo form_open_ci('url', ''); ?>
           <div class='row'>
-            
+            <div class='col-md-12'><h4 class="modal-title text-light-blue"><u>Datos de Usuario</u></h4><br></div>
             <div class='col-md-6'>
               <dl class="dl-horizontal">
                 <dt class='text-light-blue'>Nombres y Apellidos:</dt>
@@ -147,14 +238,22 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
             <!-- /.box-header -->
             <div class="box-body no-padding">
               <table class="table table-striped">
-                <tbody><tr>
-                  <th>Fecha Lectura</th>
-                  <th>Fecha Vencimiento</th>
-                  <th>Importe a Pagar</th>
-                  <th>
+                <tbody>
+                  <tr>
+                    <th>Fecha Lectura</th>
+                    <th>Fecha Vencimiento</th>
+                    <th>Importe a Pagar</th>
+                    <th>
+                      <input type="checkbox" name="">
+                    </th>                  
+                  </tr>
+                <tr>
+                  <td>01/04/2018</td>
+                  <td>01/05/2018</td>
+                  <td>50,00</td>
+                  <td>
                     <input type="checkbox" name="">
-                  </th>
-                  
+                  </td>
                 </tr>
                 <tr>
                   <td>01/04/2018</td>
@@ -164,11 +263,101 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                     <input type="checkbox" name="">
                   </td>
                 </tr>
+                <tr>
+                  <td>01/04/2018</td>
+                  <td>01/05/2018</td>
+                  <td>50,00</td>
+                  <td>
+                    <input type="checkbox" name="">
+                  </td>
+                </tr>
+                <tr>
+                  <td>01/04/2018</td>
+                  <td>01/05/2018</td>
+                  <td>50,00</td>
+                  <td>
+                    <input type="checkbox" name="">
+                  </td>
+                </tr>
+                <tr>
+                  <td>01/04/2018</td>
+                  <td>01/05/2018</td>
+                  <td>50,00</td>
+                  <td>
+                    <input type="checkbox" name="">
+                  </td>
+                </tr>
+                <tr>
+                  <td>01/04/2018</td>
+                  <td>01/05/2018</td>
+                  <td>50,00</td>
+                  <td>
+                    <input type="checkbox" name="">
+                  </td>
+                </tr>
+                <tr>
+                  <td>01/04/2018</td>
+                  <td>01/05/2018</td>
+                  <td>50,00</td>
+                  <td>
+                    <input type="checkbox" name="">
+                  </td>
+                </tr>
+                <tr>
+                  <td>01/04/2018</td>
+                  <td>01/05/2018</td>
+                  <td>50,00</td>
+                  <td>
+                    <input type="checkbox" name="">
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>                
+                  <td colspan="4" class="text-right text-muted">
+                    <b>Total.- 500,00 Bs</b>
+                  </td>
+                </tr>
+              </tfoot>
+              </table>
 
-              </tbody></table>
+            </div>
+            <div class="box-footer text-right">
+              <?php echo form_submit_ci('name', 'Agregar'); ?>
             </div>
             <!-- /.box-body -->
           </div>
+            </div>
+            
+            <!-- /.tab-pane -->
+          </div>
+          <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="modal fade " id="insertPayment">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Datos de Usuario</h4>
+        </div>
+        <div class="modal-body">
+          
           
         </div>
         <div class="modal-footer">
