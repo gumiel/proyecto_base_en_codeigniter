@@ -7,6 +7,8 @@ class ExampleTwo extends CI_Controller {
 	{
 		parent::__construct();
 
+		$this->load->library('form_validation');
+		$this->load->helper('form_helper');
 		$this->load->library('moduleTwo/ExampleTwoRule');
 	}
 
@@ -20,7 +22,16 @@ class ExampleTwo extends CI_Controller {
 
 	public function processForm()
 	{
-		
+		$this->form_validation->set_rules($this->exampletworule->rule());
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			echo "entry";
+		} else{
+			echo "not entry";
+		}
+		$this->index();
+		// redirect('moduleTwo/ExampleTwo/index','refresh');
 	}
 }
 
