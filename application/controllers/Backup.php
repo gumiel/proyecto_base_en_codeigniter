@@ -54,6 +54,11 @@ class Backup extends CI_Controller {
 
 	public function import()
 	{
+		// Load the DB utility class
+		$this->load->dbforge();
+		$this->load->helper('file');
+		$this->load->helper('download');
+		
 		if ($this->dbforge->drop_database('codeigniter'))
 		{
 		    echo 'Database deleted!<br>';
