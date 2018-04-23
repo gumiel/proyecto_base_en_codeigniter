@@ -9,7 +9,11 @@ class ExampleTwo extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->load->helper('form_helper');
-		$this->load->library('moduleTwo/ExampleTwoRule');
+		$this->load->library('rules/ExampleTwo_Rule');
+	}
+
+	public function hola(){
+		echo "---->".__FUNCTION__;
 	}
 
 	public function index()
@@ -22,7 +26,7 @@ class ExampleTwo extends CI_Controller {
 
 	public function processForm()
 	{
-		$this->form_validation->set_rules($this->exampletworule->rule());
+		$this->form_validation->set_rules($this->exampletwo_rule->apply());
 
 		if ($this->form_validation->run() == TRUE)
 		{

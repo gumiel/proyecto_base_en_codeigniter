@@ -12,6 +12,7 @@
 	<p>Sended data from Controller "Salute: <?php echo $dataSend ?>"</p>
 	<?php echo form_open('moduleTwo/exampleTwo/processForm'); ?>
 		
+		Name: <input type ="text" name="user[name]" ><br>
 		Login: <input type ="text" name="user[login]" ><br>
 		Password: <input type ="text" name="user[password]" ><br>
 		<input type="submit" name="" value="Submit">
