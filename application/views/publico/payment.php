@@ -6,6 +6,25 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
  ?>
 
 <?php $this->load->view('template/up'); ?>
+
+<style type="text/css">
+  
+  .btn-app {
+
+    border-radius: 3px;
+    position: relative;
+    padding: 5px 5px;
+    margin: 0 0 0px 0px;
+    min-width: 35px;
+    height: 30px;
+    text-align: center;
+    color: #666;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    font-size: 12px;
+
+  }
+</style>
   <section class="content text-right">
       <div class="btn-group">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#insertPayment"><i class="glyphicon glyphicon-plus"></i> Pagar</button>
@@ -84,123 +103,131 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
               
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Usuario por Pagar</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <table class="table table-bordered">
-                    <tbody><tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Update software</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-red">55%</span></td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Clean database</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-yellow">70%</span></td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Cron job running</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-green">90%</span></td>
-                    </tr>
-                  </tbody></table>
-                </div>
-                <!-- /.box-body -->
-              </div>
-
-
-
-
-
-              <div class="box">
-                <div class="box-header with-border">
                   <h3 class="box-title">Deudas por Pagar</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
                     <tbody><tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
+                      <th class='text-center' style="width: 10px">#</th>
+                      <th class='text-center'>Cod. Usuario</th>
+                      <th class='text-center'>Nombre Completo</th>
+                      <th class='text-center'>Fecha</th>
+                      <th class='text-center' style="width: 100px">Importe</th>
+                      <th></th>
                     </tr>
-                    <tr>
+                    <tr class='success'>
                       <td>1.</td>
-                      <td>Update software</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
+                      <td>2000021</td>
+                      <td>Juan Perez Perez</td>
+                      <td>Ene/2018</td>
+                      <td class="text-right">120,50</td>
+                      <td  style="width: 95px">
+                        <a class="btn btn-app">
+                          
+                          <i class="fa  fa-minus-square"></i>
+                        </a>
+                      
+                        <a class="btn btn-app">
+                          <span class="badge bg-red">3</span>
+                          <i class="fa fa-trash"></i>
+                        </a>
                       </td>
-                      <td><span class="badge bg-red">55%</span></td>
                     </tr>
                     <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Feb/2018</td>
+                      <td class="text-right">10,50</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Mar/2018</td>
+                      <td class="text-right">78,00</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><b><u>Total</u></b></td>
+                      <td class="text-right"><b><u>205,50</u></b></td>
+                      <td></td>
+                    </tr>
+                    <tr class='success'>
                       <td>2.</td>
-                      <td>Clean database</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
+                      <td>2000021</td>
+                      <td>Juan Perez Perez</td>
+                      <td>Ene/2018</td>
+                      <td class="text-right">120,50</td>
+                      <td  style="width: 60px">
+                        <a class="btn btn-app">
+                          
+                          <i class="fa  fa-minus-square"></i>
+                        </a>
+                      
+                        <a class="btn btn-app">
+                          <span class="badge bg-red">3</span>
+                          <i class="fa fa-trash"></i>
+                        </a>
                       </td>
-                      <td><span class="badge bg-yellow">70%</span></td>
                     </tr>
                     <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Mar/2018</td>
+                      <td class="text-right">78,00</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><b><u>Total</u></b></td>
+                      <td class="text-right"><b><u>205,50</u></b></td>
+                      <td></td>
+                    </tr>
+                    <tr class='success'>
                       <td>3.</td>
-                      <td>Cron job running</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
+                      <td>2000845</td>
+                      <td>Moises teran veizaga</td>
+                      <td>Ene/2018</td>
+                      <td class="text-right">20,50</td>
+                      <td  style="width: 60px">
+                        <a class="btn btn-app">
+                          
+                          <i class="fa  fa-minus-square"></i>
+                        </a>
+                      
+                        <a class="btn btn-app">
+                          <span class="badge bg-red">3</span>
+                          <i class="fa fa-trash"></i>
+                        </a>
                       </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
                     </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-green">90%</span></td>
+                    
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><b><u>Total</u></b></td>
+                      <td class="text-right"><b><u>205,50</u></b></td>
+                      <td></td>
                     </tr>
                   </tbody></table>
                 </div>
                 <!-- /.box-body -->
               </div>
+
+
+
+
+
+
               
             </div>
             <!-- /.tab-pane -->
@@ -210,21 +237,26 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
             <div class='col-md-12'><h4 class="modal-title text-light-blue"><u>Datos de Usuario</u></h4><br></div>
             <div class='col-md-6'>
               <dl class="dl-horizontal">
+                <dt class='text-light-blue'>Codigo Usuario:</dt>
+                <dd>10203040</dd>
+                <dt class='text-light-blue'>Codigo Ubicación:</dt>
+                <dd>018.005.272.001</dd> 
                 <dt class='text-light-blue'>Nombres y Apellidos:</dt>
-                <dd>Juan Perez Perez</dd>
-                <dt class='text-light-blue'>Nº de Medidor:</dt>
-                <dd>987879848</dd>   
+                <dd>Juan Perez Perez</dd>  
               </dl>         
             </div>
             <div class='col-md-6'>
               <dl class="dl-horizontal">
+                <dt class='text-light-blue'>Categoria:</dt>
+                <dd>Domicilio</dd>
+                <dt class='text-light-blue'>Serie Medidor:</dt>
+                <dd>130000005156</dd>   
                 <dt class='text-light-blue'>Dirección:</dt>
                 <dd>Ayacucho entre heroinas y junin</dd>
-                <dt class='text-light-blue'>Ciudad:</dt>
-                <dd>Cochabamba</dd>   
-              </dl>      
-
+              </dl>         
             </div>
+
+
           </div>
           <?php echo form_close_ci(); ?>
           
