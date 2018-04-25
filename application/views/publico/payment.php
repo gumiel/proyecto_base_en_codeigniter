@@ -47,7 +47,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
               <div class="row">
                 <?php echo form_open_ci('url', ''); ?>
                   <div class='col-md-10'>
-                    <?php echo form_input_ci('Id Usuario:', 'usuario[id]', 'value'); ?> 
+                    <?php echo form_input_ci('Cod. Usuario:', 'usuario[id]', 'value'); ?> 
                   </div>
                   <div class='col-md-2'>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
@@ -90,6 +90,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
   </section>
   
 
+
   <section class="content">
     <!-- Custom Tabs -->
         <div class="nav-tabs-custom">
@@ -107,118 +108,245 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table class="table table-bordered">
-                    <tbody><tr>
-                      <th class='text-center' style="width: 10px">#</th>
-                      <th class='text-center'>Cod. Usuario</th>
-                      <th class='text-center'>Nombre Completo</th>
-                      <th class='text-center'>Fecha</th>
-                      <th class='text-center' style="width: 100px">Importe</th>
-                      <th></th>
-                    </tr>
-                    <tr class='success'>
-                      <td>1.</td>
-                      <td>2000021</td>
-                      <td>Juan Perez Perez</td>
-                      <td>Ene/2018</td>
-                      <td class="text-right">120,50</td>
-                      <td  style="width: 95px">
-                        <a class="btn btn-app">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th class='text-center' style="width: 10px"></th>
+                          <th class='text-center' style="width: 10px">#</th>
+                          <th class='text-center'>Cod. Usuario</th>
+                          <th colspan="2" class='text-center'>Nombre Completo</th>
+                          <th class='text-center' style="width: 150px">Importe Total</th>
+                          <th style="width:30px"></th>
+                        </tr>                        
+                      </thead>
+                      <tbody>
+                        <tr class='success'>
+                          <td>
+                            <a class="btn btn-app">                          
+                              <i class="fa  fa-minus-square"></i>
+                            </a>
+                          </td>
+                          <td>1.</td>
+                          <td>2000021</td>
+                          <td colspan="2">Juan Perez Perez</td>
                           
-                          <i class="fa  fa-minus-square"></i>
-                        </a>
-                      
-                        <a class="btn btn-app">
-                          <span class="badge bg-red">3</span>
-                          <i class="fa fa-trash"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>Feb/2018</td>
-                      <td class="text-right">10,50</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>Mar/2018</td>
-                      <td class="text-right">78,00</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><b><u>Total</u></b></td>
-                      <td class="text-right"><b><u>205,50</u></b></td>
-                      <td></td>
-                    </tr>
-                    <tr class='success'>
-                      <td>2.</td>
-                      <td>2000021</td>
-                      <td>Juan Perez Perez</td>
-                      <td>Ene/2018</td>
-                      <td class="text-right">120,50</td>
-                      <td  style="width: 60px">
-                        <a class="btn btn-app">
+                          <td class="text-right">120,50</td>
+                          <td  style="width: 95px">
+                                                  
+                            <a class="btn btn-app">
+                              <span class="badge bg-red">4</span>
+                              <i class="fa fa-trash"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center"><b>Vencimiento</b></td>
+                          <td class="text-right"><b>Importe Mensual</b>   </td>
+                          <td></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Ene/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Feb/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Mar/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Abr/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td></td>
+                        </tr>
+
+
+
+
+
+
+
+
+
+
+                        <tr class='success'>
+                          <td>
+                            <a class="btn btn-app">                          
+                              <i class="fa  fa-minus-square"></i>
+                            </a>
+                          </td>
+                          <td>2.</td>
+                          <td>220545</td>
+                          <td colspan="2">Juan Perez Perez</td>
                           
-                          <i class="fa  fa-minus-square"></i>
-                        </a>
-                      
-                        <a class="btn btn-app">
-                          <span class="badge bg-red">3</span>
-                          <i class="fa fa-trash"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>Mar/2018</td>
-                      <td class="text-right">78,00</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><b><u>Total</u></b></td>
-                      <td class="text-right"><b><u>205,50</u></b></td>
-                      <td></td>
-                    </tr>
-                    <tr class='success'>
-                      <td>3.</td>
-                      <td>2000845</td>
-                      <td>Moises teran veizaga</td>
-                      <td>Ene/2018</td>
-                      <td class="text-right">20,50</td>
-                      <td  style="width: 60px">
-                        <a class="btn btn-app">
+                          <td class="text-right">120,50</td>
+                          <td  style="width: 95px">
+                                                  
+                            <a class="btn btn-app">
+                              <span class="badge bg-red">4</span>
+                              <i class="fa fa-trash"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center"><b>Vencimiento</b></td>
+                          <td class="text-right"><b>Importe Mensual</b>   </td>
+                          <td></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Ene/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Feb/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Mar/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Abr/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td></td>
+                        </tr>
+
+
+
+
+
+                        <tr class='success'>
+                          <td>
+                            <a class="btn btn-app">                          
+                              <i class="fa  fa-minus-square"></i>
+                            </a>
+                          </td>
+                          <td>3.</td>
+                          <td>2000021</td>
+                          <td colspan="2">Juan Perez Perez</td>
                           
-                          <i class="fa  fa-minus-square"></i>
-                        </a>
-                      
-                        <a class="btn btn-app">
-                          <span class="badge bg-red">3</span>
-                          <i class="fa fa-trash"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><b><u>Total</u></b></td>
-                      <td class="text-right"><b><u>205,50</u></b></td>
-                      <td></td>
-                    </tr>
-                  </tbody></table>
+                          <td class="text-right">120,50</td>
+                          <td  style="width: 95px">
+                                                  
+                            <a class="btn btn-app">
+                              <span class="badge bg-red">4</span>
+                              <i class="fa fa-trash"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center"><b>Vencimiento</b></td>
+                          <td class="text-right"><b>Importe Mensual</b>   </td>
+                          <td></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Ene/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Feb/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Mar/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td><span class="badge bg-red">Vencido</span></td>
+                        </tr>
+                        <tr class="info">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">Abr/2018</td>
+                          <td class="text-right">78,00</td>
+                          <td></td>
+                        </tr>
+
+
+
+
+
+
+                     
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right"><b><u>Importe Total a Pagar </u><b></td>
+                        <td class="text-right"><b><u>350,00</u><b></td>
+                        <td></td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
                 <!-- /.box-body -->
               </div>
