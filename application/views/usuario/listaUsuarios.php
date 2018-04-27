@@ -71,7 +71,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                 <tr>
                   <td><?php echo $usuario["nombres"].' '.$usuario["paterno"].' '.$usuario["materno"] ?></td>
                   <td><?php echo $usuario["email"] ?></td>
-                  <td><?php echo $usuario["usuario"] ?></td>
+                  <td><?php echo $usuario["cuenta"] ?></td>
                   <td><?php echo $usuario["ci"] ?></td>
                   <td>
                     <a href="#" class="btn btn-info btnEditar" data-id="<?php echo $usuario["id_usuario"] ?>">Editar</a>
@@ -120,7 +120,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
               
               <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', ''); ?>
               
-              <?php echo form_input_ci("Usuario", 'usuario[usuario]', ''); ?>
+              <?php echo form_input_ci("Cuenta", 'usuario[cuenta]', ''); ?>
 
               <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>
 
@@ -160,7 +160,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
               
               <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', ''); ?>
               
-              <?php echo form_input_ci("Usuario", 'usuario[usuario]', ''); ?>
+              <?php echo form_input_ci("Cuenta", 'usuario[cuenta]', ''); ?>
 
               <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>
 

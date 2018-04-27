@@ -16,6 +16,7 @@
 
 </head>
 <body class="hold-transition login-page">
+<?php $this->load->view('template/notify'); ?>
 <div class="login-box">
   <div class="login-logo">
     <a href="../../index2.html"><b>Admin</b>DEV</a>
@@ -24,13 +25,13 @@
   <div class="login-box-body">
     <p class="login-box-msg">Inicia sesión para comenzar</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="<?php echo site_url("publico/loginProcess") ?>" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text" name="usuario[cuenta]" class="form-control" placeholder="Usuario">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="usuario[password]" class="form-control" placeholder="Contraseña">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

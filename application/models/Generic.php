@@ -40,6 +40,23 @@ trait Generic {
 		return $res->row();
 	}
 
+	public function get($array=array())
+	{
+		$nameTable = $this->comvertNameTable(get_class($this));
+		$this->db->where($array);
+		$res = $this->db->get($nameTable);
+		return $res->row();
+	}
+
+	public function count($array=array())
+	{
+		$nameTable = $this->comvertNameTable(get_class($this));
+		$this->db->select('count(*) as c');
+		$this->db->where($array);
+		$res = $this->db->get($nameTable);			
+		return $res->row()->c;	
+	}
+
 	public function getAll()
 	{
 		$nameTable = $this->comvertNameTable(get_class($this));
