@@ -61,12 +61,55 @@ class Publico extends CI_Controller {
 
 
 
+
+
+
+
 	public function _verifyUsuarioPassword($password, $cuenta)
 	{
 		$this->form_validation->set_message(__FUNCTION__, 'El password no coincide');		
 		$count = $this->usuario_model->count( ["cuenta"=>$cuenta, "password"=>md5($password)] );
 		return ( $count == 1); 		
+	}
+
+	public function test()
+	{
+		// $this->load->library('uri', $config);
+		$this->config->load('SystemSupervisor/config');
+
+		echo "Hello";
+		echo $this->getUri();
+		// echo "<pre>";
+		// var_dump($this->config->item('checkLogin')['pages_public']);
+		// echo "</pre>";
+		echo ( $this->verifyRoutePublicPage( $this->getUri(), [ "/publico/login", "/publico/test"]) )? "<br>if": "<br>else";
 	}	
+
+	private function getUri()
+	{
+		$route = "";
+
+		for ($i=1; $i < 10; $i++) 
+		{ 
+			if($this->uri->segment($i)){
+				$route = $route.'/'. $this->uri->segment($i);
+			}
+		}
+		return $route;
+	}
+
+	private function verifyRoutePublicPage($route = '', $arrayPages = array() )
+	{
+		foreach ($arrayPages as $value) 
+		{
+			if ( $value == $route )
+			{
+				return true;
+				break;
+			}
+		}
+		return false;
+	}
 
 }
 
