@@ -96,7 +96,12 @@ class Usuario extends CI_Controller {
 
 	}
 
-	
+	public function desconectar()
+	{
+		$this->session->sess_destroy();
+		$this->config->load('SystemSupervisor/config');
+		redirect($this->config->item('page_login'),'refresh');
+	}
 
 
 
