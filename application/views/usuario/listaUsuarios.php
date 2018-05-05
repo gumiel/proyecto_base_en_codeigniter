@@ -113,8 +113,6 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
             <div class="box-body">
               
               <?php echo form_input_ci("Nombres", 'usuario[nombres]', ""); ?>
-
-              <?php echo form_input_ci("Nombres", 'usuario[nombres]', ""); ?>
               
               <?php echo form_input_ci("Apellido Paterno", 'usuario[paterno]', ''); ?>
               

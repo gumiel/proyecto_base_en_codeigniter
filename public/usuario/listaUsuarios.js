@@ -72,9 +72,63 @@ jQuery(document).ready(function($)
 		rules: {
 			"usuario[nombres]": {
 				required: true
-			}
-		}
+			},
+			"usuario[paterno]": {
+				required: true
+			},
+			"usuario[materno]": {
+				required: true
+			},
+			"usuario[cuenta]": {
+				required: true
+			},
+			"usuario[email]": {
+				required: true,
+				email: true,
+			},
+			"usuario[ci]": {
+				required: true,
+				number:true
+			},
+			"usuario[password]": {
+				required: true
+			},
+			"usuario[rep_password]": {
+				required: true,
+				equalTo: 'input[name="usuario[password]"]'
+			},
+		},
+	});
 
+	$("#formEdit").validate({
+		rules: {
+			"usuario[nombres]": {
+				required: true
+			},
+			"usuario[paterno]": {
+				required: true
+			},
+			"usuario[materno]": {
+				required: true
+			},
+			"usuario[cuenta]": {
+				required: true
+			},
+			"usuario[email]": {
+				required: true,
+				email: true,
+			},
+			"usuario[ci]": {
+				required: true,
+				number:true
+			},
+			"usuario[password]": {
+				required: true
+			},
+			"usuario[rep_password]": {
+				required: true
+			},
+		},
 	});
 
 });
