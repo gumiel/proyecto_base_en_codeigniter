@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH.'/validator/base.php';
+require APPPATH.'validator/Base.php';
 
 class Principal extends CI_Controller {
 
