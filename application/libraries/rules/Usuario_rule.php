@@ -5,7 +5,6 @@ require APPPATH.'libraries/rules/Rule.php';
 
 class Usuario_rule {
 
-	protected $ci;	
 	use Rule;
 
 	public function rule()
@@ -13,25 +12,44 @@ class Usuario_rule {
 
 		$rule = array(
 		    array(
-		        'field' => 'user[name]',
-		        'label' => 'Login',
-		        'rules' => array( 'required','trim', [ 'valid_name' , $this->closureValidName ])
+		        'field' => 'usuario[nombres]',
+		        'label' => 'Nombres',
+		        'rules' => array( 'required','trim')
 		    ),
 		    array(
-		        'field' => 'user[login]',
-		        'label' => 'Login',
-		        'rules' => array( 'required','trim', array('valid_user', 
-				        		function($password)
-						        {
-						        	$this->ci->form_validation->set_message( 'valid_user' , "Not is valid User");
-						        	return ( $password=='smith' );											        		
-						        })
-		        			)
+		        'field' => 'usuario[paterno]',
+		        'label' => 'Paterno',
+		        'rules' => array( 'required','trim')
 		    ),
 		    array(
-		        'field' => 'user[password]',
-		        'label' => 'Password',
-		        'rules' => [ 'required', 'trim', $this->valid_password(), $this->is_numeric_custom() ]
+		        'field' => 'usuario[materno]',
+		        'label' => 'Materno',
+		        'rules' => array( 'required','trim')
+		    ),
+		    array(
+		        'field' => 'usuario[cuenta]',
+		        'label' => 'Cuenta',
+		        'rules' => array( 'required','trim')
+		    ),
+		    array(
+		        'field' => 'usuario[email]',
+		        'label' => 'Email',
+		        'rules' => array( 'required','trim','valid_email')
+		    ),
+		    array(
+		        'field' => 'usuario[ci]',
+		        'label' => 'CI',
+		        'rules' => array( 'required','trim')
+		    ),
+		    array(
+		        'field' => 'usuario[password]',
+		        'label' => 'Contraseña',
+		        'rules' => [ 'required', 'trim' ]
+		    ),
+		    array(
+		        'field' => 'usuario[rep_password]',
+		        'label' => 'Repetir Contraseña',
+		        'rules' => [ 'required', 'trim' ]
 		    )
 		);
 

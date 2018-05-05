@@ -3,6 +3,11 @@
 
 Este proyecto en CI es un una plantilla para empezar a programar directamente en Codeigniter.
 
+
+Demo: http://www.ci.gumiel.es
+Usuario: smith
+Contraseña: smith
+
 ## CODE CONVENTION
 
 Name is function 'CALL_BACK' of validation is underscode at first

@@ -12,7 +12,7 @@ class Usuario extends CI_Controller {
 		
 		$this->load->helper('form_ci');
 		$this->load->library('form_validation');
-		$this->load->library('UsuarioRule');		
+		$this->load->library('rules/Usuario_rule');		
 		$this->load->library('Utils');
 		// $this->load->library('lib_log');
 
@@ -41,8 +41,8 @@ class Usuario extends CI_Controller {
 		$usuario = $this->input->post("usuario");
 
 
-		$this->form_validation->set_rules($this->usuariorule->apply());
-		$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required');
+		$this->form_validation->set_rules($this->usuario_rule->apply());
+		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'callback__verificar_cuenta_repetida');
 		$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');
 
 		if ( $this->form_validation->run() ) 
@@ -66,7 +66,7 @@ class Usuario extends CI_Controller {
 		$usuario = $this->input->post("usuario");
 
 		$this->form_validation->set_rules($this->usuariorule->apply());
-		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificarIdUsuario');
+		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
 
 		if ( isset($usuario["password"]) && $usuario["password"] != '')
 		{
@@ -150,7 +150,7 @@ class Usuario extends CI_Controller {
 		$usuario = $this->input->post("usuario");
 		$data = array();
 
-		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificarIdUsuario');
+		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
 
 		if ( $this->form_validation->run() )
 		{
@@ -192,39 +192,28 @@ class Usuario extends CI_Controller {
 
 
 
-
+	public function _verificar_cuenta_repetida($cuenta)
+	{
+		$this->form_validation->set_message(__FUNCTION__, 'Ya existe la cuenta');
+		$cantidad = $this->usuario_model->count( [ 'cuenta'=>$cuenta ] );
+		return ( $cantidad==0 );
+	}
 
 	public function _validar_repetir_password($repPassword, $password)
 	{
-		if ($repPassword == $password)
-		{
-			return TRUE;
-		} else
-		{
-			$this->form_validation->set_message('_validar_repetir_password', 'Repetir el mismo password escrito');
-			return FALSE;
-		}
+		$this->form_validation->set_message(__FUNCTION__, 'Repetir el mismo password escrito');
+		return ($repPassword == $password);		
 	}
 
-	public function _verificarIdUsuario($idUsuario)
+	public function _verificar_id_usuario($idUsuario)
 	{
+		$this->form_validation->set_message(__FUNCTION__, 'No existe el identificador del usuario');
 		if ($idUsuario > 0)
-		{
-			
-			$usuario = $this->usuario_model->getId($idUsuario);
-			
-			if ( isset($usuario) )
-			{
-				return TRUE;
-			} else 
-			{
-				$this->form_validation->set_message('_verificarIdUsuario', 'No existe el identificador del usuario');
-				return FALSE;
-			}
-
+		{			
+			$usuario = $this->usuario_model->getId($idUsuario);			
+			return ( isset($usuario) );
 		} else
 		{
-			$this->form_validation->set_message('_verificarIdUsuario', 'No existe el identificador del usuario');
 			return FALSE;
 		}
 	}
