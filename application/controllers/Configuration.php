@@ -5,7 +5,7 @@ class Configuration extends CI_Controller {
 
 	public function index()
 	{
-		
+		$this->load->view('configuration/index');
 	}
 
 }
