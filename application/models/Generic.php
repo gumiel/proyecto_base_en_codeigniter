@@ -14,7 +14,23 @@ trait Generic {
 	public function insert($data)
 	{
 		$nameTable = $this->comvertNameTable(get_class($this));
-		$this->db->insert($nameTable, $data);
+		$res = $this->db->insert($nameTable, $data);
+
+		if( $this->ci->config->item('auditor_insert') )
+		{
+			$query = $this->db->last_query();
+			$this->db->insert('auditor_query', [ 
+													'class_controller'  =>$this->router->fetch_class(), 
+													'method_controller' =>$this->router->fetch_method(),
+													'class_model'       =>__CLASS__,
+													'method_model'      =>__METHOD__,
+													'query'             =>$query,
+													'execution_date'    =>date('Y-m-d H:i:s')
+												]
+							);
+		}
+
+		return $res;
 	}
 
 	public function update($id, $data)
@@ -22,6 +38,20 @@ trait Generic {
 		$nameTable = $this->comvertNameTable(get_class($this));
 		$this->db->where('id_'.$nameTable, $id);
 		$this->db->update($nameTable, $data);
+
+		if( $this->ci->config->item('auditor_update') )
+		{
+			$query = $this->db->last_query();
+			$this->db->insert('auditor_query', [ 
+													'class_controller'  =>$this->router->fetch_class(), 
+													'method_controller' =>$this->router->fetch_method(),
+													'class_model'       =>__CLASS__,
+													'method_model'      =>__METHOD__,
+													'query'             =>$query,
+													'execution_date'    =>date('Y-m-d H:i:s')
+												]
+							);
+		}
 		
 	}
 
@@ -30,6 +60,20 @@ trait Generic {
 		$nameTable = $this->comvertNameTable(get_class($this));
 		$this->db->where('id_'.$nameTable, $id);	
 		$this->db->delete($nameTable);
+
+		if( $this->ci->config->item('auditor_delete') )
+		{
+			$query = $this->db->last_query();
+			$this->db->insert('auditor_query', [ 
+													'class_controller'  =>$this->router->fetch_class(), 
+													'method_controller' =>$this->router->fetch_method(),
+													'class_model'       =>__CLASS__,
+													'method_model'      =>__METHOD__,
+													'query'             =>$query,
+													'execution_date'    =>date('Y-m-d H:i:s')
+												]
+							);
+		}
 	}
 
 	public function getId($id)
