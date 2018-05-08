@@ -17,9 +17,9 @@ trait Generic {
 		$res = $this->db->insert($nameTable, $data);
 
 
-		if( $this->ci->config->item('auditor_insert') )
+		if( $this->config->item('auditor_insert') )
 		{
-			$id         = $this->ci->config->item('sessions_id');
+			$id         = $this->config->item('sessions_id');
 			$session_id = ( $this->ci->session->has_userdata($id) )? $this->session->userdata($id): 0;
 			
 			$query = $this->db->last_query();
@@ -45,9 +45,9 @@ trait Generic {
 		$this->db->where('id_'.$nameTable, $id);
 		$this->db->update($nameTable, $data);
 
-		if( $this->ci->config->item('auditor_update') )
+		if( $this->config->item('auditor_update') )
 		{
-			$id         = $this->ci->config->item('sessions_id');
+			$id         = $this->config->item('sessions_id');
 			$session_id = ( $this->ci->session->has_userdata($id) )? $this->session->userdata($id): 0;
 			
 			$query = $this->db->last_query();
@@ -72,9 +72,9 @@ trait Generic {
 		$this->db->where('id_'.$nameTable, $id);	
 		$this->db->delete($nameTable);
 
-		if( $this->ci->config->item('auditor_delete') )
+		if( $this->config->item('auditor_delete') )
 		{
-			$id         = $this->ci->config->item('sessions_id');
+			$id         = $this->config->item('sessions_id');
 			$session_id = ( $this->ci->session->has_userdata($id) )? $this->session->userdata($id): 0;
 			
 			$query = $this->db->last_query();
