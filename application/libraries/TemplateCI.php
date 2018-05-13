@@ -45,7 +45,7 @@ class TemplateCI
 					["name" => "Cobranza", "url" => "principal/inicio", "icon" => "fa fa-bank", 
 						'subMenu'=> [
 										["name" => "Cobros Simples", "url" => "cobradoTotal/simple"],
-										["name" => "Cobros con Cheques", "url" => "cobradoTotal/avanzado"],
+										["name" => "Cobros con Cheques", "url" => "cobradoTotal/simple"],
 									] 
 					],
 				];

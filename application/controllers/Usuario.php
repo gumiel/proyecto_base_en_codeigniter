@@ -22,7 +22,10 @@ class Usuario extends CI_Controller {
 
 	public function index()
 	{
-		
+		$data = array();		
+		$data["usuarios"] = $this->usuario_model->listUsuario();
+
+		$this->load->view('usuario/index', $data);
 	}
 
 	public function lista()
@@ -33,6 +36,15 @@ class Usuario extends CI_Controller {
 
 		$this->load->view('usuario/listaUsuarios', $data);
 
+	}
+
+	public function listaAjax()
+	{
+
+		$data = array();
+		$data["usuarios"] = $this->usuario_model->listUsuario();
+		$data["result"] = 1;
+		$this->utils->json($data);
 	}
 
 
@@ -61,7 +73,69 @@ class Usuario extends CI_Controller {
 
 	}
 
+	public function createAjax()
+	{
+		$usuario = $this->input->post("usuario");
+
+
+		$this->form_validation->set_rules($this->usuario_rule->apply());
+		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'callback__verificar_cuenta_repetida');
+		$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');
+
+		if ( $this->form_validation->run() ) 
+		{
+			unset($usuario["rep_password"]);
+			$usuario["password"] = md5($usuario["password"]);
+
+			$this->usuario_model->insert($usuario);
+			$data['result'] = 1;
+			$data['message'] = "Se creo el usuario";
+			
+		} else
+		{						
+			$data['result'] = 0;
+			$data['message'] = validation_errors();
+		}
+
+		$this->utils->json($data);
+	}
+
 	public function editUsuario()
+	{
+		$usuario = $this->input->post("usuario");
+
+		$this->form_validation->set_rules($this->usuariorule->apply());
+		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
+
+		if ( isset($usuario["password"]) && $usuario["password"] != '')
+		{
+			$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required');			
+			$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');		
+			$usuario["password"] = md5($usuario["password"]);
+				
+		} else
+		{
+			unset($usuario["password"]);
+		}
+		
+
+		if ( $this->form_validation->run() )
+		{
+	
+			unset($usuario["rep_password"]);			
+
+			$this->usuario_model->update($usuario["id_usuario"], $usuario);
+			$this->session->set_flashdata('message', [ "success"=>"Se edito el registro" ]);
+		} else
+		{
+			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);
+
+		}
+		redirect('usuario/lista','refresh');
+
+	}
+
+	public function editAjax()
 	{
 		$usuario = $this->input->post("usuario");
 

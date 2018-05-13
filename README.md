@@ -5,6 +5,19 @@ Url: https://goo.gl/K6xJ2h
 Usuario: admin
 Contraseña: admin
 
+## CONVENCIONES DE CODIGO
+
+- El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
+
+Name is function 'CALL_BACK' of validation is underscode at first
+Example.
+
+$this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');
+
+public function _verifyEmail(){
+	.............
+}
+
 ## PROYECTO CODEIGNITER
 
 
@@ -15,16 +28,7 @@ Demo: http://www.ci.gumiel.es
 Usuario: smith
 Contraseña: smith
 
-## CODE CONVENTION
 
-Name is function 'CALL_BACK' of validation is underscode at first
-Example.
-
-$this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');
-
-public function _verifyEmail(){
-	.............
-}
 
 #### Plantillas base.
 

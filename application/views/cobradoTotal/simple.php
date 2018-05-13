@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Pagos");
 $this->templateci->setDescriptionPage("Pagos");
 
-$this->templateci->addJs("public/usuario/listaUsuarios.js");
+
  ?>
 
 <?php $this->load->view('template/up'); ?>
@@ -47,10 +47,10 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
               <div class="row">
                 <?php echo form_open_ci('url', ''); ?>
                   <div class='col-md-10'>
-                    <?php echo form_input_ci('Cod. Usuario:', 'usuario[id]', 'value'); ?> 
+                    <?php echo form_input_ci('Cod. Usuario:', 'usuario[id]', ''); ?> 
                   </div>
                   <div class='col-md-2'>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                    <button type="button" class="btn btn-default" id="btnBuscador">
                       Buscar
                     </button>
                   </div>
@@ -93,7 +93,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
 
   <section class="content">
     <!-- Custom Tabs -->
-        <div class="nav-tabs-custom">
+        <div class="nav-tabs-custom" id="myTabs">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab_11" data-toggle="tab">Pagar</a></li>
             <li><a href="#tab_21" data-toggle="tab">Ingresar Pago</a></li>                        
@@ -120,7 +120,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                         </tr>                        
                       </thead>
                       <tbody>
-                        <tr class='success'>
+                        <tr class='success row1'>
                           <td>
                             <a class="btn btn-app">                          
                               <i class="fa  fa-minus-square"></i>
@@ -128,18 +128,18 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                           </td>
                           <td>1.</td>
                           <td>2000021</td>
-                          <td colspan="2">Juan Perez Perez</td>
+                          <td colspan="2">Emiliana Padilla Sanchez</td>
                           
-                          <td class="text-right">120,50</td>
+                          <td class="text-right">158,50</td>
                           <td  style="width: 95px">
                                                   
-                            <a class="btn btn-app">
-                              <span class="badge bg-red">4</span>
+                            <a class="btn btn-app" id='btnEliminar1' >
+                              <span class="badge bg-red">3</span>
                               <i class="fa fa-trash"></i>
                             </a>
                           </td>
                         </tr>
-                      <tr class="info">
+                      <tr class="info row1">
                           <td></td>
                           <td></td>
                           <td></td>
@@ -148,40 +148,32 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                           <td class="text-right"><b>Importe Mensual</b>   </td>
                           <td></td>
                         </tr>
-                        <tr class="info">
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="text-center">Ene/2018</td>
-                          <td class="text-right">78,00</td>
-                          <td><span class="badge bg-red">Vencido</span></td>
-                        </tr>
-                        <tr class="info">
+
+                        <tr class="info row1">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Feb/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">58,00</td>
                           <td><span class="badge bg-red">Vencido</span></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row1">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Mar/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">71,50</td>
                           <td><span class="badge bg-red">Vencido</span></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row1">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Abr/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">29,00</td>
                           <td></td>
                         </tr>
 
@@ -194,7 +186,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
 
 
 
-                        <tr class='success'>
+                        <tr class='success row2'>
                           <td>
                             <a class="btn btn-app">                          
                               <i class="fa  fa-minus-square"></i>
@@ -202,18 +194,18 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                           </td>
                           <td>2.</td>
                           <td>220545</td>
-                          <td colspan="2">Juan Perez Perez</td>
+                          <td colspan="2">Jaime Perez Paco</td>
                           
-                          <td class="text-right">120,50</td>
+                          <td class="text-right">201,60</td>
                           <td  style="width: 95px">
                                                   
-                            <a class="btn btn-app">
+                            <a class="btn btn-app" id='btnEliminar2'>
                               <span class="badge bg-red">4</span>
                               <i class="fa fa-trash"></i>
                             </a>
                           </td>
                         </tr>
-                      <tr class="info">
+                      <tr class="info row2">
                           <td></td>
                           <td></td>
                           <td></td>
@@ -222,40 +214,40 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                           <td class="text-right"><b>Importe Mensual</b>   </td>
                           <td></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row2">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Ene/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">61,60</td>
                           <td><span class="badge bg-red">Vencido</span></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row2">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Feb/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">27,00</td>
                           <td><span class="badge bg-red">Vencido</span></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row2">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Mar/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">42,00</td>
                           <td><span class="badge bg-red">Vencido</span></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row2">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Abr/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">71,00</td>
                           <td></td>
                         </tr>
 
@@ -263,7 +255,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
 
 
 
-                        <tr class='success'>
+                        <tr class='success row3'>
                           <td>
                             <a class="btn btn-app">                          
                               <i class="fa  fa-minus-square"></i>
@@ -271,18 +263,18 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                           </td>
                           <td>3.</td>
                           <td>2000021</td>
-                          <td colspan="2">Juan Perez Perez</td>
+                          <td colspan="2">Maria Rosa Gonzales  De la fuente</td>
                           
-                          <td class="text-right">120,50</td>
+                          <td class="text-right">110,00</td>
                           <td  style="width: 95px">
                                                   
-                            <a class="btn btn-app">
-                              <span class="badge bg-red">4</span>
+                            <a class="btn btn-app" id='btnEliminar3'>
+                              <span class="badge bg-red">3</span>
                               <i class="fa fa-trash"></i>
                             </a>
                           </td>
                         </tr>
-                      <tr class="info">
+                      <tr class="info row3">
                           <td></td>
                           <td></td>
                           <td></td>
@@ -291,40 +283,31 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
                           <td class="text-right"><b>Importe Mensual</b>   </td>
                           <td></td>
                         </tr>
-                        <tr class="info">
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="text-center">Ene/2018</td>
-                          <td class="text-right">78,00</td>
-                          <td><span class="badge bg-red">Vencido</span></td>
-                        </tr>
-                        <tr class="info">
+                        <tr class="info row3">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Feb/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">34,00</td>
                           <td><span class="badge bg-red">Vencido</span></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row3">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Mar/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">58,00</td>
                           <td><span class="badge bg-red">Vencido</span></td>
                         </tr>
-                        <tr class="info">
+                        <tr class="info row3">
                           <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
                           <td class="text-center">Abr/2018</td>
-                          <td class="text-right">78,00</td>
+                          <td class="text-right">18,00</td>
                           <td></td>
                         </tr>
 
@@ -483,7 +466,7 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
 
             </div>
             <div class="box-footer text-right">
-              <?php echo form_submit_ci('name', 'Agregar'); ?>
+              <?php echo form_button_ci('name', 'Agregar', [ 'id'=>'btnAgregar'] ); ?>
             </div>
             <!-- /.box-body -->
           </div>
@@ -531,8 +514,41 @@ $this->templateci->addJs("public/usuario/listaUsuarios.js");
   </div>
   <!-- /.modal -->
   
+
 <?php $this->load->view('template/down'); ?>
 
 
 
 
+  <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      
+      $('.row1').hide();
+      $('.row2').hide();
+      $('.row3').hide();
+
+      $('#btnBuscador').click(function(){        
+        $('#myTabs a[href="#tab_21"]').tab('show');
+      });
+
+      $('#btnAgregar').click(function(){        
+        $('#myTabs a[href="#tab_11"]').tab('show');
+        $('.row1').show();
+        $('.row2').show();
+        $('.row3').show();
+      });
+
+      $('#btnEliminar1').click(function(event) {
+        $('.row1').remove();
+      });
+
+      $('#btnEliminar2').click(function(event) {
+        $('.row2').remove();
+      });
+
+      $('#btnEliminar3').click(function(event) {
+        $('.row3').remove();
+      });
+
+    });
+  </script>
