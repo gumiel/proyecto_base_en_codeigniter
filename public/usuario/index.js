@@ -21,12 +21,12 @@ jQuery(document).ready(function($)
 			.done(function(data) {
 				if(data.result==1)
 				{
-					alert(data.message);	
+					$.notifySuccess(data.message);	
 					$('#modalCreate').modal('hide');
 					loadListUsuarios();
 				} else 
 				{
-					alert(data.message);	
+					$.notifyDanger(data.message);
 				}
 			});
 					
@@ -52,7 +52,7 @@ jQuery(document).ready(function($)
 	    form.find("input[name='usuario[nombres]']").val(data.usuario.nombres);
 	    form.find("input[name='usuario[paterno]']").val(data.usuario.paterno);
 	    form.find("input[name='usuario[materno]']").val(data.usuario.materno);
-	    form.find("input[name='usuario[usuario]']").val(data.usuario.usuario);
+	    form.find("input[name='usuario[cuenta]']").val(data.usuario.cuenta);
 	    form.find("input[name='usuario[email]']").val(data.usuario.email);
 	    form.find("input[name='usuario[ci]']").val(data.usuario.ci);
 	    form.find("input[name='usuario[id_usuario]']").val(data.usuario.id_usuario);
@@ -76,12 +76,12 @@ jQuery(document).ready(function($)
 			.done(function(data) {
 				if(data.result==1)
 				{
-					alert(data.message);	
+					$.notifySuccess(data.message);
 					$('#modalEdit').modal('hide');
 					loadListUsuarios();
 				} else 
 				{
-					alert(data.message);	
+					$.notifyDanger(data.message);
 				}
 			});
 					
@@ -106,7 +106,10 @@ jQuery(document).ready(function($)
 	      .done(function(data) {
 
 	        if(data.result == 1){
+	        	$.notifySuccess(data.message);
 	        	loadListUsuarios();
+	        } else {
+	        	$.notifyDanger(data.message);
 	        }
 
 	      });
@@ -175,10 +178,10 @@ jQuery(document).ready(function($)
 				number:true
 			},
 			"usuario[password]": {
-				required: true
+				equalTo: 'input[name="usuario[rep_password]"]'
 			},
 			"usuario[rep_password]": {
-				required: true
+				equalTo: 'input[name="usuario[password]"]'
 			},
 		},
 	});

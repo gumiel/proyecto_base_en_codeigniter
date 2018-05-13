@@ -104,7 +104,7 @@ class Usuario extends CI_Controller {
 	{
 		$usuario = $this->input->post("usuario");
 
-		$this->form_validation->set_rules($this->usuariorule->apply());
+		$this->form_validation->set_rules($this->usuario_rule->apply());
 		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
 
 		if ( isset($usuario["password"]) && $usuario["password"] != '')
@@ -139,7 +139,8 @@ class Usuario extends CI_Controller {
 	{
 		$usuario = $this->input->post("usuario");
 
-		$this->form_validation->set_rules($this->usuariorule->apply());
+		$this->form_validation->set_rules($this->usuario_rule->apply());
+		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']');
 		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
 
 		if ( isset($usuario["password"]) && $usuario["password"] != '')
@@ -160,14 +161,16 @@ class Usuario extends CI_Controller {
 			unset($usuario["rep_password"]);			
 
 			$this->usuario_model->update($usuario["id_usuario"], $usuario);
-			$this->session->set_flashdata('message', [ "success"=>"Se edito el registro" ]);
+
+			$data['result'] = 1;
+			$data['message'] = "Se edito el registro";
 		} else
 		{
-			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);
-
+			
+			$data['result'] = 0;
+			$data['message'] = validation_errors();
 		}
-		redirect('usuario/lista','refresh');
-
+		$this->utils->json($data);
 	}
 
 	public function desconectar()
@@ -266,10 +269,16 @@ class Usuario extends CI_Controller {
 
 
 
-	public function _verificar_cuenta_repetida($cuenta)
+	public function _verificar_cuenta_repetida($cuenta, $idUsuario=0)
 	{
-		$this->form_validation->set_message(__FUNCTION__, 'Ya existe la cuenta');
-		$cantidad = $this->usuario_model->count( [ 'cuenta'=>$cuenta ] );
+		$this->form_validation->set_message(__FUNCTION__, 'Ya existe la Cuenta');
+		if ( $idUsuario==0 )
+		{
+			$cantidad = $this->usuario_model->count( [ 'cuenta'=>$cuenta ] );
+		} else
+		{
+			$cantidad = $this->usuario_model->count( [ 'cuenta'=>$cuenta, 'id_usuario!='=>$idUsuario ] );
+		}
 		return ( $cantidad==0 );
 	}
 

@@ -12,7 +12,11 @@ $this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|requ
 public function _verifyEmail(){<br>
 	.............<br>
 }<br>
-<br>
+- La creacion de las tablas en el proyecto deben ser en singular Ejm. usuario.<br>
+Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuarios"] = $this->usuario_model->listUsuario();<br>
+
+
+
 ## PROYECTO CODEIGNITER
 Este proyecto en CI es un una plantilla para empezar a programar directamente en Codeigniter.
 

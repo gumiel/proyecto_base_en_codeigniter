@@ -22,6 +22,40 @@ jQuery(document).ready(function($) {
 	    });
 	}
 
+	jQuery.notifySuccess = function( message )
+	{	    
+	    
+	    $.notify({
+			icon: 'glyphicon glyphicon-ok',
+			title: "<strong>Correcto:</strong> ",
+			message: message
+		},{
+			type: 'success'
+		});
+	}
+
+	jQuery.notifyDanger = function( message )
+	{	    
+	    $.notify({
+			icon: 'glyphicon glyphicon-ok',
+			title: "<strong>Error:</strong> ",
+			message: message
+		},{
+			type: 'danger'
+		});
+	}
+
+	jQuery.notifyWarning = function( message )
+	{	    
+	    $.notify({
+			icon: 'glyphicon glyphicon-warning-sign',
+			title: "<strong>Advertencia:</strong> ",
+			message: notifyWarningTitle
+		},{
+			type: 'warning'
+		});
+	}
+
 	
 
 	$(".notifySuccess").each(function(index, el) {

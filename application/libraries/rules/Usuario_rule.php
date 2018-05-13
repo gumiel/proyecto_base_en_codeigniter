@@ -41,16 +41,6 @@ class Usuario_rule {
 		        'label' => 'CI',
 		        'rules' => array( 'required','trim')
 		    ),
-		    array(
-		        'field' => 'usuario[password]',
-		        'label' => 'Contraseña',
-		        'rules' => [ 'required', 'trim' ]
-		    ),
-		    array(
-		        'field' => 'usuario[rep_password]',
-		        'label' => 'Repetir Contraseña',
-		        'rules' => [ 'required', 'trim' ]
-		    )
 		);
 
 		return $rule;
