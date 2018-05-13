@@ -9,7 +9,6 @@ Contraseña: admin<br>
 Name is function 'CALL_BACK' of validation is underscode at first<br>
 Example.<br>
 $this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');<br>
-<br>
 public function _verifyEmail(){<br>
 	.............<br>
 }<br>
