@@ -1,25 +1,20 @@
 ## DEMO
-La demo del uso esta en proceso pero lo pueden ver en.
-Url: https://goo.gl/K6xJ2h
-Usuario: admin
-Contraseña: admin
+La demo del uso esta en proceso pero lo pueden ver en.<br>
+Url: https://goo.gl/K6xJ2h<br>
+Usuario: admin<br>
+Contraseña: admin<br>
 
 ## CONVENCIONES DE CODIGO
-
 - El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
-
-Name is function 'CALL_BACK' of validation is underscode at first
-Example.
-
-$this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');
-
-public function _verifyEmail(){
-	.............
-}
-
+Name is function 'CALL_BACK' of validation is underscode at first<br>
+Example.<br>
+$this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');<br>
+<br>
+public function _verifyEmail(){<br>
+	.............<br>
+}<br>
+<br>
 ## PROYECTO CODEIGNITER
-
-
 Este proyecto en CI es un una plantilla para empezar a programar directamente en Codeigniter.
 
 
