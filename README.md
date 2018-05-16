@@ -3,6 +3,9 @@ La demo del uso esta en proceso pero lo pueden ver en.<br>
 Url: https://goo.gl/K6xJ2h<br>
 Usuario: admin<br>
 Contraseña: admin<br>
+<img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526505003/inicio_cvrqjv.jpg" >
+
+<img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526504520/lista_usuarios_pcq23q.jpg" >
 
 ## CONVENCIONES DE CODIGO
 - El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
