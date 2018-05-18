@@ -21,8 +21,7 @@ $this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|requ
 - La creacion de las tablas en el proyecto deben ser en singular Ejm. usuario.<br>
 Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuarios"] = $this->usuario_model->listUsuario();<br>
 <br>
-- Los metodos del "CONTROLADOR" si son llamadas Ajax tiene que tener el sufijo "Ajax" Por Ejemplo.
-<br>
+- Los metodos del "CONTROLADOR" si son llamadas Ajax tiene que tener el sufijo "Ajax" Por Ejemplo.<br>
 ```
 ----> public function creationAjax(){<br>
 ---->     ...........	<br>
@@ -32,8 +31,9 @@ Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuar
 
 - Si un boton tiene ID en HTML tiene que empezar con el prefijo "btn" Por Ejemplo.
 <br>
+```
 ----> <button id="btnSubmitForm">Submit</button><br>
-
+```
 - Si un modal tiene ID en el HTML tiene que empezar con el prefijo "modal" Por Ejemplo.
 <br>
 ```
@@ -50,8 +50,9 @@ Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuar
 ----> </table><br>
 ```
 - Si un input tiene ID en el html tiene que empezar en el prefijo "input" Por Ejemplo.<br>
+```
 ----> <input id="inputDirecction" name="user['direction']" />
-
+```
 
 ## PROYECTO CODEIGNITER
 Este proyecto en CI es un una plantilla para empezar a programar directamente en Codeigniter.
