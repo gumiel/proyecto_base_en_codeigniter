@@ -17,8 +17,15 @@ public function _verifyEmail(){<br>
 }<br>
 - La creacion de las tablas en el proyecto deben ser en singular Ejm. usuario.<br>
 Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuarios"] = $this->usuario_model->listUsuario();<br>
-
-
+<br>
+- Los metodos del "CONTROLADOR" si son llamadas Ajax tiene que tener el sufijo "Ajax" Por Ejemplo.<br>
+```javascript
+public function creationAjax(){<br>
+    ...........	<br>
+}<br>
+```
+<br>
+- Los 
 
 ## PROYECTO CODEIGNITER
 Este proyecto en CI es un una plantilla para empezar a programar directamente en Codeigniter.
