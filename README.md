@@ -8,7 +8,7 @@ Contraseña: admin<br>
 <img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526504520/lista_usuarios_pcq23q.jpg" >
 
 ## CONVENCIONES DE CODIGO
-- El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
+* El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
 Name is function 'CALL_BACK' of validation is underscode at first<br>
 Example.<br>
 $this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');<br>
@@ -18,23 +18,24 @@ public function _verifyEmail(){
 	.............
 }
 ```
-- La creacion de las tablas en el proyecto deben ser en singular Ejm. usuario.<br>
+* La creacion de las tablas en el proyecto deben ser en singular Ejm. usuario.<br>
 Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuarios"] = $this->usuario_model->listUsuario();<br>
 <br>
-- Los metodos del "CONTROLADOR" si son llamadas Ajax tiene que tener el sufijo "Ajax" Por Ejemplo.<br>
+
+* Los metodos del "CONTROLADOR" si son llamadas Ajax tiene que tener el sufijo "Ajax" Por Ejemplo.<br>
+
 ```
-public function creationAjax(){<br>
-    ...........	<br>
-}<br>
+public function creationAjax(){
+    ...........	
+}
 ```
 
-
-- Si un boton tiene ID en HTML tiene que empezar con el prefijo "btn" Por Ejemplo.<br>
+* Si un boton tiene ID en HTML tiene que empezar con el prefijo "btn" Por Ejemplo.<br>
 ```
  <button id="btnSubmitForm">Submit</button>
 ```
 
-- Si un modal tiene ID en el HTML tiene que empezar con el prefijo "modal" Por Ejemplo.
+* Si un modal tiene ID en el HTML tiene que empezar con el prefijo "modal" Por Ejemplo.
 <br>
 ```
 <div id="modalFormCreate" class="modal fade" role="dialog">
@@ -43,14 +44,14 @@ public function creationAjax(){<br>
 </div>
 ```
 
-- Si una tabla tiene ID en el html tiene que empezar con el prefijo "tbl" Por Ejemplo.<br>
+* Si una tabla tiene ID en el html tiene que empezar con el prefijo "tbl" Por Ejemplo.<br>
 ```
 <table id="tblListUser" class="table table-condensed">
 .............
 </table>
 ```
 
-- Si un input tiene ID en el html tiene que empezar en el prefijo "input" Por Ejemplo.<br>
+* Si un input tiene ID en el html tiene que empezar en el prefijo "input" Por Ejemplo.<br>
 ```
 <input id="inputDirecction" name="user['direction']" />
 ```
