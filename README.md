@@ -13,17 +13,21 @@ Name is function 'CALL_BACK' of validation is underscode at first<br>
 Example.<br>
 $this->form_validation->set_rules('entity[tribute]', 'Label tribute', 'trim|required|callback__verifyEmail');
 <br>
+```
 ----> public function _verifyEmail(){<br>
 ----> 	.............<br>
 ----> }<br>
+```
 - La creacion de las tablas en el proyecto deben ser en singular Ejm. usuario.<br>
 Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuarios"] = $this->usuario_model->listUsuario();<br>
 <br>
 - Los metodos del "CONTROLADOR" si son llamadas Ajax tiene que tener el sufijo "Ajax" Por Ejemplo.
 <br>
+```
 ----> public function creationAjax(){<br>
 ---->     ...........	<br>
 ----> }<br>
+```
 <br>
 
 - Si un boton tiene ID en HTML tiene que empezar con el prefijo "btn" Por Ejemplo.
@@ -32,16 +36,19 @@ Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuar
 
 - Si un modal tiene ID en el HTML tiene que empezar con el prefijo "modal" Por Ejemplo.
 <br>
+```
 ----> <div id="modalFormCreate" class="modal fade" role="dialog"><br>
 ----> .................<br>
 ----> .................<br>
 ----> </div><br>
+```
 
 - Si una tabla tiene ID en el html tiene que empezar con el prefijo "tbl" Por Ejemplo.<br>
+```
 ----> <table id="tblListUser" class="table table-condensed"><br>
 ----> .............<br>
 ----> </table><br>
-
+```
 - Si un input tiene ID en el html tiene que empezar en el prefijo "input" Por Ejemplo.<br>
 ----> <input id="inputDirecction" name="user['direction']" />
 
