@@ -35,8 +35,8 @@ public function creationAjax(){
  <button id="btnSubmitForm">Submit</button>
 ```
 
-* Si un modal tiene ID en el HTML tiene que empezar con el prefijo "modal" Por Ejemplo.
-<br>
+* Si un modal tiene ID en el HTML tiene que empezar con el prefijo "modal" Por Ejemplo. <br>
+
 ```
 <div id="modalFormCreate" class="modal fade" role="dialog">
 .................
