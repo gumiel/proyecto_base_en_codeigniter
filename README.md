@@ -20,9 +20,9 @@ Esto es para que se usen la letra "s" en las listas "usuarios". Ejm $data["usuar
 <br>
 - Los metodos del "CONTROLADOR" si son llamadas Ajax tiene que tener el sufijo "Ajax" Por Ejemplo.
 <br>
-public function creationAjax(){<br>
-    ...........	<br>
-}<br>
+---->public function creationAjax(){<br>
+---->    ...........	<br>
+---->}<br>
 
 <br>
 - Los 
