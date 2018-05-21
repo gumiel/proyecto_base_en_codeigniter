@@ -57,12 +57,6 @@ public function creationAjax(){
 ```
 
 ## PROYECTO CODEIGNITER
-Este proyecto en CI es un una plantilla para empezar a programar directamente en Codeigniter.
-
-
-Demo: http://www.ci.gumiel.es
-Usuario: smith
-Contraseña: smith
 
 
 
