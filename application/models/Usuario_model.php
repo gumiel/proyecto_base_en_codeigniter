@@ -19,6 +19,13 @@ class Usuario_model extends CI_Model {
 		return $res->result_array();
 	}
 
+	public function searchUsuario($label='', $text='')
+	{		
+		$this->db->like($label, $text, 'BOTH');
+		$res = $this->db->get('usuario');
+		return $res->result_array();
+	}
+
 	
 
 

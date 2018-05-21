@@ -41,7 +41,7 @@ class TemplateCI
 		// Para saber los iconos ingresar a http://localhost/codeigniter/recursos/AdminLTE-master/pages/UI/icons.html
 		$res = [ 
 					["name" => "Inicio", "url" => "principal/inicio", "icon" => "fa fa-dashboard" ],					
-					["name" => "Usuarios", "url" => "usuario/lista", "icon" => "fa fa-user" ],
+					["name" => "Usuarios", "url" => "usuario/index", "icon" => "fa fa-user" ],
 					["name" => "Cobranza", "url" => "principal/inicio", "icon" => "fa fa-bank", 
 						'subMenu'=> [
 										["name" => "Cobros Simples", "url" => "cobradoTotal/simple"],

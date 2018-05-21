@@ -15,7 +15,6 @@ class Usuario extends CI_Controller {
 		$this->load->library('rules/Usuario_rule');		
 		$this->load->library('Utils');
 		// $this->load->library('lib_log');
-
 		$this->load->model('usuario_model');
 
 	}
@@ -24,25 +23,30 @@ class Usuario extends CI_Controller {
 	{
 		$data = array();		
 		$data["usuarios"] = $this->usuario_model->listUsuario();
-
 		$this->load->view('usuario/index', $data);
 	}
 
 	public function lista()
 	{
-
 		$data = array();		
 		$data["usuarios"] = $this->usuario_model->listUsuario();
-
 		$this->load->view('usuario/listaUsuarios', $data);
-
 	}
 
 	public function listaAjax()
 	{
+		$usuario = $this->input->post('usuario');
 
 		$data = array();
-		$data["usuarios"] = $this->usuario_model->listUsuario();
+
+		if ( sizeof($usuario)>0 && $usuario['label']!='' && $usuario['text']!='' )
+		{			
+			$data["usuarios"] = $this->usuario_model->searchUsuario($usuario['label'], $usuario['text']);
+		} else
+		{
+			$data["usuarios"] = $this->usuario_model->listUsuario();
+		}
+
 		$data["result"] = 1;
 		$this->utils->json($data);
 	}
@@ -51,7 +55,6 @@ class Usuario extends CI_Controller {
 	public function createUsuario()
 	{
 		$usuario = $this->input->post("usuario");
-
 
 		$this->form_validation->set_rules($this->usuario_rule->apply());
 		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'callback__verificar_cuenta_repetida');
@@ -73,32 +76,7 @@ class Usuario extends CI_Controller {
 
 	}
 
-	public function createAjax()
-	{
-		$usuario = $this->input->post("usuario");
-
-
-		$this->form_validation->set_rules($this->usuario_rule->apply());
-		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'callback__verificar_cuenta_repetida');
-		$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');
-
-		if ( $this->form_validation->run() ) 
-		{
-			unset($usuario["rep_password"]);
-			$usuario["password"] = md5($usuario["password"]);
-
-			$this->usuario_model->insert($usuario);
-			$data['result'] = 1;
-			$data['message'] = "Se creo el usuario";
-			
-		} else
-		{						
-			$data['result'] = 0;
-			$data['message'] = validation_errors();
-		}
-
-		$this->utils->json($data);
-	}
+	
 
 	public function editUsuario()
 	{
@@ -135,43 +113,7 @@ class Usuario extends CI_Controller {
 
 	}
 
-	public function editAjax()
-	{
-		$usuario = $this->input->post("usuario");
-
-		$this->form_validation->set_rules($this->usuario_rule->apply());
-		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']');
-		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
-
-		if ( isset($usuario["password"]) && $usuario["password"] != '')
-		{
-			$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required');			
-			$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');		
-			$usuario["password"] = md5($usuario["password"]);
-				
-		} else
-		{
-			unset($usuario["password"]);
-		}
-		
-
-		if ( $this->form_validation->run() )
-		{
 	
-			unset($usuario["rep_password"]);			
-
-			$this->usuario_model->update($usuario["id_usuario"], $usuario);
-
-			$data['result'] = 1;
-			$data['message'] = "Se edito el registro";
-		} else
-		{
-			
-			$data['result'] = 0;
-			$data['message'] = validation_errors();
-		}
-		$this->utils->json($data);
-	}
 
 	public function desconectar()
 	{
@@ -220,6 +162,70 @@ class Usuario extends CI_Controller {
         ->set_output(json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
         ->_display();
 		exit;
+	}
+
+	public function createAjax()
+	{
+		$usuario = $this->input->post("usuario");
+
+		$this->form_validation->set_rules($this->usuario_rule->apply());
+		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'callback__verificar_cuenta_repetida');
+		$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');
+
+		if ( $this->form_validation->run() ) 
+		{
+			unset($usuario["rep_password"]);
+			$usuario["password"] = md5($usuario["password"]);
+
+			$this->usuario_model->insert($usuario);
+			$data['result'] = 1;
+			$data['message'] = "Se creo el usuario";
+			
+		} else
+		{						
+			$data['result'] = 0;
+			$data['message'] = validation_errors();
+		}
+
+		$this->utils->json($data);
+	}
+
+	public function editAjax()
+	{
+		$usuario = $this->input->post("usuario");
+
+		$this->form_validation->set_rules($this->usuario_rule->apply());
+		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']');
+		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
+
+		if ( isset($usuario["password"]) && $usuario["password"] != '')
+		{
+			$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required');			
+			$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');		
+			$usuario["password"] = md5($usuario["password"]);
+				
+		} else
+		{
+			unset($usuario["password"]);
+		}
+		
+
+		if ( $this->form_validation->run() )
+		{
+	
+			unset($usuario["rep_password"]);			
+
+			$this->usuario_model->update($usuario["id_usuario"], $usuario);
+
+			$data['result'] = 1;
+			$data['message'] = "Se edito el registro";
+		} else
+		{
+			
+			$data['result'] = 0;
+			$data['message'] = validation_errors();
+		}
+		$this->utils->json($data);
 	}
 
 	public function deleteUsuarioAjax()

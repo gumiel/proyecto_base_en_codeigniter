@@ -1,3 +1,8 @@
+var formCreate = $('#formCreate');
+var formEdit   = $('#formEdit');
+var formSearch = $('#formSearch');
+var tblList    = $('#tblList');
+
 jQuery(document).ready(function($) 
 {
 
@@ -7,7 +12,7 @@ jQuery(document).ready(function($)
 	  $("#modalCreate").modal("show");
 	});
 
-	$('#formCreate').submit(function(event) {
+	formCreate.submit(function(event) {
 		event.preventDefault();
 		
 		if( $('#formCreate').valid() )
@@ -62,7 +67,7 @@ jQuery(document).ready(function($)
 	  });
 	});
 
-	$('#formEdit').submit(function(event) {
+	formEdit.submit(function(event) {
 		event.preventDefault();
 		
 		if( $('#formEdit').valid() )
@@ -123,7 +128,7 @@ jQuery(document).ready(function($)
 
 
 
-	$("#formCreate").validate({
+	formCreate.validate({
 		rules: {
 			"usuario[nombres]": {
 				required: true
@@ -155,7 +160,7 @@ jQuery(document).ready(function($)
 		},
 	});
 
-	$("#formEdit").validate({
+	formEdit.validate({
 		rules: {
 			"usuario[nombres]": {
 				required: true
@@ -177,28 +182,33 @@ jQuery(document).ready(function($)
 				required: true,
 				number:true
 			},
-			"usuario[password]": {
-				equalTo: 'input[name="usuario[rep_password]"]'
-			},
 			"usuario[rep_password]": {
-				equalTo: 'input[name="usuario[password]"]'
+				equalTo: '#password'
 			},
 		},
 	});
 
-	
+	formSearch.submit(function(event) {
+		
+		event.preventDefault();
+		
+		var dataForm = formSearch.serialize();
+		loadListUsuarios(dataForm);
+	});
 
 });
 
 
-function loadListUsuarios()
+function loadListUsuarios(dataForm)
 {
-	$('#tblList').find('tbody').html('');
+
+	$('tbody', tblList).html('');
 
 	$.ajax({
 		url: site_url('usuario/listaAjax'),
 		type: 'POST',
-		dataType: 'json'
+		dataType: 'json',
+		data: dataForm
 	})
 	.done(function(data) {
 		if( data.result==1 ){

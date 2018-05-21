@@ -28,12 +28,17 @@ $this->templateci->addJs("public/usuario/index.js");
           </div>
         </div>
         <div class="box-body">
-          <div class="col-md-10">
-            <?php echo form_input_ci('Usuario', 'usuarion[usuario]', '', ["id"=>"usuarion[usuario]"]); ?>            
-          </div>
-          <div class="col-md-2">
-            <button class="btn btn-success">Buscar</button>
-          </div>
+          <?php echo form_open_multipart_ci('', ["id"=>"formSearch"]); ?>
+            <div class="col-md-4">
+              <?php echo form_dropdown_ci('Buscar' , 'usuario[label]', [ ''=>'Seleccione', 'nombres'=>'Nombre', 'paterno'=>'Ape. Paterno', 'materno'=>'Ape. Materno', 'cuenta'=>'Cuenta', 'email'=>'Email', 'ci'=>'CI',]); ?>
+            </div>
+            <div class="col-md-6">
+              <?php echo form_input_ci(false, 'usuario[text]', '', ["id"=>"usuarion[usuario]"]); ?>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-success">Buscar</button>
+            </div>
+          <?php form_close(); ?>
         </div>
       </div>
     </section>
@@ -61,7 +66,7 @@ $this->templateci->addJs("public/usuario/index.js");
               <tr>
                 <th>Nombres y Apellidos</th>
                 <th>Email</th>
-                <th>Usuario</th>
+                <th>Cuenta</th>
                 <th>CI</th>
                 <th>Opciones</th>
               </tr>
@@ -153,7 +158,7 @@ $this->templateci->addJs("public/usuario/index.js");
 
               <?php echo form_input_ci("CI", 'usuario[ci]', ''); ?>
 
-              <?php echo form_password_ci("Contraseña", 'usuario[password]', ''); ?>
+              <?php echo form_password_ci("Contraseña", 'usuario[password]', '', [ 'id'=>'password']); ?>
 
               <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_password]', ''); ?>
 

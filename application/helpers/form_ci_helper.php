@@ -33,11 +33,19 @@ function addClass( $attributes = array(), $class)
 }
 
 function addLabelInput($label = '', $input=""){
-	$inputLabel = 	'<div class="form-group">
-                		<label for="inputEmail3" class="col-sm-4 control-label">'.
-                			$label.
-                		'</label>
-                		<div class="col-sm-8">'.
+	$tagLabel = '<label for="inputEmail3" class="col-sm-4 control-label">'.
+        			$label.
+        		'</label>';
+    $countColumn = 8;
+	if ( $label == false)
+	{
+		$tagLabel = '';
+		$countColumn = 12;
+	}
+
+	$inputLabel = 	'<div class="form-group">'.
+                		$tagLabel.
+                		'<div class="col-sm-'.$countColumn.'">'.
                 			$input.
                 		'</div>
                		</div>';
