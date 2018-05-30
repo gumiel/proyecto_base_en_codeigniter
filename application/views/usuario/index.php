@@ -175,5 +175,57 @@ $this->templateci->addJs("public/usuario/index.js");
     </div>
   </div>
 
+  <div class="modal fade" id="modalRol">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <?php echo form_open_multipart_ci('usuario/assignRolToUsuarioAjax', ['id'=>'formRol']); ?>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Asignar Rol</h4>
+        </div>
+        <div class="modal-body">
+        
+            <div class="box-body">
+              AQUI EL FORMULARIO PARA ASIGNAR EL ROL
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <?php echo form_hidden('usuario[id_usuario]', ''); ?>
+        </div>
+        <?php echo form_close(); ?>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalRuta">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <?php echo form_open_multipart_ci('usuario/assignRutaToUsuarioAjax', ['id'=>'formRuta']); ?>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Asignar Ruta</h4>
+        </div>
+        <div class="modal-body">
+        
+            <div class="box-body">
+              AQUI EL FORMULARIO PARA ASIGNAR EL ROL
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <?php echo form_hidden('usuario[id_usuario]', ''); ?>
+        </div>
+        <?php echo form_close(); ?>
+      </div>
+    </div>
+  </div>
+
   
 <?php $this->load->view('template/down'); ?>

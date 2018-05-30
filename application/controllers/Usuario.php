@@ -102,7 +102,7 @@ class Usuario extends CI_Controller {
 	
 			unset($usuario["rep_password"]);			
 
-			$this->usuario_model->update($usuario["id_usuario"], $usuario);
+			$this->usuario_model->update( $usuario, $usuario["id_usuario"]);
 			$this->session->set_flashdata('message', [ "success"=>"Se edito el registro" ]);
 		} else
 		{
@@ -215,7 +215,7 @@ class Usuario extends CI_Controller {
 	
 			unset($usuario["rep_password"]);			
 
-			$this->usuario_model->update($usuario["id_usuario"], $usuario);
+			$this->usuario_model->update( $usuario, $usuario["id_usuario"] );
 
 			$data['result'] = 1;
 			$data['message'] = "Se edito el registro";
@@ -248,11 +248,75 @@ class Usuario extends CI_Controller {
 		$this->utils->json($data);
 	}
 
+	public function getRelationWithRolAjax()
+	{
+		$data    = array();
+		$usuario = $this->input->post('usuario');
+		$rols    = $this->rol_model->getRolByUsuario( $usuario['id_usuario'] );
+		$data['rols']   = $rols;
+		$data['result'] = 1;
+		$this->utils->json($data);	
+	}
 
+	public function assignRolToUsuarioAjax()
+	{
+		$this->load->model('rol_asignado_model');
 
+		$data = array();
+		$rols     = $this->input->post('rol');
+		$usuario = $this->input->post('usuario');
 
+		if ( $usuario['id_usuario']>0 )
+		{
+			$this->rol_asignado_model->deleteAllByUsuario( $usuario['id_usuario'] );
 
+			foreach ($rols as $rol) {
+				$this->rol_asignado_model->insert( [ 'id_usuario'=>$usuario['id_usuario'] , 'id_rol'=>$rol['id_rol'] ] );
+			}
+			$data['result'] = 1;
+		} else
+		{
+			$data['result'] = 0;
+		}
 
+		$this->utils->json($data);
+
+	}
+
+	public function getRelationWithRutaAjax()
+	{
+		$data    = array();
+		$usuario = $this->input->post('usuario');
+		$rutas    = $this->ruta_model->getRutaByUsuario( $usuario['id_usuario'] );
+		$data['rutas']  = $rutas;
+		$data['result'] = 1;
+		$this->utils->json($data);	
+	}
+
+	public function assignRutaToUsuarioAjax()
+	{
+		$this->load->model('ruta_asignado_model');
+
+		$data = array();
+		$rutas   = $this->input->post('ruta');
+		$usuario = $this->input->post('usuario');
+
+		if ( $usuario['id_usuario']>0 )
+		{
+			$this->ruta_asignado_model->deleteAllByUsuario( $usuario['id_usuario'] );
+
+			foreach ($rutas as $ruta) {
+				$this->ruta_asignado_model->insert( [ 'id_usuario'=>$usuario['id_usuario'] , 'id_ruta'=>$ruta['id_ruta'] ] );
+			}
+			$data['result'] = 1;
+		} else
+		{
+			$data['result'] = 0;
+		}
+
+		$this->utils->json($data);
+
+	}
 
 
 

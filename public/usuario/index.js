@@ -124,7 +124,14 @@ jQuery(document).ready(function($)
 	});
 
 
+	$(document).on('click', ".btnAssignRol", function(){
+		$('#modalRol').modal();
+	})
 
+
+	$(document).on('click', ".btnAssignRuta", function(){
+		$('#modalRuta').modal();	
+	})
 
 
 
@@ -221,8 +228,10 @@ function loadListUsuarios(dataForm)
 								+'<td>'+usuario.cuenta+'</td>'
 								+'<td>'+usuario.ci+'</td>'
 								+'<td>'
-								+'<a href="#" class="btn btn-info btnEditar" data-id="'+usuario.id_usuario+'">Editar</a>'
-								+'<a href="#" class="btn btn-info btnEliminar" data-id="'+usuario.id_usuario+'">Eliminar</a>'
+								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnAssignRol" >rol</a>'
+								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnAssignRuta" >ruta</a>'
+								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnEditar" >Editar</a>'
+								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnEliminar" >Eliminar</a>'
 								+'</td>'
 							+'</tr>';                
 			});

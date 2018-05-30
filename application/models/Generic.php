@@ -39,7 +39,7 @@ trait Generic {
 		return $res;
 	}
 
-	public function update($id, $data)
+	public function update($data, $id)
 	{
 		$nameTable = $this->comvertNameTable(get_class($this));
 		$this->db->where('id_'.$nameTable, $id);
@@ -123,7 +123,14 @@ trait Generic {
 		$this->db->get($nameTable);
 	}
 
-	public function comvertNameTable($nameModel)
+	public function getAllBy( $array=array() )
+	{
+		$nameTable = $this->comvertNameTable(get_class($this));
+		$this->db->where($array);
+		return $this->db->get($nameTable)->result_array();	
+	}
+
+	private function comvertNameTable($nameModel)
 	{
 		return strtolower(str_replace("_model","", $nameModel));
 	}
