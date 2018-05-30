@@ -9,7 +9,7 @@ Solo se tiene como ejemplo la creacion de usuarios pero se puede ver la estructu
 <img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526504520/lista_usuarios_pcq23q.jpg" >
 
 ## ESTRUCTURA DE DIRECTORIO NUEVOS
-
+Estos son los archivos y carpetas nuevas que se crearon fuera de los archivos de Codeigniter.<br>
 application/<br>
 ----config/<br>
 --------auditor/<br>
