@@ -3,9 +3,40 @@ La demo del uso esta en proceso pero lo pueden ver en.<br>
 Url: https://goo.gl/K6xJ2h<br>
 Usuario: admin<br>
 Contraseña: admin<br>
+Solo se tiene como ejemplo la creacion de usuarios pero se puede ver la estructura.
 <img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526505003/inicio_cvrqjv.jpg" >
 
 <img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526504520/lista_usuarios_pcq23q.jpg" >
+
+## ESTRUCTURA DE DIRECTORIO NUEVOS
+
+application/<br>
+----config/<br>
+--------auditor/<br>
+------------config.php<br>
+--------SystemSupervisor/<br>
+------------config.php<br>
+----helpers/<br>
+--------form_ci_helper.php<br>
+----libreries/<br>
+--------Auditor.php<br>
+--------Lib_log.php<br>
+--------TemplateCI.php<br>
+--------Utils.php<br>
+----models/<br>
+--------Generic.php<br>
+----template/<br>
+--------breadcrumb.php<br>
+--------css.php<br>
+--------down.php<br>
+--------js.php<br>
+--------menu.php<br>
+--------notify.php<br>
+--------sidebar-menu.php<br>
+--------up.php<br>
+
+recursos/<br>
+----AdminLTE-master/<br>
 
 ## CONVENCIONES DE CODIGO
 * El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
