@@ -9,7 +9,8 @@ Solo se tiene como ejemplo la creacion de usuarios pero se puede ver la estructu
 <img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526504520/lista_usuarios_pcq23q.jpg" >
 
 ## ESTRUCTURA DE DIRECTORIO NUEVOS
-Estos son los archivos y carpetas nuevas que se crearon fuera de los archivos de Codeigniter.<br>
+Estos son los nuevos archivos y carpetas que se crearon. Estos archivos son necesarios para desplegar la aplicacion pero no son obligatorios usarlos<br>
+
 ```
 application/
 ----config/
@@ -40,7 +41,27 @@ recursos/
 ----AdminLTE-master/
 ```
 
-## CONVENCIONES DE CODIGO
+
+## INCLUYEN PLUGINS Y LIBRERIAS
+Se agregaron los siguientes plugins y librerias al proyecto para la agilidad de desarrollo<br>
+
+#### JAVASCRIPT NECESARIOS
+- AdminLTE => https://adminlte.io/<br>
+- Bootstrap => http://getbootstrap.com/docs/3.3<br>
+- Jquery => https://jquery.com<br>
+- Jquery Validation => https://jqueryvalidation.org<br>
+- Jquery DataTable => https://datatables.net<br>
+- BotBox => http://bootboxjs.com<br>
+- Bootstrap Notify => http://bootstrap-notify.remabledesigns.com<br>
+
+#### JAVASCRIPT SUGERIDOS
+-....<br>
+
+
+
+
+
+## SUGERENCIA DE CONVENCIONES DE CODIGO
 * El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
 Name is function 'CALL_BACK' of validation is underscode at first<br>
 Example.<br>
