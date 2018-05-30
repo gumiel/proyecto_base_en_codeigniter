@@ -10,6 +10,7 @@ Solo se tiene como ejemplo la creacion de usuarios pero se puede ver la estructu
 
 ## ESTRUCTURA DE DIRECTORIO NUEVOS
 Estos son los archivos y carpetas nuevas que se crearon fuera de los archivos de Codeigniter.<br>
+```
 application/<br>
 ----config/<br>
 --------auditor/<br>
@@ -37,6 +38,7 @@ application/<br>
 
 recursos/<br>
 ----AdminLTE-master/<br>
+```
 
 ## CONVENCIONES DE CODIGO
 * El nombre de las funciones "CALL_BACK" de las validaciones empiezan con "_" <br>
