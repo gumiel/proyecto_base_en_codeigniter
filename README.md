@@ -11,33 +11,33 @@ Solo se tiene como ejemplo la creacion de usuarios pero se puede ver la estructu
 ## ESTRUCTURA DE DIRECTORIO NUEVOS
 Estos son los archivos y carpetas nuevas que se crearon fuera de los archivos de Codeigniter.<br>
 ```
-application/<br>
-----config/<br>
---------auditor/<br>
-------------config.php<br>
---------SystemSupervisor/<br>
-------------config.php<br>
-----helpers/<br>
---------form_ci_helper.php<br>
-----libreries/<br>
---------Auditor.php<br>
---------Lib_log.php<br>
---------TemplateCI.php<br>
---------Utils.php<br>
-----models/<br>
---------Generic.php<br>
-----template/<br>
---------breadcrumb.php<br>
---------css.php<br>
---------down.php<br>
---------js.php<br>
---------menu.php<br>
---------notify.php<br>
---------sidebar-menu.php<br>
---------up.php<br>
+application/
+----config/
+--------auditor/
+------------config.php
+--------SystemSupervisor/
+------------config.php
+----helpers/
+--------form_ci_helper.php
+----libreries/
+--------Auditor.php
+--------Lib_log.php
+--------TemplateCI.php
+--------Utils.php
+----models/
+--------Generic.php
+----template/
+--------breadcrumb.php
+--------css.php
+--------down.php
+--------js.php
+--------menu.php
+--------notify.php
+--------sidebar-menu.php
+--------up.php
 
-recursos/<br>
-----AdminLTE-master/<br>
+recursos/
+----AdminLTE-master/
 ```
 
 ## CONVENCIONES DE CODIGO
