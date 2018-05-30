@@ -1,3 +1,6 @@
+Este es un proyecto en Codeigniter que tiene desarrollado partes muy importantes y basica que muchas aplicaciones usan como LOGIN, CONTROL DE ROLES, AUDITORIA DE ACCIONES, TEMPLATE DE LA APP, CONTROL DE ACCESSOS Etc.<br>
+Este desarrollo no restringe el uso cotidiano de Codeigniter por tal motivo que ni no desearia usar algo de la estructura usted pueda cambiarlo o usar su propio desarrollo.<br>
+
 ## DEMO
 La demo del uso esta en proceso pero lo pueden ver en.<br>
 Url: https://goo.gl/K6xJ2h<br>
