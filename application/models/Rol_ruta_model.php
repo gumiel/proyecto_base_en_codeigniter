@@ -1,11 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH.'models/Generic.php';
-
 class Rol_ruta_model extends CI_Model {
-
-	use Generic;
 
 	public function __construct()
 	{

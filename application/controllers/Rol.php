@@ -7,6 +7,9 @@ class Rol extends CI_Controller {
 	{
 		parent::__construct();
 		//Do your magic here
+		$this->load->helper('form_ci');
+		$this->load->library('form_validation');
+		$this->load->library('utils');
 		$this->load->model('rol_model');
 		$this->load->model('rol_ruta_model');
 		$this->load->model('ruta_model');
@@ -14,13 +17,14 @@ class Rol extends CI_Controller {
 
 	public function index()
 	{		
-		$this->load->view('rol/index', $data, FALSE);
+		$this->load->view('rol/index', null, FALSE);
 	}
 
 	public function listAjax()
 	{
 		$rols = $this->rol_model->getAll();
 		$data['rols'] = $rols;
+		$data['result'] = 1;
 		$this->utils->json($data);
 	}
 
@@ -28,9 +32,9 @@ class Rol extends CI_Controller {
 	{
 		$data = array();
 		
-		$rol = $this->input->post('rol');
+		$rol     = $this->input->post('rol');
 		$rolFind = $this->rol_model->getId( $rol['id_rol'] );
-		$data['rol'] = $rolFind;
+		$data['rol']    = $rolFind;
 		$data['result'] = 1;
 		$this->utils->json($data);	
 	}
@@ -45,12 +49,13 @@ class Rol extends CI_Controller {
 
 		if ( $this->form_validation->run()==true ) 
 		{
-			// unset($rol['id_rol']);
 			$this->rol_model->insert($rol);
-			$data['result'] = 1;
+			$data['result']  = 1;
+			$data['message'] = "Se creo el usuario";
 		} else
 		{
-			$data['result'] = 0;
+			$data['result']  = 0;
+			$data['message'] = validation_errors();
 		}
 
 		$this->utils->json($data);	
@@ -68,12 +73,36 @@ class Rol extends CI_Controller {
 		{			
 			$this->rol_model->update( $rol, $rol['id_rol'] );
 			$data['result'] = 1;
+			$data['message'] = "Se edito el registro";
 		} else
 		{
 			$data['result'] = 0;
+			$data['message'] = validation_errors();
 		}
 
 		$this->utils->json($data);	
+	}
+
+	public function deleteAjax()
+	{
+		$data = array();
+
+		$rol = $this->input->post('rol');
+
+		$this->form_validation->set_rules('rol[id_rol]', 'Identificador', 'trim|required');
+
+		if ( $this->form_validation->run()==true ) 
+		{			
+			$this->rol_model->delete( $rol['id_rol'] );
+			$data['result'] = 1;
+			$data['message'] = "Se elimino el registro";
+		} else
+		{
+			$data['result'] = 0;
+			$data['message'] = validation_errors();
+		}
+
+		$this->utils->json($data);
 	}
 
 	public function getRelationWithRutasAjax()

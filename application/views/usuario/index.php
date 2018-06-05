@@ -38,7 +38,7 @@ $this->templateci->addJs("public/usuario/index.js");
             <div class="col-md-2">
               <button class="btn btn-success">Buscar</button>
             </div>
-          <?php form_close(); ?>
+          <?php echo form_close(); ?>
         </div>
       </div>
     </section>

@@ -1,11 +1,13 @@
 jQuery(document).ready(function($) {
 	
 
-	jQuery.confirmCI = function( callback )
+	jQuery.confirmCI = function( message, callback )
 	{	    
-	    
+	    console.log(message);
+	    var message = ( message!=''  )? message: "¿Desea continuar con el proceso?";
+
 	    bootbox.confirm({
-	        message: "This is a confirm with custom button text and color! Do you like it?",
+	        message: message,
 	        buttons: {
 	            confirm: {
 	                label: '<i class="fa fa-check"></i> Confirmar',

@@ -3,15 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ruta extends CI_Controller {
 
-	public function index()
-	{
-		
-	}
-
 	public function __construct()
 	{
 		parent::__construct();
 		//Do your magic here
+		$this->load->helper('form_ci');
+		$this->load->library('form_validation');
+		$this->load->library('utils');
 		$this->load->model('rol_model');
 		$this->load->model('rol_ruta_model');
 		$this->load->model('ruta_model');
@@ -19,7 +17,7 @@ class Ruta extends CI_Controller {
 
 	public function index()
 	{		
-		$this->load->view('ruta/index', $data, FALSE);
+		$this->load->view('ruta/index', null, FALSE);
 	}
 
 	public function listAjax()

@@ -40,7 +40,6 @@ jQuery(document).ready(function($)
 
 	$(document).on('click', ".btnEditar", function()
 	{
-
 	  var id_usuario = $(this).data("id");
 	  var form = $("#formEdit");
 	  form.trigger('reset')
@@ -98,7 +97,7 @@ jQuery(document).ready(function($)
 	  
 	  var id_usuario = $(this).data("id");
 
-	  $.confirmCI( function(result){
+	  $.confirmCI( function('', result){
 
 	    if (result)
 	    {
@@ -228,10 +227,10 @@ function loadListUsuarios(dataForm)
 								+'<td>'+usuario.cuenta+'</td>'
 								+'<td>'+usuario.ci+'</td>'
 								+'<td>'
-								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnAssignRol" >rol</a>'
-								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnAssignRuta" >ruta</a>'
-								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnEditar" >Editar</a>'
-								+'<a href="#" class="btn btn-info data-id="'+usuario.id_usuario+'" btnEliminar" >Eliminar</a>'
+								+'<a href="#" class="btn btn-info btnAssignRol" data-id="'+usuario.id_usuario+'" >rol</a>'
+								+'<a href="#" class="btn btn-info btnAssignRuta" data-id="'+usuario.id_usuario+'" >ruta</a>'
+								+'<a href="#" class="btn btn-info btnEditar" data-id="'+usuario.id_usuario+'" >Editar</a>'
+								+'<a href="#" class="btn btn-info btnEliminar" data-id="'+usuario.id_usuario+'" >Eliminar</a>'
 								+'</td>'
 							+'</tr>';                
 			});
