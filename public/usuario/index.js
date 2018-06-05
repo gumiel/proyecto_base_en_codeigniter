@@ -97,7 +97,7 @@ jQuery(document).ready(function($)
 	  
 	  var id_usuario = $(this).data("id");
 
-	  $.confirmCI( function('', result){
+	  $.confirmCI( '', function(result){
 
 	    if (result)
 	    {

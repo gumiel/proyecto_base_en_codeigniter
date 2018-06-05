@@ -9,23 +9,27 @@ class My_model extends CI_Model
 class Generic extends My_model
 {
 	public $nameClass;
+	public $nameTable;
 	
-	public function construct(){
+	public function construct()
+	{
 		parent::__construct();
 	}
 
-
-	public function getClass()
+	public function getNameClass()
 	{
-		return $this->comvertNameTable(get_class($this));
-		// return "hola";
+		return get_class($this);
+	}
+
+	public function getNameTable()
+	{
+		return $this->comvertNameTable(get_class($this));		
 	}
 
 	public function insert($data)
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
-		$res = $this->db->insert($nameTable, $data);
-
+		$this->nameTable = $this->getNameTable();
+		$res = $this->db->insert($this->nameTable, $data);
 
 		if( $this->config->item('auditor_insert') )
 		{
@@ -51,8 +55,8 @@ class Generic extends My_model
 
 	public function update($data, $id)
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
-		$this->db->where('id_'.$nameTable, $id);
+		$this->nameTable = $this->getNameTable();
+		$this->db->where('id_'.$this->nameTable, $id);
 		$this->db->update($nameTable, $data);
 
 		if( $this->config->item('auditor_update') )
@@ -78,8 +82,8 @@ class Generic extends My_model
 
 	public function delete($id)
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
-		$this->db->where('id_'.$nameTable, $id);	
+		$this->nameTable = $this->getNameTable();
+		$this->db->where('id_'.$this->nameTable, $id);	
 		$this->db->delete($nameTable);
 
 		if( $this->config->item('auditor_delete') )
@@ -104,40 +108,42 @@ class Generic extends My_model
 
 	public function getId($id)
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
-		$this->db->where('id_'.$nameTable, $id);
-		$res = $this->db->get($nameTable);
+		$this->nameTable = $this->getNameTable();
+		$this->db->where('id_'.$this->nameTable, $id);
+		$res = $this->db->get($this->nameTable);
 		return $res->row();
 	}
 
 	public function get($array=array())
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
+		$this->nameTable = $this->getNameTable();
 		$this->db->where($array);
-		$res = $this->db->get($nameTable);
+		$res = $this->db->get($this->nameTable);
 		return $res->row();
 	}
 
 	public function count($array=array())
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
+
+		$this->nameTable = $this->getNameTable();
+
 		$this->db->select('count(*) as c');
 		$this->db->where($array);
-		$res = $this->db->get($nameTable);			
+		$res = $this->db->get($this->nameTable);			
 		return $res->row()->c;	
 	}
 
 	public function getAll()
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
-		return $this->db->get($nameTable)->result_array();
+		$this->nameTable = $this->getNameTable();
+		return $this->db->get($this->nameTable)->result_array();
 	}
 
 	public function getAllBy( $array=array() )
 	{
-		$nameTable = $this->comvertNameTable(get_class($this));
+		$this->nameTable = $this->getNameTable();
 		$this->db->where($array);
-		return $this->db->get($nameTable)->result_array();	
+		return $this->db->get($this->nameTable)->result_array();	
 	}
 
 	private function comvertNameTable($nameModel)

@@ -39,7 +39,7 @@ class Usuario extends CI_Controller {
 
 		$data = array();
 
-		if ( sizeof($usuario)>0 && $usuario['label']!='' && $usuario['text']!='' )
+		if ( $usuario != null && sizeof($usuario)>0 && $usuario['label']!='' && $usuario['text']!='' )
 		{			
 			$data["usuarios"] = $this->usuario_model->searchUsuario($usuario['label'], $usuario['text']);
 		} else
