@@ -16,16 +16,19 @@ class Generic extends My_model
 		parent::__construct();
 	}
 
+	// Devuelve el Nombre de la clase Modelo
 	public function getNameClass()
 	{
 		return get_class($this);
 	}
 
+	// Devuelve el nombre de la tabla mapeada por el modelo
 	public function getNameTable()
 	{
 		return $this->comvertNameTable(get_class($this));		
 	}
 
+	// Inserta datos
 	public function insert($data)
 	{
 		$this->nameTable = $this->getNameTable();
@@ -53,6 +56,7 @@ class Generic extends My_model
 		return $res;
 	}
 
+	// Modifica datos segun el id Ejm: id_entidad
 	public function update($data, $id)
 	{
 		$this->nameTable = $this->getNameTable();
@@ -80,6 +84,7 @@ class Generic extends My_model
 		
 	}
 
+	// Elimina datos segun el id Ejm: id_entidad
 	public function delete($id)
 	{
 		$this->nameTable = $this->getNameTable();
@@ -106,6 +111,7 @@ class Generic extends My_model
 		}
 	}
 
+	// Obtiene todo el registro segun el id Ejm: id_entidad
 	public function getId($id)
 	{
 		$this->nameTable = $this->getNameTable();
@@ -114,6 +120,7 @@ class Generic extends My_model
 		return $res->row();
 	}
 
+	// Obtiene  todo el registr segun un arreglo de datos Ejm: [ 'id_entidad'=>1, 'nombre'=>'nombre']
 	public function get($array=array())
 	{
 		$this->nameTable = $this->getNameTable();
@@ -122,6 +129,7 @@ class Generic extends My_model
 		return $res->row();
 	}
 
+	// Devuelve la cantidad de registros que obtiene 
 	public function count($array=array())
 	{
 
