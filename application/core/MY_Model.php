@@ -209,7 +209,9 @@ class Generic extends My_model
 
 	private function nameIdentificatorTable( )
 	{
-		$positionEnd = $this->nameTable;
+		$positionStart     = ( $this->positionStart=='nameTable' )? $this->nameTable: $this->positionStart;
+		$positionSeparator = ( $this->positionSeparator=='nameTable' )? $this->nameTable: $this->positionSeparator;
+		$positionEnd       = ( $this->positionEnd=='nameTable' )? $this->nameTable: $this->positionEnd;
 		return $positionStart.$positionSeparator.$positionEnd;
 	}
 
