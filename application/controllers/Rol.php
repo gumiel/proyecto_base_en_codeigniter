@@ -33,7 +33,7 @@ class Rol extends CI_Controller {
 		$data = array();
 		
 		$rol     = $this->input->post('rol');
-		$rolFind = $this->rol_model->getId( $rol['id_rol'] );
+		$rolFind = $this->rol_model->getById( $rol['id_rol'] );
 		$data['rol']    = $rolFind;
 		$data['result'] = 1;
 		$this->utils->json($data);	
@@ -71,7 +71,7 @@ class Rol extends CI_Controller {
 
 		if ( $this->form_validation->run()==true ) 
 		{			
-			$this->rol_model->update( $rol, $rol['id_rol'] );
+			$this->rol_model->updateById( $rol, $rol['id_rol'] );
 			$data['result'] = 1;
 			$data['message'] = "Se edito el registro";
 		} else
@@ -93,7 +93,7 @@ class Rol extends CI_Controller {
 
 		if ( $this->form_validation->run()==true ) 
 		{			
-			$this->rol_model->delete( $rol['id_rol'] );
+			$this->rol_model->deleteById( $rol['id_rol'] );
 			$data['result'] = 1;
 			$data['message'] = "Se elimino el registro";
 		} else

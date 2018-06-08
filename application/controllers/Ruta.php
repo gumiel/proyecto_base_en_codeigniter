@@ -32,7 +32,7 @@ class Ruta extends CI_Controller {
 		$data = array();
 		
 		$ruta = $this->input->post('ruta');
-		$rutaFind = $this->ruta_model->getId( $ruta['id_ruta'] );
+		$rutaFind = $this->ruta_model->getById( $ruta['id_ruta'] );
 		$data['ruta'] = $rutaFind;
 		$data['result'] = 1;
 		$this->utils->json($data);	
@@ -69,7 +69,7 @@ class Ruta extends CI_Controller {
 
 		if ( $this->form_validation->run()==true ) 
 		{			
-			$this->ruta_model->update( $ruta, $ruta['id_ruta'] );
+			$this->ruta_model->updateById( $ruta, $ruta['id_ruta'] );
 			$data['result'] = 1;
 		} else
 		{

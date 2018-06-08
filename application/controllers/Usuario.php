@@ -102,7 +102,7 @@ class Usuario extends CI_Controller {
 	
 			unset($usuario["rep_password"]);			
 
-			$this->usuario_model->update( $usuario, $usuario["id_usuario"]);
+			$this->usuario_model->updateById( $usuario, $usuario["id_usuario"]);
 			$this->session->set_flashdata('message', [ "success"=>"Se edito el registro" ]);
 		} else
 		{
@@ -154,7 +154,7 @@ class Usuario extends CI_Controller {
 		$data = array();
 
 		$usuario = $this->input->post("usuario");
-		$data["usuario"] = $this->usuario_model->getId($usuario["id_usuario"]);  
+		$data["usuario"] = $this->usuario_model->getById($usuario["id_usuario"]);  
 
 		$this->output
         ->set_status_header(200)
@@ -215,7 +215,7 @@ class Usuario extends CI_Controller {
 	
 			unset($usuario["rep_password"]);			
 
-			$this->usuario_model->update( $usuario, $usuario["id_usuario"] );
+			$this->usuario_model->updateById( $usuario, $usuario["id_usuario"] );
 
 			$data['result'] = 1;
 			$data['message'] = "Se edito el registro";
@@ -237,7 +237,7 @@ class Usuario extends CI_Controller {
 
 		if ( $this->form_validation->run() )
 		{
-			$this->usuario_model->delete($usuario["id_usuario"]);
+			$this->usuario_model->deleteById($usuario["id_usuario"]);
 			$data["result"] = 1;
 		} else
 		{
@@ -363,7 +363,7 @@ class Usuario extends CI_Controller {
 		$this->form_validation->set_message(__FUNCTION__, 'No existe el identificador del usuario');
 		if ($idUsuario > 0)
 		{			
-			$usuario = $this->usuario_model->getId($idUsuario);			
+			$usuario = $this->usuario_model->getById($idUsuario);			
 			return ( isset($usuario) );
 		} else
 		{
