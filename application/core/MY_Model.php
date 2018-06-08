@@ -1,4 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+
 class My_model extends CI_Model
 {
  	public function construct(){
@@ -6,6 +8,12 @@ class My_model extends CI_Model
  	}
 }
 
+/**
+ * Esta clase sera heredada por los model del desarrollo para poder consumir sus metodos genericos
+ * @author: Henry Perez Gumiel
+ * @version: Beta 06/06/2018/
+ * @see https://github.com/gumiel/librarie-codeigniter-generic-model
+ */
 class Generic extends My_model
 {
 	public $nameClass;
