@@ -16,8 +16,16 @@ class My_model extends CI_Model
  */
 class Generic extends My_model
 {
+
 	public $nameClass;
 	public $nameTable;
+	
+	// Estes son los configuradores para el primary key de la tabla como por Ejemplo "id_user"
+	private $positionStart     = 'id'; // Puede ser ( id, i, identificaro, vacio o cualquier nombre )
+	private $positionSeparator = '_'; // Puede ser ( , - . vacio o cualquier caracter ) 
+	private $positionEnd       = 'nameTable'; // Puede ser ( nameTable ó vacio ) 
+											  //Si es nameTable tomara el nombre de la tabla por defecto 
+											  //Si es vacio ya no tomara 
 	
 	public function construct()
 	{
@@ -70,9 +78,9 @@ class Generic extends My_model
 		$this->db->where( $array );
 		$this->db->update($nameTable, $data);
 
-		/////////////////////////////////////////////////////////////////////////////////
-		// Aqui estaria el codigo para la implementacion del proyecto CODEIGNITER BASE //
-		/////////////////////////////////////////////////////////////////////////////////
+
+		// Aqui estaria el codigo para la implementacion del proyecto CODEIGNITER BASE 
+
 		
 	}
 
@@ -87,9 +95,9 @@ class Generic extends My_model
 		$this->db->where('id_'.$this->nameTable, $id);
 		$this->db->update($nameTable, $data);
 
-		/////////////////////////////////////////////////////////////////////////////////
+
 		// Aqui estaria el codigo para la implementacion del proyecto CODEIGNITER BASE //
-		/////////////////////////////////////////////////////////////////////////////////
+
 		
 	}
 
@@ -103,9 +111,9 @@ class Generic extends My_model
 		$this->db->where('id_'.$this->nameTable, $id);	
 		$this->db->delete($nameTable);
 
-		/////////////////////////////////////////////////////////////////////////////////
+
 		// Aqui estaria el codigo para la implementacion del proyecto CODEIGNITER BASE //
-		/////////////////////////////////////////////////////////////////////////////////
+
 
 	}
 
@@ -119,9 +127,9 @@ class Generic extends My_model
 		$this->db->where('id_'.$this->nameTable, $id);	
 		$this->db->delete($nameTable);
 
-		/////////////////////////////////////////////////////////////////////////////////
+
 		// Aqui estaria el codigo para la implementacion del proyecto CODEIGNITER BASE //
-		/////////////////////////////////////////////////////////////////////////////////
+
 
 	}
 
@@ -198,4 +206,11 @@ class Generic extends My_model
 	{
 		return strtolower(str_replace("_model","", $nameModel));
 	}
+
+	private function nameIdentificatorTable( )
+	{
+		$positionEnd = $this->nameTable;
+		return $positionStart.$positionSeparator.$positionEnd;
+	}
+
 }
