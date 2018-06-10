@@ -88,7 +88,7 @@ class Generic extends My_model
 	{
 		$this->nameTable = $this->getNameTable();
 		$this->db->where( $array );
-		$this->db->update($nameTable, $data);
+		$this->db->update($this->nameTable, $data);
 
 		if( $this->config->item('auditor_update') )
 			$this->auditorAction();
@@ -107,7 +107,7 @@ class Generic extends My_model
 	{
 		$this->nameTable = $this->getNameTable();
 		$this->db->where('id_'.$this->nameTable, $id);
-		$this->db->update($nameTable, $data);
+		$this->db->update( $this->nameTable, $data);
 
 		if( $this->config->item('auditor_update') )
 			$this->auditorAction();
@@ -125,7 +125,7 @@ class Generic extends My_model
 	{
 		$this->nameTable = $this->getNameTable();
 		$this->db->where('id_'.$this->nameTable, $id);	
-		$this->db->delete($nameTable);
+		$this->db->delete($this->nameTable);
 
 		if( $this->config->item('auditor_delete') )
 			$this->auditorAction();
@@ -143,7 +143,7 @@ class Generic extends My_model
 	{
 		$this->nameTable = $this->getNameTable();
 		$this->db->where('id_'.$this->nameTable, $id);	
-		$this->db->delete($nameTable);
+		$this->db->delete($this->nameTable);
 
 		if( $this->config->item('auditor_delete') )
 			$this->auditorAction();

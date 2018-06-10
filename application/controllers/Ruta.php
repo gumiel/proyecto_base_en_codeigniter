@@ -53,6 +53,7 @@ class Ruta extends CI_Controller {
 			$data['result'] = 1;
 		} else
 		{
+			$data['message'] = validation_errors();
 			$data['result'] = 0;
 		}
 
