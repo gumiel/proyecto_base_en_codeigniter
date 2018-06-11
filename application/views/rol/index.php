@@ -148,7 +148,53 @@ $this->templateci->addJs("public/rol/index.js");
     </div>
   </div>
 
+  <div class="modal fade" id="modalAsignarRuta">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
+        <?php echo form_open_multipart_ci('rol/asignarRuta', ["id"=>"formAsignarRuta"]); ?>
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Asignar Ruta</h4>
+        </div>
+        <div class="modal-body">
+        
+            <div class="box-body">
+              
+              <div class="col-md-4">
+                <select name="origen" id="origen" multiple="multiple" size="8" class="form-control">
+                  <option value="1">Opción 1</option>
+                  <option value="2">Opción 2</option>
+                  <option value="3">Opción 3</option>
+                  <option value="4">Opción 4</option>
+                  <option value="5">Opción 5</option>
+                  <option value="6">Opción 6</option>
+                  <option value="7">Opción 7</option>
+                  <option value="8">Opción 8</option>
+                </select>
+              </div>
+              <div  class="col-md-4">
+                <input type="button" class="btn pasar izq" value="Pasar »">
+                <input type="button" class="btn quitar der" value="« Quitar"><br />
+                <input type="button" class="btn pasartodos izq" value="Todos »">
+                <input type="button" class="btn quitartodos der" value="« Todos">
+              </div>
+              <div class="col-md-4">
+                <select name="rutas[][id_ruta]" id="destino" multiple="multiple" size="8" class="form-control"></select>
+              </div  class="col-md-4">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <input type="hidden" name="rol[id_rol]" value="">
+        </div>
+        <?php echo form_close(); ?>
+      </div>
+    </div>
+  </div>
 
 
 

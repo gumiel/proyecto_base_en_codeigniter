@@ -8,8 +8,7 @@ class Ruta extends CI_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->helper('form_ci');
-		$this->load->library('form_validation');
-		$this->load->library('utils');
+
 		$this->load->model('rol_model');
 		$this->load->model('rol_ruta_model');
 		$this->load->model('ruta_model');
@@ -24,6 +23,7 @@ class Ruta extends CI_Controller {
 	{
 		$rutas = $this->ruta_model->getAll();
 		$data['rutas'] = $rutas;
+		$data['result'] = 1;
 		$this->utils->json($data);
 	}
 

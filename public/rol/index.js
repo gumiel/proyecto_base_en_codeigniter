@@ -1,7 +1,8 @@
-var formCreate = $('#formCreate');
-var formEdit   = $('#formEdit');
-var formSearch = $('#formSearch');
-var tblList    = $('#tblList');
+var formCreate      = $('#formCreate');
+var formEdit        = $('#formEdit');
+var formSearch      = $('#formSearch');
+var tblList         = $('#tblList');
+var formAsignarRuta = $('#formAsignarRuta');
 
 jQuery(document).ready(function($) 
 {
@@ -119,8 +120,41 @@ jQuery(document).ready(function($)
 	  });
 	});
 
+	// $('.btnAsignarRuta').click(function(event) {
+	$(document).on('click', ".btnAsignarRuta", function(event) {
+		
+		$('#modalAsignarRuta').modal();
+		var id_rol = $(this).data('id');
+		formAsignarRuta.find('input[name="rol[id_rol]"]').val(id_rol);
+		loadSelectOrigen();
+		loadSelectDestino(id_rol)
+		
+		
+	});
 
 
+	formAsignarRuta.submit(function(event) {
+		event.preventDefault();
+				formAsignarRuta.find('#destino option').prop('selected','selected')
+
+		$.ajax({
+			url: site_url('rutaRol/create'),
+			type: 'POST',
+			dataType: 'json',
+			data: formAsignarRuta.serialize(),
+		})
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+		
+	});
 
 
 	formCreate.validate({
@@ -153,6 +187,25 @@ jQuery(document).ready(function($)
 		loadListRol(dataForm);
 	});
 
+	
+
+
+
+
+
+
+
+
+
+	$().ready(function() 
+	{
+		$('.pasar').click(function() { return !$('#origen option:selected').remove().appendTo('#destino'); });  
+		$('.quitar').click(function() { return !$('#destino option:selected').remove().appendTo('#origen'); });
+		$('.pasartodos').click(function() { $('#origen option').each(function() { $(this).remove().appendTo('#destino'); }); });
+		$('.quitartodos').click(function() { $('#destino option').each(function() { $(this).remove().appendTo('#origen'); }); });
+		$('.submit').click(function() { $('#destino option').prop('selected', 'selected'); });
+	});
+
 });
 
 
@@ -176,6 +229,7 @@ function loadListRol(dataForm)
 								+'<td>'+rol.denominacion+'</td>'
 								+'<td>'+rol.descripcion+'</td>'								
 								+'<td>'
+									+'<a href="#" class="btn btn-info btnAsignarRuta" data-id="'+rol.id_rol+'" >Asignar Ruta</a>'
 									+'<a href="#" class="btn btn-info btnEditar" data-id="'+rol.id_rol+'" >Editar</a>'
 									+'<a href="#" class="btn btn-info btnEliminar" data-id="'+rol.id_rol+'" >Eliminar</a>'
 								+'</td>'
@@ -184,4 +238,50 @@ function loadListRol(dataForm)
 			$('#tblList').find('tbody').html(rows);
 		}
 	});
+}
+
+function loadSelectOrigen()
+{
+	$.ajax({
+		url: site_url('ruta/listAjax'),
+		type: 'POST',
+		dataType: 'json'
+	})
+	.done(function(data) 
+	{
+		$('#origen').html('');
+	    if ( data.result==1 )
+	    {
+	    	$.each(data.rutas, function(index, ruta) {
+	    		var option = '<option value="'+ruta.id_ruta+'" >'+ruta.denominacion+'</option>'
+	    		$('#origen').append(option);
+	    	});
+	    }
+
+
+	});
+	
+}
+
+function loadSelectDestino(id_rol)
+{
+	$.ajax({
+		url: site_url('rutaRol/listRutasAsignadasARol'),
+		type: 'POST',
+		dataType: 'json',
+		data: {'rol[id_rol]': id_rol }
+	})
+	.done(function(data) 
+	{
+		$('#destino').html('');
+	    if ( data.result==1 )
+	    {
+	    	$.each(data.rutas, function(index, ruta) {
+	    		var option = '<option value="'+ruta.id_ruta+'" >'+ruta.denominacion+'</option>'
+	    		$('#destino').append(option);
+	    	});
+	    }
+
+	});
+
 }
