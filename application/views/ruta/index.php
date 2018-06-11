@@ -92,7 +92,7 @@ $this->templateci->addJs("public/ruta/index.js");
   <div class="modal fade" id="modalCreate">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?php echo form_open_multipart_ci('rol/create', ["id"=>"formCreate"]); ?>
+        <?php echo form_open_multipart_ci('ruta/create', ["id"=>"formCreate"]); ?>
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -102,9 +102,9 @@ $this->templateci->addJs("public/ruta/index.js");
         
             <div class="box-body">
               
-              <?php echo form_input_ci("Denominación", 'rol[denominacion]', ""); ?>
+              <?php echo form_input_ci("Denominación", 'ruta[denominacion]', ""); ?>
               
-              <?php echo form_input_ci("Descripción", 'rol[descripcion]', ''); ?>
+              <?php echo form_input_ci("Descripción", 'ruta[descripcion]', ''); ?>
 
             </div>
 
