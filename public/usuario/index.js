@@ -52,13 +52,8 @@ jQuery(document).ready(function($)
 	    data: {"usuario[id_usuario]": id_usuario},
 	  })
 	  .done(function(data) {
-
-	    form.find("input[name='usuario[nombres]']").val(data.usuario.nombres);
-	    form.find("input[name='usuario[paterno]']").val(data.usuario.paterno);
-	    form.find("input[name='usuario[materno]']").val(data.usuario.materno);
 	    form.find("input[name='usuario[cuenta]']").val(data.usuario.cuenta);
 	    form.find("input[name='usuario[email]']").val(data.usuario.email);
-	    form.find("input[name='usuario[ci]']").val(data.usuario.ci);
 	    form.find("input[name='usuario[id_usuario]']").val(data.usuario.id_usuario);
 
 	    $("#modalEdit").modal("show");
@@ -136,15 +131,6 @@ jQuery(document).ready(function($)
 
 	formCreate.validate({
 		rules: {
-			"usuario[nombres]": {
-				required: true
-			},
-			"usuario[paterno]": {
-				required: true
-			},
-			"usuario[materno]": {
-				required: true
-			},
 			"usuario[cuenta]": {
 				required: true
 			},
@@ -152,31 +138,18 @@ jQuery(document).ready(function($)
 				required: true,
 				email: true,
 			},
-			"usuario[ci]": {
-				required: true,
-				number:true
-			},
-			"usuario[password]": {
+			"usuario[clave]": {
 				required: true
 			},
-			"usuario[rep_password]": {
+			"usuario[rep_clave]": {
 				required: true,
-				equalTo: 'input[name="usuario[password]"]'
+				equalTo: 'input[name="usuario[clave]"]'
 			},
 		},
 	});
 
 	formEdit.validate({
 		rules: {
-			"usuario[nombres]": {
-				required: true
-			},
-			"usuario[paterno]": {
-				required: true
-			},
-			"usuario[materno]": {
-				required: true
-			},
 			"usuario[cuenta]": {
 				required: true
 			},
@@ -184,12 +157,8 @@ jQuery(document).ready(function($)
 				required: true,
 				email: true,
 			},
-			"usuario[ci]": {
-				required: true,
-				number:true
-			},
-			"usuario[rep_password]": {
-				equalTo: '#password'
+			"usuario[rep_clave]": {
+				equalTo: '#clave'
 			},
 		},
 	});
@@ -221,14 +190,14 @@ function loadListUsuarios(dataForm)
 			let rows = '';
 			$.each(data.usuarios, function(index, usuario) {
 				
-                rows = rows+ '<tr>'
-								+'<td>'+usuario.nombres+' '+usuario.paterno+' '+usuario.materno+'</td>'
+                rows = rows+ '<tr>'								
 								+'<td>'+usuario.email+'</td>'
-								+'<td>'+usuario.cuenta+'</td>'
-								+'<td>'+usuario.ci+'</td>'
+								+'<td>'+usuario.cuenta+'</td>'								
+								+'<td>'+usuario.fecha_creacion+'</td>'								
+								+'<td>'+usuario.fecha_modificacion+'</td>'								
 								+'<td>'
-								+'<a href="#" class="btn btn-info btnAssignRol" data-id="'+usuario.id_usuario+'" >rol</a>'
-								+'<a href="#" class="btn btn-info btnAssignRuta" data-id="'+usuario.id_usuario+'" >ruta</a>'
+								+'<a href="#" class="btn btn-info btnAssignRol" data-id="'+usuario.id_usuario+'" >Rol</a>'
+								+'<a href="#" class="btn btn-info btnAssignRuta" data-id="'+usuario.id_usuario+'" >Ruta</a>'
 								+'<a href="#" class="btn btn-info btnEditar" data-id="'+usuario.id_usuario+'" >Editar</a>'
 								+'<a href="#" class="btn btn-info btnEliminar" data-id="'+usuario.id_usuario+'" >Eliminar</a>'
 								+'</td>'

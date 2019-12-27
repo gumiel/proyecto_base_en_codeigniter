@@ -12,21 +12,6 @@ class Usuario_rule {
 
 		$rule = array(
 		    array(
-		        'field' => 'usuario[nombres]',
-		        'label' => 'Nombres',
-		        'rules' => array( 'required','trim')
-		    ),
-		    array(
-		        'field' => 'usuario[paterno]',
-		        'label' => 'Paterno',
-		        'rules' => array( 'required','trim')
-		    ),
-		    array(
-		        'field' => 'usuario[materno]',
-		        'label' => 'Materno',
-		        'rules' => array( 'required','trim')
-		    ),
-		    array(
 		        'field' => 'usuario[cuenta]',
 		        'label' => 'Cuenta',
 		        'rules' => array( 'required','trim')
@@ -35,11 +20,6 @@ class Usuario_rule {
 		        'field' => 'usuario[email]',
 		        'label' => 'Email',
 		        'rules' => array( 'required','trim','valid_email')
-		    ),
-		    array(
-		        'field' => 'usuario[ci]',
-		        'label' => 'CI',
-		        'rules' => array( 'required','trim')
 		    ),
 		);
 

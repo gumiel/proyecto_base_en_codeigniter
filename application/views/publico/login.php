@@ -31,9 +31,16 @@
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="usuario[password]" class="form-control" placeholder="Contraseña">
+        <input type="password" name="usuario[clave]" class="form-control" placeholder="Contraseña">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div>
+          <label>CAPTCHA:</label><img src="<?php echo site_url("publico/crearCaptcha") ?>" alt="CAPTCHA" class="captcha-image">
+          
+          <button type="button" class="refresh-captcha btn btn-default "><i class="glyphicon glyphicon-refresh"></i></button>
+          <p>Ingresar texto de captcha:<input  name="captcha" id="captcha" class="form-control" value="" ></p>
+          
+        </div>
       <div class="row">
         <div class="col-xs-8">
 
@@ -57,5 +64,11 @@
 <!-- /.login-box -->
 
 <?php $this->load->view('template/js'); ?>
+<script>
+    var refreshButton = document.querySelector(".refresh-captcha");
+    refreshButton.onclick = function() {
+      document.querySelector(".captcha-image").src = '<?php echo site_url("publico/crearCaptcha/") ?>?date=' + Date.now();
+    }
+  </script>
 </body>
 </html>

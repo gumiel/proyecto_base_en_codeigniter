@@ -58,11 +58,11 @@ class Usuario extends CI_Controller {
 
 		$this->form_validation->set_rules($this->usuario_rule->apply());
 		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'callback__verificar_cuenta_repetida');
-		$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');
+		$this->form_validation->set_rules('usuario[rep_clave]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');
 
 		if ( $this->form_validation->run() ) 
 		{
-			unset($usuario["rep_password"]);
+			unset($usuario["rep_clave"]);
 			$usuario["password"] = md5($usuario["password"]);
 
 			$this->usuario_model->insert($usuario);
@@ -88,7 +88,7 @@ class Usuario extends CI_Controller {
 		if ( isset($usuario["password"]) && $usuario["password"] != '')
 		{
 			$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required');			
-			$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');		
+			$this->form_validation->set_rules('usuario[rep_clave]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');		
 			$usuario["password"] = md5($usuario["password"]);
 				
 		} else
@@ -100,7 +100,7 @@ class Usuario extends CI_Controller {
 		if ( $this->form_validation->run() )
 		{
 	
-			unset($usuario["rep_password"]);			
+			unset($usuario["rep_clave"]);			
 
 			$this->usuario_model->updateById( $usuario, $usuario["id_usuario"]);
 			$this->session->set_flashdata('message', [ "success"=>"Se edito el registro" ]);
@@ -166,16 +166,20 @@ class Usuario extends CI_Controller {
 
 	public function createAjax()
 	{
+		
+
 		$usuario = $this->input->post("usuario");
 
 		$this->form_validation->set_rules($this->usuario_rule->apply());
 		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'callback__verificar_cuenta_repetida');
-		$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');
+		$this->form_validation->set_rules('usuario[rep_clave]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["clave"].']');
 
 		if ( $this->form_validation->run() ) 
 		{
-			unset($usuario["rep_password"]);
-			$usuario["password"] = md5($usuario["password"]);
+			$this->load->library('encryption');
+
+			unset($usuario["rep_clave"]);
+			$usuario["clave"] = $this->encryption->encrypt($usuario["clave"]);
 
 			$this->usuario_model->insert($usuario);
 			$data['result'] = 1;
@@ -198,23 +202,25 @@ class Usuario extends CI_Controller {
 		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']');
 		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
 
-		if ( isset($usuario["password"]) && $usuario["password"] != '')
+		if ( isset($usuario["clave"]) && $usuario["clave"] != '')
 		{
-			$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required');			
-			$this->form_validation->set_rules('usuario[rep_password]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["password"].']');		
-			$usuario["password"] = md5($usuario["password"]);
+			$this->load->library('encryption');
+
+			$this->form_validation->set_rules('usuario[clave]', 'Contraseña', 'trim|required');			
+			$this->form_validation->set_rules('usuario[rep_clave]', 'Repetir Contraseña', 'trim|required|callback__validar_repetir_password['.$usuario["clave"].']');		
+			$usuario["clave"] = $this->encryption->encrypt($usuario["clave"]);
 				
 		} else
 		{
-			unset($usuario["password"]);
+			unset($usuario["clave"]);
 		}
 		
 
 		if ( $this->form_validation->run() )
 		{
 	
-			unset($usuario["rep_password"]);			
-
+			unset($usuario["rep_clave"]);			
+			
 			$this->usuario_model->updateById( $usuario, $usuario["id_usuario"] );
 
 			$data['result'] = 1;

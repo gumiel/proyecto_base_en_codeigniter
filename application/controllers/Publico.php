@@ -29,21 +29,27 @@ class Publico extends CI_Controller {
 	public function loginProcess()
 	{
 		$usuario = $this->input->post("usuario");
+		$captcha = $this->input->post("captcha");
 		
+		
+
+
+		$this->form_validation->set_rules('captcha', 'Captcha', 'trim|callback__verifyCaptcha');
 		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required');
-		$this->form_validation->set_rules('usuario[password]', 'Contraseña', 'trim|required|callback__verifyUsuarioPassword['.$usuario['cuenta'].']');
+		$this->form_validation->set_rules('usuario[clave]', 'Contraseña', 'trim|required|callback__verifyUsuarioPassword['.$usuario['cuenta'].']');
 		
 		if ($this->form_validation->run() == true)
-		{
-			$usuarioFind = $this->usuario_model->get( [ "cuenta"=>$usuario['cuenta'], "password"=>md5($usuario['password']) ] );
+		{		
+			
+			$usuarioFind = $this->usuario_model->get( [ "cuenta"=>$usuario['cuenta'] ] );
 			$newSession = array(
-		        'id_usuario'     => $usuarioFind->id_usuario,
-		        'nombre'     => $usuarioFind->nombres.' '.$usuarioFind->materno.' '.$usuarioFind->paterno ,
+		        'id_usuario'     => $usuarioFind->id_usuario,		        
 		        'cuenta'  => $usuarioFind->cuenta
 			);
 
 			$this->session->set_userdata($newSession);
 			$this->session->set_flashdata('message', [ "success"=>"Ingresaste al sistema" ]);
+			
 			redirect('principal/inicio','refresh');
 		} else
 		{
@@ -58,18 +64,36 @@ class Publico extends CI_Controller {
 		$this->load->view('publico/payment');
 	}
 
+	public function crearCaptcha()
+	{
+		$this->load->library('Captcha_ci');		
+		$this->captcha_ci->crear();
+		$cadenaCaptchaCreado = $this->captcha_ci->obtenerString();
+
+		$this->session->set_userdata('captcha', $cadenaCaptchaCreado);
+		
+	}
 
 
 
 
-
-
+	public function _verifyCaptcha($captcha)
+	{
+		$this->form_validation->set_message(__FUNCTION__, 'El captcha no coincide');	
+		$captcha_session = $this->session->userdata('captcha');
+		return ( $captcha_session == $captcha );
+	}
 
 	public function _verifyUsuarioPassword($password, $cuenta)
 	{
-		$this->form_validation->set_message(__FUNCTION__, 'El password no coincide');		
-		$count = $this->usuario_model->count( ["cuenta"=>$cuenta, "password"=>md5($password)] );
-		return ( $count == 1); 		
+		$this->load->library('encryption');
+
+		$this->form_validation->set_message(__FUNCTION__, 'El password no coincide');	
+
+		$usuarioFind = $this->usuario_model->get( [ "cuenta"=>$cuenta ] );
+
+		return ($this->encryption->decrypt($usuarioFind->clave)==$password);
+
 	}
 
 	public function test()
@@ -110,6 +134,7 @@ class Publico extends CI_Controller {
 		}
 		return false;
 	}
+
 
 }
 

@@ -55,15 +55,18 @@ class SystemSupervisor
 
 	private function verifyRoutePublicPage($route = '', $arrayPages = array() )
 	{
+		$res = 'PRIVATE';
 		foreach ($arrayPages as $value) 
-		{
+		{		
 			if ( $value == $route )
 			{
-				return 'PUBLIC';
+				$res = 'PUBLIC';
 				break;
+
 			}
 		}
-		return 'PRIVATE';
+		
+		return $res;
 	}
 
 

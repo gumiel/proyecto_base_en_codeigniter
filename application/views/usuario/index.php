@@ -63,11 +63,11 @@ $this->templateci->addJs("public/usuario/index.js");
 
           <table id="tblList" class="table table-striped table-hover">
             <thead>
-              <tr>
-                <th>Nombres y Apellidos</th>
+              <tr>                
                 <th>Email</th>
-                <th>Cuenta</th>
-                <th>CI</th>
+                <th>Cuenta</th>                
+                <th>Fecha creación</th>                
+                <th>Fecha modifición</th>                
                 <th>Opciones</th>
               </tr>
             </thead>
@@ -105,22 +105,14 @@ $this->templateci->addJs("public/usuario/index.js");
         <div class="modal-body">
         
             <div class="box-body">
-              
-              <?php echo form_input_ci("Nombres", 'usuario[nombres]', ""); ?>
-              
-              <?php echo form_input_ci("Apellido Paterno", 'usuario[paterno]', ''); ?>
-              
-              <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', ''); ?>
-              
+            
               <?php echo form_input_ci("Cuenta", 'usuario[cuenta]', ''); ?>
 
-              <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>
+              <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>              
 
-              <?php echo form_input_ci("CI", 'usuario[ci]', ''); ?>
+              <?php echo form_password_ci("Contraseña", 'usuario[clave]', ''); ?>
 
-              <?php echo form_password_ci("Contraseña", 'usuario[password]', ''); ?>
-
-              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_password]', ''); ?>
+              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_clave]', ''); ?>
 
             </div>
 
@@ -146,22 +138,15 @@ $this->templateci->addJs("public/usuario/index.js");
         <div class="modal-body">
         
             <div class="box-body">
-              <?php echo form_input_ci("Nombres", 'usuario[nombres]', ""); ?>
-              
-              <?php echo form_input_ci("Apellido Paterno", 'usuario[paterno]', ''); ?>
-              
-              <?php echo form_input_ci("Apellido Materno", 'usuario[materno]', ''); ?>
-              
+
               <?php echo form_input_ci("Cuenta", 'usuario[cuenta]', ''); ?>
 
               <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>
 
-              <?php echo form_input_ci("CI", 'usuario[ci]', ''); ?>
+              <?php echo form_password_ci("Contraseña", 'usuario[clave]', '', [ 'id'=>'clave']); ?>
 
-              <?php echo form_password_ci("Contraseña", 'usuario[password]', '', [ 'id'=>'password']); ?>
-
-              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_password]', ''); ?>
-
+              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_clave]', ''); ?>
+              
             </div>
 
         </div>
