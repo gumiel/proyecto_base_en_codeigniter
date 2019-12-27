@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario_model extends Generic {
+class Usuario_model extends Generic_model {
 
 	public function __construct()
 	{

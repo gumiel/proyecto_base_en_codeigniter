@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ruta_model extends Generic    {
+class Ruta_model extends Generic_model    {
 
 	public function __construct()
 	{
