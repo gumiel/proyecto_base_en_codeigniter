@@ -54,14 +54,14 @@ class Publico extends CI_Controller {
 		} else
 		{
 			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);
-			redirect('publico/login','refresh');
+			redirect('/publico/publico/login','refresh');
 		}
 
 	}
 
 	public function payment()
 	{
-		$this->load->view('publico/payment');
+		$this->load->view('/publico/publico/payment');
 	}
 
 	public function crearCaptcha()

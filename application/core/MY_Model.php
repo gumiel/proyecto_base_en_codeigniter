@@ -155,7 +155,7 @@ class Generic_model extends My_model
 		$this->nameTable = $this->getNameTable();
 		$this->db->where($this->nameIdentificatorTable(), $id);
 		$res = $this->db->get($this->nameTable);
-		return ($tipo == 'array')? $res->row(): $res->row_array();
+		return ($tipo == 'array')? $res->row_array(): $res->row();
 	}
 
 
@@ -177,7 +177,7 @@ class Generic_model extends My_model
 		$this->nameTable = $this->getNameTable();
 		$this->db->where($array);
 		$res = $this->db->get($this->nameTable);
-		return ($tipo == 'array')? $res->row(): $res->row_array();
+		return ($tipo == 'array')? $res->row_array(): $res->row();
 	}
 
 

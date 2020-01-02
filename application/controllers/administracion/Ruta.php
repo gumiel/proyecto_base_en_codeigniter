@@ -16,7 +16,7 @@ class Ruta extends CI_Controller {
 
 	public function index()
 	{		
-		$this->load->view('ruta/index', null, FALSE);
+		$this->load->view('/administracion/ruta/index', null, FALSE);
 	}
 
 	public function listAjax()

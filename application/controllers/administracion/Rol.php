@@ -17,7 +17,7 @@ class Rol extends CI_Controller {
 
 	public function index()
 	{		
-		$this->load->view('rol/index', null, FALSE);
+		$this->load->view('/administracion/rol/index', null, FALSE);
 	}
 
 	public function listAjax()

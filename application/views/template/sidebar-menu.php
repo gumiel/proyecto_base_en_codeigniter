@@ -27,6 +27,6 @@
           </li>
         <?php endforeach ?>
         
-        <li><a href="<?php echo site_url('usuario/desconectar') ?>"><i class="fa fa-circle-o text-red"></i> <span>Desconectar</span></a></li>
+        <li><a href="<?php echo site_url('administracion/usuario/desconectar') ?>"><i class="fa fa-circle-o text-red"></i> <span>Desconectar</span></a></li>
 
       </ul>

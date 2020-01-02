@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario extends CI_Controller {
 
+	public $arregloMenus =array();
 	// use UsuarioRule;
 	
 
@@ -13,24 +14,134 @@ class Usuario extends CI_Controller {
 		$this->load->helper('form_ci');
 		$this->load->library('form_validation');
 		$this->load->library('rules/Usuario_rule');		
-		$this->load->library('Utils');
-		// $this->load->library('lib_log');
+		$this->load->library('Utils');		
 		$this->load->model('usuario_model');
 
+	}
+
+	public function menu()
+	{
+
+
+
+
+		$sql = "SELECT id_menu, nombre as name, ruta as url, icono as icon, '' as subMenu, id_menu_padre FROM menu where tipo='administracion'";
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+
+		
+
+		echo "<pre>";
+		var_dump($this->recursivo(0, $result));
+		echo "</pre>";
+		exit;
+
+		return $res;
+	}
+
+	public function recursivo($id_padre, $arreglos)
+	{
+		$arregloHijos = $this->buscarDatos($id_padre, $arreglos);	
+
+		foreach ($arregloHijos as $arregloHijo) 
+		{				
+			return array('name'=> $arregloHijo['name'],
+				'url'=> $arregloHijo['url'],
+				'icon'=> $arregloHijo['icon'],
+				'subMenu'=> $this->recursivo($arregloHijo['id_menu'], $arreglos)
+			);
+		}
+	
+	
+	}
+
+	public function buscarDatosPadre($id, $arreglo=array())
+	{
+		$nuevoArreglo = array();
+		if( count($arreglo) > 0 ){
+			foreach ($arreglo as $data) 
+			{			
+				if($data['id_menu_padre']==$id)
+				{
+					array_push($nuevoArreglo, $data);
+				}	
+			}
+		}
+		return $nuevoArreglo;
+	}
+
+	public function buscarDatos($id, $arreglo=array())
+	{
+		// echo "Busco = ".$id.'<br>';
+		// var_dump($arreglo);
+		$nuevoArreglo = array();
+		if( count($arreglo) > 0 ){
+			foreach ($arreglo as $data) 
+			{			
+				if($data['id_menu_padre']==$id)
+				{
+					array_push($nuevoArreglo, $data);
+				}	
+			}
+		}
+		// echo "Encontro = ".count($nuevoArreglo).'<br>';
+		
+		return $nuevoArreglo;
+	}
+
+	public function obtenerSubMenu($id_menu_padre, $result, $output)
+	{	
+		
+		
+		if(isset($result) && $result!=null && $result!=''){
+			foreach ($result as $menu) 
+			{
+				if( $menu['url']=='' &&  $menu['id_menu_padre'] == $id_menu_padre )
+				{
+					array_push($output, array('name'=> $menu['name'],
+										'url'=> $menu['url'],
+										'icon'=> $menu['icon']
+										)
+							);
+					$nuevo_arreglo = array_shift($result); // quita el primer elemento
+					
+				} else{
+
+					array_push($output, 
+								array('name'=> $menu['name'],
+									'url'=> $menu['url'],
+									'icon'=> $menu['icon'],
+									'subMenu'=> $this->obtenerSubMenu($menu['id_menu_padre'], $result, $output)
+								)
+							);
+				}
+
+				
+			}
+		}
+			
+		echo "<pre>";
+		var_dump($output); 
+		echo "</pre>";
+		exit;
+
+		echo "<br>fin<br>";
+		exit;
+		return $output;
 	}
 
 	public function index()
 	{
 		$data = array();		
 		$data["usuarios"] = $this->usuario_model->listUsuario();
-		$this->load->view('usuario/index', $data);
+		$this->load->view('/administracion/usuario/index', $data);
 	}
 
 	public function lista()
 	{
 		$data = array();		
 		$data["usuarios"] = $this->usuario_model->listUsuario();
-		$this->load->view('usuario/listaUsuarios', $data);
+		$this->load->view('/administracion/usuario/listaUsuarios', $data);
 	}
 
 	public function listaAjax()
@@ -67,7 +178,7 @@ class Usuario extends CI_Controller {
 
 			$this->usuario_model->insert($usuario);
 			$this->session->set_flashdata('message', [ "success"=>"Se creo el usuario" ]);
-			redirect('usuario/lista');
+			redirect('/administracion/usuario/lista');
 		} else
 		{			
 			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);
@@ -109,7 +220,7 @@ class Usuario extends CI_Controller {
 			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);
 
 		}
-		redirect('usuario/lista','refresh');
+		redirect('/administracion/usuario/lista','refresh');
 
 	}
 

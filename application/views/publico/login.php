@@ -25,9 +25,9 @@
   <div class="login-box-body">
     <p class="login-box-msg">Inicia sesión para comenzar</p>
 
-    <form action="<?php echo site_url("publico/loginProcess") ?>" method="post">
+    <form action="<?php echo site_url("/publico/publico/loginProcess") ?>" method="post">
       <div class="form-group has-feedback">
-        <input type="text" name="usuario[cuenta]" class="form-control" placeholder="Usuario">
+        <input type="text" name="usuario[cuenta]" class="form-control" placeholder="Usuario" autofocus>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

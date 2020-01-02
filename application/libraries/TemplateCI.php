@@ -43,25 +43,87 @@ class TemplateCI
 					["name" => "Inicio", "url" => "principal/inicio", "icon" => "fa fa-dashboard" ],			
 					["name" => "Usuarios", "url" => "#", "icon" => "fa fa-user", 
 						'subMenu'=> [
-										["name" => "Usuarios", "url" => "usuario/index"],
-										["name" => "Roles", "url" => "rol/index"],
-										["name" => "Rutas", "url" => "ruta/index"],
+										["name" => "Usuarios", "url" => "/administracion/usuario/index"],
+										["name" => "Roles", "url" => "/administracion/rol/index"],
+										["name" => "Rutas", "url" => "/administracion/ruta/index"],
 									] 
 					],
 					["name" => "Cobranza", "url" => "principal/inicio", "icon" => "fa fa-bank", 
 						'subMenu'=> [
-										["name" => "Cobros Simples", "url" => "cobradoTotal/simple"],
-										["name" => "Cobros con Cheques", "url" => "cobradoTotal/simple"],
+										["name" => "Cobros Simples", "url" => "/pagos/cobradoTotal/simple"],
+										["name" => "Cobros con Cheques", "url" => "/pagos/cobradoTotal/simple"],
 									] 
 					],
 				];
+
+		$sql = "SELECT id_menu, nombre as name, ruta as url, icono as icon, '' as subMenu, id_menu_padre FROM menu";
+		$query = $this->ci->db->query($sql);
+		$result = $query->result_array();
+		
+		// $res = array();
+
+		// foreach ($result as $menu) 
+		// {
+		// 	if( $menu['url']=='' && $menu['id_menu_padre']=='0')
+		// 	{
+		// 		array_push($res, array('name'=> $menu['name'],
+		// 							'url'=> $menu['url'],
+		// 							'icon'=> $menu['icon']
+		// 							)
+		// 				);
+		// 		$res = array_shift($res); // quita el primer elemento
+				
+		// 	} else{
+		// 		array_push($res, 
+		// 					array('name'=> $menu['name'],
+		// 						'url'=> $menu['url'],
+		// 						'icon'=> $menu['icon'],
+		// 						'subMenu'=> $this->obtenerSubMenu($menu['id_menu_padre'], $result)
+		// 					)
+		// 				);
+		// 	}
+
+			
+		// }
+		
 		return $res;
 	}
 
-	public function setMenuPrincipal()
-	{
+	public function obtenerSubMenu($id_menu_padre, $result)
+	{	
+		if(isset($result)){
+			foreach ($result as $menu) 
+			{
+				if( $menu['url']=='' &&  $menu['id_menu_padre'] == $id_menu_padre )
+				{
+					array_push($result, array('name'=> $menu['name'],
+										'url'=> $menu['url'],
+										'icon'=> $menu['icon']
+										)
+							);
+					$result = array_shift($result); // quita el primer elemento
+					
+				} else{
 
+					array_push($result, 
+								array('name'=> $menu['name'],
+									'url'=> $menu['url'],
+									'icon'=> $menu['icon'],
+									'subMenu'=> $this->obtenerSubMenu($menu['id_menu_padre'], $result)
+								)
+							);
+				}
+
+				
+			}
+		}
+		else{
+			return false;
+		}
+		
 	}
+
+	
 
 	public function listCss()
 	{		

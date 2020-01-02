@@ -19,7 +19,7 @@ jQuery(document).ready(function($)
 		if( $('#formCreate').valid() )
 		{
 			$.ajax({
-				url: site_url('rol/createAjax'),
+				url: site_url('/administracion/rol/createAjax'),
 				type: 'POST',
 				dataType: 'json',
 				data: $('#formCreate').serialize(),
@@ -47,7 +47,7 @@ jQuery(document).ready(function($)
 	  form.find("input[name='rol[id_rol]']").val("");
 
 	  $.ajax({
-	    url: site_url("rol/getAjax"),
+	    url: site_url("/administracion/rol/getAjax"),
 	    type: 'POST',
 	    dataType: 'json',
 	    data: {"rol[id_rol]": id},
@@ -70,7 +70,7 @@ jQuery(document).ready(function($)
 		if( $('#formEdit').valid() )
 		{
 			$.ajax({
-				url: site_url('rol/editAjax'),
+				url: site_url('/administracion/rol/editAjax'),
 				type: 'POST',
 				dataType: 'json',
 				data: formEdit.serialize(),
@@ -100,7 +100,7 @@ jQuery(document).ready(function($)
 	    if (result)
 	    {
 	      $.ajax({
-	        url: site_url("rol/deleteAjax"),
+	        url: site_url("/administracion/rol/deleteAjax"),
 	        type: 'POST',
 	        dataType: 'json',
 	        data: {"rol[id_rol]": id},
@@ -138,7 +138,7 @@ jQuery(document).ready(function($)
 				formAsignarRuta.find('#destino option').prop('selected','selected')
 
 		$.ajax({
-			url: site_url('rutaRol/create'),
+			url: site_url('/administracion/rutaRol/create'),
 			type: 'POST',
 			dataType: 'json',
 			data: formAsignarRuta.serialize(),
@@ -215,7 +215,7 @@ function loadListRol(dataForm)
 	$('tbody', tblList).html('');
 
 	$.ajax({
-		url: site_url('rol/listAjax'),
+		url: site_url('/administracion/rol/listAjax'),
 		type: 'POST',
 		dataType: 'json',
 		data: dataForm

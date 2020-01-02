@@ -20,7 +20,9 @@ class Backup extends CI_Controller {
 
 		// Load the file helper and write the file to your server
 		$this->load->helper('file');
-		write_file('codeigniter.backupBD.gz', $backup);
+		$fecha = date('Y-m-d_H_i_s');
+		
+		write_file('backup_db/codeigniter.backupBD.'.$fecha.'.gz', $backup);
 
 		// Load the download helper and send the file to your desktop
 		$this->load->helper('download');

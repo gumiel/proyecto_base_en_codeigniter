@@ -23,7 +23,7 @@ class CobradoTotal extends CI_Controller {
 
 	public function simple()
 	{
-		$this->load->view('cobradoTotal/simple');
+		$this->load->view('/mod_pagos/cobradoTotal/simple');
 	}
 
 }

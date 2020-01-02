@@ -6,7 +6,7 @@ var tblList    = $('#tblList');
 jQuery(document).ready(function($) 
 {
 
-	loadListUsuarios();
+	loadListRuta();
 
 	$("#btnCreate").click(function(event) {
 	  $("#modalCreate").modal("show");
@@ -18,7 +18,7 @@ jQuery(document).ready(function($)
 		if( $('#formCreate').valid() )
 		{
 			$.ajax({
-				url: site_url('usuario/createAjax'),
+				url: site_url('/administracion/ruta/createAjax'),
 				type: 'POST',
 				dataType: 'json',
 				data: $('#formCreate').serialize(),
@@ -28,7 +28,7 @@ jQuery(document).ready(function($)
 				{
 					$.notifySuccess(data.message);	
 					$('#modalCreate').modal('hide');
-					loadListUsuarios();
+					loadListRuta();
 				} else 
 				{
 					$.notifyDanger(data.message);
@@ -40,44 +40,46 @@ jQuery(document).ready(function($)
 
 	$(document).on('click', ".btnEditar", function()
 	{
-	  var id_usuario = $(this).data("id");
+	  var id = $(this).data("id");
 	  var form = $("#formEdit");
 	  form.trigger('reset')
-	  form.find("input[name='usuario[id_usuario]']").val("");
+	  form.find("input[name='ruta[id_ruta]']").val("");
 
 	  $.ajax({
-	    url: site_url("usuario/getUsuarioAjax"),
+	    url: site_url("/administracion/ruta/getAjax"),
 	    type: 'POST',
 	    dataType: 'json',
-	    data: {"usuario[id_usuario]": id_usuario},
+	    data: {"ruta[id_ruta]": id},
 	  })
 	  .done(function(data) {
-	    form.find("input[name='usuario[cuenta]']").val(data.usuario.cuenta);
-	    form.find("input[name='usuario[email]']").val(data.usuario.email);
-	    form.find("input[name='usuario[id_usuario]']").val(data.usuario.id_usuario);
+
+	    form.find("input[name='ruta[denominacion]']").val(data.ruta.denominacion);
+	    form.find("input[name='ruta[descripcion]']").val(data.ruta.descripcion);
+	    form.find("input[name='ruta[id_ruta]']").val(data.ruta.id_ruta);
 
 	    $("#modalEdit").modal("show");
 
 	  });
 	});
 
-	formEdit.submit(function(event) {
+	formEdit.submit(function(event) 
+	{
 		event.preventDefault();
 		
 		if( $('#formEdit').valid() )
 		{
 			$.ajax({
-				url: site_url('usuario/editAjax'),
+				url: site_url('/administracion/ruta/editAjax'),
 				type: 'POST',
 				dataType: 'json',
-				data: $('#formEdit').serialize(),
+				data: formEdit.serialize(),
 			})
 			.done(function(data) {
 				if(data.result==1)
 				{
 					$.notifySuccess(data.message);
 					$('#modalEdit').modal('hide');
-					loadListUsuarios();
+					loadListRuta();
 				} else 
 				{
 					$.notifyDanger(data.message);
@@ -90,23 +92,23 @@ jQuery(document).ready(function($)
 	$(document).on('click', ".btnEliminar", function()
 	{
 	  
-	  var id_usuario = $(this).data("id");
+	  var id = $(this).data("id");
 
-	  $.confirmCI( '', function(result){
+	  $.confirmCI( 'Desea eliminar el registro?', function(result){
 
 	    if (result)
 	    {
 	      $.ajax({
-	        url: site_url("usuario/deleteUsuarioAjax"),
+	        url: site_url("rol/deleteAjax"),
 	        type: 'POST',
 	        dataType: 'json',
-	        data: {"usuario[id_usuario]": id_usuario},
+	        data: {"rol[id_rol]": id},
 	      })
 	      .done(function(data) {
 
 	        if(data.result == 1){
 	        	$.notifySuccess(data.message);
-	        	loadListUsuarios();
+	        	loadListRuta();
 	        } else {
 	        	$.notifyDanger(data.message);
 	        }
@@ -118,47 +120,27 @@ jQuery(document).ready(function($)
 	});
 
 
-	$(document).on('click', ".btnAssignRol", function(){
-		$('#modalRol').modal();
-	})
-
-
-	$(document).on('click', ".btnAssignRuta", function(){
-		$('#modalRuta').modal();	
-	})
 
 
 
 	formCreate.validate({
 		rules: {
-			"usuario[cuenta]": {
+			"ruta[denominacion]": {
 				required: true
 			},
-			"usuario[email]": {
-				required: true,
-				email: true,
-			},
-			"usuario[clave]": {
+			"ruta[descripcion]": {
 				required: true
-			},
-			"usuario[rep_clave]": {
-				required: true,
-				equalTo: 'input[name="usuario[clave]"]'
-			},
+			},			
 		},
 	});
 
 	formEdit.validate({
 		rules: {
-			"usuario[cuenta]": {
+			"ruta[denominacion]": {
 				required: true
 			},
-			"usuario[email]": {
-				required: true,
-				email: true,
-			},
-			"usuario[rep_clave]": {
-				equalTo: '#clave'
+			"ruta[descripcion]": {
+				required: true
 			},
 		},
 	});
@@ -168,19 +150,19 @@ jQuery(document).ready(function($)
 		event.preventDefault();
 		
 		var dataForm = formSearch.serialize();
-		loadListUsuarios(dataForm);
+		loadListRuta(dataForm);
 	});
 
 });
 
 
-function loadListUsuarios(dataForm)
+function loadListRuta(dataForm)
 {
 
 	$('tbody', tblList).html('');
 
 	$.ajax({
-		url: site_url('usuario/listaAjax'),
+		url: site_url('/administracion/ruta/listAjax'),
 		type: 'POST',
 		dataType: 'json',
 		data: dataForm
@@ -188,18 +170,14 @@ function loadListUsuarios(dataForm)
 	.done(function(data) {
 		if( data.result==1 ){
 			let rows = '';
-			$.each(data.usuarios, function(index, usuario) {
+			$.each(data.rutas, function(index, ruta) {
 				
-                rows = rows+ '<tr>'								
-								+'<td>'+usuario.email+'</td>'
-								+'<td>'+usuario.cuenta+'</td>'								
-								+'<td>'+usuario.fecha_creacion+'</td>'								
-								+'<td>'+usuario.fecha_modificacion+'</td>'								
+                rows = rows+ '<tr>'
+								+'<td>'+ruta.denominacion+'</td>'
+								+'<td>'+ruta.descripcion+'</td>'								
 								+'<td>'
-								+'<a href="#" class="btn btn-info btnAssignRol" data-id="'+usuario.id_usuario+'" >Rol</a>'
-								+'<a href="#" class="btn btn-info btnAssignRuta" data-id="'+usuario.id_usuario+'" >Ruta</a>'
-								+'<a href="#" class="btn btn-info btnEditar" data-id="'+usuario.id_usuario+'" >Editar</a>'
-								+'<a href="#" class="btn btn-info btnEliminar" data-id="'+usuario.id_usuario+'" >Eliminar</a>'
+									+'<a href="#" class="btn btn-info btnEditar" data-id="'+ruta.id_ruta+'" >Editar</a>'
+									+'<a href="#" class="btn btn-info btnEliminar" data-id="'+ruta.id_ruta+'" >Eliminar</a>'
 								+'</td>'
 							+'</tr>';                
 			});

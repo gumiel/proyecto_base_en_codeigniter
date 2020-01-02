@@ -1,8 +1,8 @@
 <?php 
-$this->templateci->setTitlePage("Lista de Usuarios");
-$this->templateci->setDescriptionPage("Lista de Usuarios");
+$this->templateci->setTitlePage("Lista de Roles");
+$this->templateci->setDescriptionPage("Lista de Roles");
 
-$this->templateci->addJs("public/usuario/index.js");
+$this->templateci->addJs("public/administracion/rol/index.js");
  ?>
 
 <?php $this->load->view('template/up'); ?>
@@ -11,8 +11,6 @@ $this->templateci->addJs("public/usuario/index.js");
     <section class="content text-right">
       <div class="btn-group">
         <button type="button" class="btn btn-info" id="btnCreate"><i class="glyphicon glyphicon-plus"></i><br>Crear</button>
-        <button type="button" class="btn btn-info"><i class="glyphicon glyphicon-file"></i><br>PDF</button>
-        <button type="button" class="btn btn-info"><i class="glyphicon glyphicon-file"></i><br>EXCEL</button>
       </div>      
     </section>
     <!-- Main content -->
@@ -63,11 +61,9 @@ $this->templateci->addJs("public/usuario/index.js");
 
           <table id="tblList" class="table table-striped table-hover">
             <thead>
-              <tr>                
-                <th>Email</th>
-                <th>Cuenta</th>                
-                <th>Fecha creación</th>                
-                <th>Fecha modifición</th>                
+              <tr>
+                <th>Denominación</th>
+                <th>Descripcion</th>                
                 <th>Opciones</th>
               </tr>
             </thead>
@@ -96,23 +92,19 @@ $this->templateci->addJs("public/usuario/index.js");
   <div class="modal fade" id="modalCreate">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?php echo form_open_multipart_ci('usuario/createUsuario', ["id"=>"formCreate"]); ?>
+        <?php echo form_open_multipart_ci('rol/create', ["id"=>"formCreate"]); ?>
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Crear Usuario</h4>
+          <h4 class="modal-title">Crear Rol</h4>
         </div>
         <div class="modal-body">
         
             <div class="box-body">
-            
-              <?php echo form_input_ci("Cuenta", 'usuario[cuenta]', ''); ?>
-
-              <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>              
-
-              <?php echo form_password_ci("Contraseña", 'usuario[clave]', ''); ?>
-
-              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_clave]', ''); ?>
+              
+              <?php echo form_input_ci("Denominación", 'rol[denominacion]', ""); ?>
+              
+              <?php echo form_input_ci("Descripción", 'rol[descripcion]', ''); ?>
 
             </div>
 
@@ -130,48 +122,18 @@ $this->templateci->addJs("public/usuario/index.js");
   <div class="modal fade" id="modalEdit">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?php echo form_open_multipart_ci('usuario/editUsuario', ['id'=>'formEdit']); ?>
+        <?php echo form_open_multipart_ci('rol/edit', ['id'=>'formEdit']); ?>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Editar Usuario</h4>
+          <h4 class="modal-title">Editar Rol</h4>
         </div>
         <div class="modal-body">
         
             <div class="box-body">
 
-              <?php echo form_input_ci("Cuenta", 'usuario[cuenta]', ''); ?>
-
-              <?php echo form_input_ci("Email", 'usuario[email]', ""); ?>
-
-              <?php echo form_password_ci("Contraseña", 'usuario[clave]', '', [ 'id'=>'clave']); ?>
-
-              <?php echo form_password_ci("Repetir Contraseña", 'usuario[rep_clave]', ''); ?>
+              <?php echo form_input_ci("Denominación", 'rol[denominacion]', ""); ?>
               
-            </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
-          <?php echo form_hidden('usuario[id_usuario]', ''); ?>
-        </div>
-        <?php echo form_close(); ?>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modalRol">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <?php echo form_open_multipart_ci('usuario/assignRolToUsuarioAjax', ['id'=>'formRol']); ?>
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Asignar Rol</h4>
-        </div>
-        <div class="modal-body">
-        
-            <div class="box-body">
-              AQUI EL FORMULARIO PARA ASIGNAR EL ROL
+              <?php echo form_input_ci("Descripción", 'rol[descripcion]', ''); ?>
 
             </div>
 
@@ -179,17 +141,19 @@ $this->templateci->addJs("public/usuario/index.js");
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary">Guardar</button>
-          <?php echo form_hidden('usuario[id_usuario]', ''); ?>
+          <?php echo form_hidden('rol[id_rol]', ''); ?>
         </div>
         <?php echo form_close(); ?>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="modalRuta">
+  <div class="modal fade" id="modalAsignarRuta">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?php echo form_open_multipart_ci('usuario/assignRutaToUsuarioAjax', ['id'=>'formRuta']); ?>
+
+        <?php echo form_open_multipart_ci('rol/asignarRuta', ["id"=>"formAsignarRuta"]); ?>
+
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title">Asignar Ruta</h4>
@@ -197,20 +161,42 @@ $this->templateci->addJs("public/usuario/index.js");
         <div class="modal-body">
         
             <div class="box-body">
-              AQUI EL FORMULARIO PARA ASIGNAR EL ROL
-
+              
+              <div class="col-md-4">
+                <select name="origen" id="origen" multiple="multiple" size="8" class="form-control">
+                  <option value="1">Opción 1</option>
+                  <option value="2">Opción 2</option>
+                  <option value="3">Opción 3</option>
+                  <option value="4">Opción 4</option>
+                  <option value="5">Opción 5</option>
+                  <option value="6">Opción 6</option>
+                  <option value="7">Opción 7</option>
+                  <option value="8">Opción 8</option>
+                </select>
+              </div>
+              <div  class="col-md-4">
+                <input type="button" class="btn pasar izq" value="Pasar »">
+                <input type="button" class="btn quitar der" value="« Quitar"><br />
+                <input type="button" class="btn pasartodos izq" value="Todos »">
+                <input type="button" class="btn quitartodos der" value="« Todos">
+              </div>
+              <div class="col-md-4">
+                <select name="rutas[][id_ruta]" id="destino" multiple="multiple" size="8" class="form-control"></select>
+              </div  class="col-md-4">
             </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary">Guardar</button>
-          <?php echo form_hidden('usuario[id_usuario]', ''); ?>
+          <input type="hidden" name="rol[id_rol]" value="">
         </div>
         <?php echo form_close(); ?>
       </div>
     </div>
   </div>
+
+
 
   
 <?php $this->load->view('template/down'); ?>

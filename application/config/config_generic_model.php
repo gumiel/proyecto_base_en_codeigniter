@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['gm_positionStart'] = 'id'; 
 $config['gm_positionSeparator'] = '_';
 $config['gm_positionEnd'] = 'nameTable';
+$config['gm_type_result'] = 'object'; // Puede ser object o array 
 
 
 
