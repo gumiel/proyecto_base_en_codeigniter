@@ -1,5 +1,5 @@
-<?php $this->templateci->addEndListCss([["url"=>"asdasd.css"]]); ?>
-<?php $this->templateci->addEndListJs([["url"=>"asdasd.js"]]); ?>
+<?php //$this->templateci->addEndListCss([["url"=>"asdasd.css"]]); ?>
+<?php //$this->templateci->addEndListJs([["url"=>"asdasd.js"]]); ?>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div>
-          <label>CAPTCHA:</label><img src="<?php echo site_url("publico/crearCaptcha") ?>" alt="CAPTCHA" class="captcha-image">
+          <label>CAPTCHA:</label><img src="<?php echo site_url("publico/publico/crearCaptcha") ?>" alt="CAPTCHA" class="captcha-image">
           
           <button type="button" class="refresh-captcha btn btn-default "><i class="glyphicon glyphicon-refresh"></i></button>
           <p>Ingresar texto de captcha:<input  name="captcha" id="captcha" class="form-control" value="" ></p>
@@ -67,7 +67,7 @@
 <script>
     var refreshButton = document.querySelector(".refresh-captcha");
     refreshButton.onclick = function() {
-      document.querySelector(".captcha-image").src = '<?php echo site_url("publico/crearCaptcha/") ?>?date=' + Date.now();
+      document.querySelector(".captcha-image").src = '<?php echo site_url("publico/publico/crearCaptcha/") ?>?date=' + Date.now();
     }
   </script>
 </body>

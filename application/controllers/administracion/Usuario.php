@@ -132,9 +132,11 @@ class Usuario extends CI_Controller {
 
 	public function index()
 	{
-		$data = array();		
-		$data["usuarios"] = $this->usuario_model->listUsuario();
-		$this->load->view('/administracion/usuario/index', $data);
+		$this->load->library('lib_log');
+		
+		$data11 = array();		
+		$dataa["usuarios"] = $this->usuario_model->listUsuario();
+		$this->load->view('/administracion/usuario/index', $dataqqqq);
 	}
 
 	public function lista()
