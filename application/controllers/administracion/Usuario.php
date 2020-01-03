@@ -133,10 +133,10 @@ class Usuario extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('lib_log');
-		
-		$data11 = array();		
-		$dataa["usuarios"] = $this->usuario_model->listUsuario();
-		$this->load->view('/administracion/usuario/index', $dataqqqq);
+		// throw new Exception('Error: Division by zero.', E_USER_ERROR);
+		$data = array();		
+		$data["usuarios"] = $this->usuario_model->listUsuario();
+		$this->load->view('/administracion/usuario/index', $data);
 	}
 
 	public function lista()

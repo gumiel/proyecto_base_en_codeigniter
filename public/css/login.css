@@ -1,0 +1,11 @@
+body {
+    background-color: #337ab7;
+    background-image: url("../images/light-wool.png");
+}
+#contenedorLogin{
+	margin-top:30px
+}
+#contenedorLogin h1{
+	text-align: center;
+	color: white
+}
