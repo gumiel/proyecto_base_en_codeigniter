@@ -2,10 +2,68 @@
 $this->templateci->setTitlePage("Lista de Usuarios");
 $this->templateci->setDescriptionPage("Lista de Usuarios");
 
-$this->templateci->addJs("public/administracion/js/UsuarioComponente.js");
+$this->templateci->addJs("public/administracion/js/UsuarioComponente.js?data=".date('YmdHis'));
  ?>
 
 <?php $this->load->view('template/up'); ?>
+    
+
+    <div class="container-fluid" id="ctnBotonera"  >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-left">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default btn-sm text-center" id="btnCrear">
+                                <i class="glyphicon glyphicon-plus"></i> <br>Crear
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm text-center" id="btnEditar">
+                                <i class="glyphicon glyphicon-pencil"></i> <br>Editar
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm text-center" id="btnEliminar">
+                                <i class="glyphicon glyphicon-remove"></i> <br>Eliminar
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm text-center" id="btnActualizar"> 
+                                <i class="glyphicon glyphicon-refresh"></i> <br>Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+
+
+
+
+    <div class="container-fluid" id="ctnTabla">        
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="panel panel-primary">
+                  <div class="panel-body">
+                      <table id="tblActor" class="table table-striped table-bordered" style="width:100%">
+                          <thead>
+                              <tr>
+                                  <th data-priority="1" width="15"></th>
+                                  <th data-priority="2">Email</th>
+                                  <th data-priority="3">Cuenta</th>
+                                  <th data-priority="4">Fecha creación</th>
+                                  <th data-priority="5">Fecha modificación</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><!-- /.container -->
+
+
+
 
 
     <section class="content text-right">

@@ -1,7 +1,7 @@
 
-
-var ctnActor            = new ContainerJS("#ctnActor");
 var ctnBotonera         = new ContainerJS("#ctnBotonera");
+
+var ctnTabla            = new ContainerJS("#ctnTabla");
 var ctnModalCrearActor  = new ContainerJS("#modalCrearActor");
 var ctnModalEditarActor = new ContainerJS("#modalEditarActor");
 
@@ -9,18 +9,18 @@ var tblUsuarios = new CDataTable('#tblUsuarios');
 
 
 
-ctnActor.registerTable(tblUsuarios, 'tblActor');
+ctnTabla.registerTable(tblUsuarios, 'tblUsuarios');
 
 // ctnModalEditarActor.registerId('formEditarActor');
 ctnModalCrearActor.registerId('formCrearActor', '$formCrearActor');
 ctnModalEditarActor.registerElement('#formEditarActor', 'formEditarActor');
 
 
-ctnActor._iniciar = function(){
+ctnTabla._iniciar = function(){
     this.llenarTabla();
 };
 
-ctnActor.llenarTabla = function(res){
+ctnTabla.llenarTabla = function(res){
 
     var self = this;
 	ctnActor.tblActor.clean(); // Limpia primeramente la tabla si es que tiene algun dato           
@@ -226,7 +226,7 @@ ctnModalEditarActor.llenarFormularioEdicion = function(actor){
 
 jQuery(document).ready(function($) {
 	console.log("/*-*/-*/-*/");
-	ctnActor.init();
+	ctnTabla.init();
 	ctnBotonera.init();
 	ctnModalCrearActor.init();
 	ctnModalEditarActor.init();
