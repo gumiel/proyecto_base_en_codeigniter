@@ -21,6 +21,24 @@ class UsuarioComponente extends CI_Controller {
 		$this->load->view('/administracion/usuario/usuarioComponente', $data, FALSE);	
 	}
 
+	public function listaAjax()
+	{
+		$usuario = $this->input->post('usuario');
+
+		$data = array();
+
+		if ( $usuario != null && sizeof($usuario)>0 && $usuario['label']!='' && $usuario['text']!='' )
+		{			
+			$data["usuarios"] = $this->usuario_model->searchUsuario($usuario['label'], $usuario['text']);
+		} else
+		{
+			$data["usuarios"] = $this->usuario_model->listUsuario();
+		}
+
+		$data["result"] = 1;
+		$this->utils->json($data);
+	}
+
 }
 
 /* End of file UsuarioComponente.php */

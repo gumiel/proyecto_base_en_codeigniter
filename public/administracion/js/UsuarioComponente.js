@@ -2,232 +2,242 @@
 var ctnBotonera         = new ContainerJS("#ctnBotonera");
 
 var ctnTabla            = new ContainerJS("#ctnTabla");
-var ctnModalCrearActor  = new ContainerJS("#modalCrearActor");
-var ctnModalEditarActor = new ContainerJS("#modalEditarActor");
+var ctnModalCrearUsuario  = new ContainerJS("#modalCrearUsuario");
+// var ctnModalEditarActor = new ContainerJS("#modalEditarActor");
 
-var tblUsuarios = new CDataTable('#tblUsuarios');
+var tblUsuario = new CDataTable('#tblUsuario');
 
 
 
-ctnTabla.registerTable(tblUsuarios, 'tblUsuarios');
+ctnTabla.registerTable(tblUsuario, 'tblUsuario');
 
+ctnModalCrearUsuario.registerId('formCrearUsuario', '$formCrearUsuario');
 // ctnModalEditarActor.registerId('formEditarActor');
-ctnModalCrearActor.registerId('formCrearActor', '$formCrearActor');
-ctnModalEditarActor.registerElement('#formEditarActor', 'formEditarActor');
+// ctnModalEditarActor.registerElement('#formEditarActor', 'formEditarActor');
 
 
 ctnTabla._iniciar = function(){
-    this.llenarTabla();
+    var self = this;
+    self.llenarTabla();
 };
 
 ctnTabla.llenarTabla = function(res){
 
     var self = this;
-	ctnActor.tblActor.clean(); // Limpia primeramente la tabla si es que tiene algun dato           
+	self.tblUsuario.clean(); // Limpia primeramente la tabla si es que tiene algun dato           
 
-    var url  = '/actor/list';
+    var url  = '/administracion/usuarioComponente/listaAjax';
     var data = '';
 
     CallRest.post(url, data, function(res){
-        $.each(res.actors, function(index, actor) {
+        $.each(res.usuarios, function(index, usuario) {
             var row = "";
             row += "<tr>";
-            row += "    <td><input type='hidden'name='actor_id' value='"+actor.actor_id+"' /></td>";
-            row += "    <td>"+actor.first_name+"</td>";
-            row += "    <td>"+actor.last_name+"</td>";
-            row += "    <td>"+actor.last_update+"</td>";
+            row += "    <td><input type='hidden'name='id_usuario' value='"+usuario.id_usuario+"' /></td>";
+            row += "    <td>"+usuario.email+"</td>";
+            row += "    <td>"+usuario.cuenta+"</td>";
+            row += "    <td>"+usuario.fecha_creacion+"</td>";
+            row += "    <td>"+usuario.fecha_modificacion+"</td>";
             row += "</tr>";
 
-            ctnActor.tblActor.append(row);                 
+            self.tblUsuario.append(row);                 
         });
 
-        ctnActor.tblActor.simpleSelect();
+        self.tblUsuario.simpleSelect();
     });
 
 };
 
 ctnBotonera._iniciar = function(){
 	var self = this;
+
 	self.ele.find('#btnCrear').click(function(event) {
-		ctnModalCrearActor.ele.modal();
+		ctnModalCrearUsuario.ele.modal();
 	});
 
-    self.ele.find('#btnEditar').click(function(event) {
-        ctnModalEditarActor.obtenerActor();
-        ctnModalEditarActor.ele.modal();
-    });
+//     self.ele.find('#btnEditar').click(function(event) {
+//         ctnModalEditarActor.obtenerActor();
+//         ctnModalEditarActor.ele.modal();
+//     });
 
     self.ele.find('#btnActualizar').click(function(event) {
-        ctnActor.llenarTabla();
+        ctnTabla.llenarTabla();
     });
 
-    self.ele.find('#btnEliminar').click(function(event) {
-        bootbox.confirm("¿Desea elimnar este registro?", function(res){ 
+//     self.ele.find('#btnEliminar').click(function(event) {
+//         bootbox.confirm("¿Desea elimnar este registro?", function(res){ 
             
-            if(res){
-                var self = this;
-                var dataActor = ctnActor.tblActor.getIds();
-                var actor_id  = dataActor[0].actor_id;   
+//             if(res){
+//                 var self = this;
+//                 var dataActor = ctnActor.tblActor.getIds();
+//                 var actor_id  = dataActor[0].actor_id;   
 
-                var url = '/actor/delete' 
-                var data = {actor:{actor_id: actor_id}};
+//                 var url = '/actor/delete' 
+//                 var data = {actor:{actor_id: actor_id}};
                 
-                CallRest.post(url, data, function(res)
-                {
-                    if(res.result==1)
-                    {
-                        Notificacions.success();  
-                        ctnActor.llenarTabla();                  
-                    }else{
-                        Notificacions.errors()
-                    }
-                });
-            }            
+//                 CallRest.post(url, data, function(res)
+//                 {
+//                     if(res.result==1)
+//                     {
+//                         Notificacions.success();  
+//                         ctnActor.llenarTabla();                  
+//                     }else{
+//                         Notificacions.errors()
+//                     }
+//                 });
+//             }            
 
-        });
-    });
+//         });
+//     });
 }
 
-ctnModalCrearActor._iniciar = function(){
+ctnModalCrearUsuario._iniciar = function(){
 	
     var self = this;	
 
-	this.$formCrearActor.validate({
+	self.$formCrearUsuario.validate({
         rules: {
-            "actor[first_name]": {
+            "usuario[cuenta]": {
                 required: true
             },
-            "actor[last_name]": {
+            "usuario[email]": {
+                required: true,
+                email: true,
+            },
+            "usuario[clave]": {
                 required: true
-            }
-        }
+            },
+            "usuario[rep_clave]": {
+                required: true,
+                equalTo: 'input[name="usuario[clave]"]'
+            },
+        },
     });
 
-	ctnModalCrearActor.insertarActor();        
+	ctnModalCrearUsuario.insertarUsuario();        
 
-}
+};
 
-ctnModalEditarActor._iniciar = function(){
-    // alert(this._prueba.html());
-    var self = this;    
+// ctnModalEditarActor._iniciar = function(){
+//     // alert(this._prueba.html());
+//     var self = this;    
 
-    this.formEditarActor.validate({
-        rules: {
-            "actor[first_name]": {
-                required: true
-            },
-            "actor[last_name]": {
-                required: true
-            },
-            "actor[actor_id]": {
-                required: true
-            }
-        }
-    });
+//     this.formEditarActor.validate({
+//         rules: {
+//             "actor[first_name]": {
+//                 required: true
+//             },
+//             "actor[last_name]": {
+//                 required: true
+//             },
+//             "actor[actor_id]": {
+//                 required: true
+//             }
+//         }
+//     });
 
-    self.editarActor();        
+//     self.editarActor();        
 
-}
+// }
 
-ctnModalCrearActor.insertarActor = function(){
+ctnModalCrearUsuario.insertarUsuario = function(){
 
 	var self = this;	
-
-	this.$formCrearActor.submitValidation(function(resultado){
+	this.$formCrearUsuario.submitValidation(function(resultado){
         
         if(resultado) 
         {
-            var url  = "/actor/insert";            
-            var data = self.$formCrearActor.serialize();
+            var url  = "/administracion/usuario/createAjax";            
+            var data = self.$formCrearUsuario.serialize();
             
-            CallRest.post(url, data, function(res)
-            {
+            CallRest.post(url, data, function(res) {
                 if(res.result==1)
                 {
                     self.ele.modal("hide");
                     Notificacions.success();                    
-                    ctnModalCrearActor.limpiarFormulario();
-                    ctnActor.llenarTabla();
+                    ctnModalCrearUsuario.limpiarFormulario();
+                    ctnTabla.llenarTabla();
                 }else{
-                    Notificacions.errors()
+                    Notificacions.errors('asdasd');
                 }
             });
         }
 
     });
-}
+};
 
-ctnModalEditarActor.obtenerActor = function(){
-    var self = this;
-    var dataActor = ctnActor.tblActor.getIds();
-    var actor_id  = dataActor[0].actor_id;   
+// ctnModalEditarActor.obtenerActor = function(){
+//     var self = this;
+//     var dataActor = ctnActor.tblActor.getIds();
+//     var actor_id  = dataActor[0].actor_id;   
 
-    var url = '/actor/get' 
-    var data = {actor:{actor_id: actor_id}};
+//     var url = '/actor/get' 
+//     var data = {actor:{actor_id: actor_id}};
 
 
-    CallRest.post(url, data, function(res)
-    {
-        if(res.result==1)
-        {            
-            self.llenarFormularioEdicion(res.actor);      
-        }else{
-            Notificacions.errors()
-        }
-    });
-}
+//     CallRest.post(url, data, function(res)
+//     {
+//         if(res.result==1)
+//         {            
+//             self.llenarFormularioEdicion(res.actor);      
+//         }else{
+//             Notificacions.errors()
+//         }
+//     });
+// }
 
-ctnModalEditarActor.editarActor = function(){    
-    var self = this;    
+// ctnModalEditarActor.editarActor = function(){    
+//     var self = this;    
 
-    this.formEditarActor.submitValidation(function(resultado){
+//     this.formEditarActor.submitValidation(function(resultado){
         
-        if(resultado) 
-        {
-            var url  = "/actor/edit";            
-            var data = self.formEditarActor.serialize();
+//         if(resultado) 
+//         {
+//             var url  = "/actor/edit";            
+//             var data = self.formEditarActor.serialize();
             
-            CallRest.post(url, data, function(res)
-            {
-                if(res.result==1)
-                {
-                    self.ele.modal("hide");
-                    self.limpiarFormulario();
-                    Notificacions.success();  
-                    ctnActor.llenarTabla();                  
-                }else{
-                    Notificacions.errors()
-                }
-            });
-        }
+//             CallRest.post(url, data, function(res)
+//             {
+//                 if(res.result==1)
+//                 {
+//                     self.ele.modal("hide");
+//                     self.limpiarFormulario();
+//                     Notificacions.success();  
+//                     ctnActor.llenarTabla();                  
+//                 }else{
+//                     Notificacions.errors()
+//                 }
+//             });
+//         }
 
-    });
-}
+//     });
+// }
 
-ctnModalCrearActor.limpiarFormulario = function(){
-	this.$formCrearActor.trigger("reset");
-}
+ctnModalCrearUsuario.limpiarFormulario = function(){
+	var self = this;
+    self.$formCrearActor.trigger("reset");
+};
 
-ctnModalEditarActor.limpiarFormulario = function(){
-    this.formEditarActor.trigger("reset");
-}
+// ctnModalEditarActor.limpiarFormulario = function(){
+//     this.formEditarActor.trigger("reset");
+// }
 
-ctnModalEditarActor.llenarFormularioEdicion = function(actor){
-    var self = this;
-    self.limpiarFormulario();
-    console.log("aqui");
-    self.ele.find("input[name='actor[first_name]']").val(actor.first_name);
-    self.ele.find("input[name='actor[last_name]']").val(actor.last_name);
-    self.ele.find("input[name='actor[actor_id]']").val(actor.actor_id);
-}
+// ctnModalEditarActor.llenarFormularioEdicion = function(actor){
+//     var self = this;
+//     self.limpiarFormulario();
+//     console.log("aqui");
+//     self.ele.find("input[name='actor[first_name]']").val(actor.first_name);
+//     self.ele.find("input[name='actor[last_name]']").val(actor.last_name);
+//     self.ele.find("input[name='actor[actor_id]']").val(actor.actor_id);
+// }
 
 
 
 
 jQuery(document).ready(function($) {
-	console.log("/*-*/-*/-*/");
+	// console.log("/*-*/-*/-*/");
 	ctnTabla.init();
 	ctnBotonera.init();
-	ctnModalCrearActor.init();
-	ctnModalEditarActor.init();
+	ctnModalCrearUsuario.init();
+	// ctnModalEditarActor.init();
 });

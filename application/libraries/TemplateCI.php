@@ -16,7 +16,18 @@ class TemplateCI
 				["url"=> "public/dist/css/AdminLTE.min.css"],
 				["url"=> "public/dist/css/skins/_all-skins.min.css"],
 				["url"=> "public/dist/css/SourceSansPro.css"],
-				["url"=> "public/dist/css/app.css"]];
+				["url"=> "public/dist/css/app.css"],
+			
+				/* Integracion con datatble */
+				["url"=> "public/libs/datatables/css/datatables.min.css"],
+				["url"=> "public/libs/datatables/css/select.dataTables.min.css"],
+				["url"=> "public/libs/datatables/css/buttons.dataTables.min.css"],
+				["url"=> "public/libs/datatables/css/fixedHeader.bootstrap.min.css"],
+				["url"=> "public/libs/datatables/css/responsive.bootstrap.min.css"],
+				
+			];
+
+
 
 	private $listJs = [
 				["url"=> "public/bower_components/jquery/dist/jquery.min.js"],
@@ -29,7 +40,39 @@ class TemplateCI
 				["url"=> "public/bower_components/jquery-validation/jquery.validate.config.js"],
 				["url"=> "public/dist/js/adminlte.min.js"],
 				["url"=> "public/dist/js/app.js"],
-				["url"=> "public/dist/js/demo.js"]];
+				["url"=> "public/dist/js/demo.js"],
+
+				/* Integracion con datatble */
+				["url"=> "public/libs/datatables/js/jquery.dataTables.min.js"],
+				["url"=> "public/libs/datatables/js/dataTables.bootstrap.min.js"],
+				["url"=> "public/libs/datatables/js/dataTables.select.min.js"],
+				["url"=> "public/libs/datatables/js/dataTables.buttons.min.js"],
+				["url"=> "public/libs/datatables/responsive/dataTables.responsive.min.js"],
+
+				["url"=> "public/libs/datatables/exports/buttons.flash.min.js"],
+			    ["url"=> "public/libs/datatables/exports/jszip.min.js"],
+			    ["url"=> "public/libs/datatables/exports/pdfmake.min.js"],
+			    ["url"=> "public/libs/datatables/exports/vfs_fonts.js"],
+			    ["url"=> "public/libs/datatables/exports/buttons.html5.min.js"],
+			    ["url"=> "public/libs/datatables/exports/buttons.print.min.js"],
+			    ["url"=> "public/libs/datatables/js/dataTables.fixedHeader.min.js"],
+			    ["url"=> "public/libs/datatables/js/dataTables.responsive.min.js"],
+			    ["url"=> "public/libs/datatables/js/responsive.bootstrap.min.js"],
+
+			    /* PNotify */
+			    ["url"=> "public/libs/pnotify/js/pnotify.custom.min.js"],
+
+
+				/* Configuradores de integracion con componentes */
+				["url"=> "public/configurations/config.js"],
+				["url"=> "public/configurations/config.jquery.validate.js"],
+
+				/* Integracion con componentes */
+				["url"=> "public/core/ContainerJS.js"],
+				["url"=> "public/components/CallRest.js"],
+				["url"=> "public/components/CDatatable.js"],
+				["url"=> "public/components/Notifications.js"],
+			];
 
 	public function __construct()
 	{

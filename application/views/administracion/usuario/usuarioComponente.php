@@ -43,7 +43,7 @@ $this->templateci->addJs("public/administracion/js/UsuarioComponente.js?data=".d
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="panel panel-primary">
                   <div class="panel-body">
-                      <table id="tblActor" class="table table-striped table-bordered" style="width:100%">
+                      <table id="tblUsuario" class="table table-striped table-bordered" style="width:100%">
                           <thead>
                               <tr>
                                   <th data-priority="1" width="15"></th>
@@ -61,6 +61,49 @@ $this->templateci->addJs("public/administracion/js/UsuarioComponente.js?data=".d
           </div>
       </div>
     </div><!-- /.container -->
+
+
+
+    <div class="modal fade" id="modalCrearUsuario">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <?php echo form_open_multipart_ci('usuario/createUsuario', ["id"=>"formCrearUsuario"]); ?>
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Crear Usuario</h4>
+          </div>
+          <div class="modal-body">
+          
+              <div class="box-body">
+              
+                <?php echo form_input_ci("Cuenta", "usuario[cuenta]", ""); ?>
+
+                <?php echo form_input_ci("Email", "usuario[email]", ""); ?>              
+
+                <?php echo form_password_ci("Contraseña", "usuario[clave]", ""); ?>
+
+                <?php echo form_password_ci("Repetir Contraseña", "usuario[rep_clave]", ""); ?>
+
+              </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+          <?php echo form_close(); ?>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    
 
 
 

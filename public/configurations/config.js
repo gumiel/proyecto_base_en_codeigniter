@@ -13,5 +13,5 @@ var Config = {
 	siteUrl : function(){
 		return this.protocol + "//" + this.domain + this.folderServer + this.folder;
 	},
-	rest_base_url: "http://localhost/sistema_de_videoclubs/sakila-ci/index.php",
+	rest_base_url: "http://localhost/proyecto_base_en_codeigniter/index.php",
 };
