@@ -1070,3 +1070,122 @@ if ( ! function_exists('_get_validation_object'))
 		return $return;
 	}
 }
+
+
+if ( ! function_exists('section_open'))
+{
+	/**
+	 * Text Input Field
+	 *
+	 * @param	mixed
+	 * @param	string
+	 * @param	mixed
+	 * @return	string
+	 */
+	function section_open($id = '', $title = '')
+	{
+		$content = '
+		<!-- ==================================================== -->
+		<!-- GRUPO DE SECCION "'.$id.'" title='.$title.' -->
+		<!-- ==================================================== -->
+		<section class="content" id="'.$id.'"  >
+			<!-- Default box -->
+				<div class="box box-primary">
+				    <div class="box-header with-border">
+				        <h3 class="box-title">'.$title.'</h3>
+							<div class="box-tools pull-right">
+				            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+				                    title="Collapse">
+				              <i class="fa fa-minus"></i></button>
+				          </div>
+				        </div>
+				        <div class="box-body">
+				        <!-- ---------------------------------------- -->
+	                    <!-- Inicio Contenido -->
+';
+		return $content;
+	}
+}
+
+if ( ! function_exists('section_close'))
+{
+	/**
+	 * Text Input Field
+	 *
+	 * @param	mixed
+	 * @param	string
+	 * @param	mixed
+	 * @return	string
+	 */
+	function section_close()
+	{
+		$content = '
+					<!-- Fin Contenido -->
+					<!-- ---------------------------------------- -->
+	        	</div>
+	      	</div>
+	    </section>
+	    <!-- =============================================== -->
+		<!-- =============================================== -->
+';
+		return $content;
+	}
+}
+
+
+if ( ! function_exists('buttons_open'))
+{
+	/**
+	 * Text Input Field
+	 *
+	 * @param	mixed
+	 * @param	string
+	 * @param	mixed
+	 * @return	string
+	 */
+	function buttons_open($id = '')
+	{
+		$content = '
+		<!-- =============================================== -->
+		<!-- GRUPO DE BOTONES "'.$id.'" -->
+		<!-- =============================================== -->
+		<div class="container-fluid" id="'.$id.'"  >
+	        <div class="row">
+	            <div class="col-md-12">
+	                <div class="panel panel-primary">
+	                    <div class="panel-heading text-left">
+	                        <div class="btn-group" role="group" aria-label="...">
+	                        	<!-- ---------------------------------------- -->
+	                        	<!-- Inicio Contenido -->
+';
+		return $content;
+	}
+}
+
+if ( ! function_exists('buttons_close'))
+{
+	/**
+	 * Text Input Field
+	 *
+	 * @param	mixed
+	 * @param	string
+	 * @param	mixed
+	 * @return	string
+	 */
+	function buttons_close()
+	{
+		$content = '  			
+								<!-- Fin Contenido -->
+								<!-- ---------------------------------------- -->
+							</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div> 
+		<!-- =============================================== -->
+		<!-- =============================================== -->
+		';
+		return $content;
+	}
+}

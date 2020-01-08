@@ -11,10 +11,10 @@ class Usuario extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->helper('form_ci');
-		$this->load->library('form_validation');
+		// $this->load->helper('form_ci');
+		// $this->load->library('form_validation');
 		$this->load->library('rules/Usuario_rule');		
-		$this->load->library('Utils');		
+		// $this->load->library('Utils');		
 		$this->load->model('usuario_model');
 
 	}
@@ -178,6 +178,8 @@ class Usuario extends CI_Controller {
 			unset($usuario["rep_clave"]);
 			$usuario["password"] = md5($usuario["password"]);
 
+			
+
 			$this->usuario_model->insert($usuario);
 			$this->session->set_flashdata('message', [ "success"=>"Se creo el usuario" ]);
 			redirect('/administracion/usuario/lista');
@@ -268,6 +270,7 @@ class Usuario extends CI_Controller {
 
 		$usuario = $this->input->post("usuario");
 		$data["usuario"] = $this->usuario_model->getById($usuario["id_usuario"]);  
+		$data['result'] = 1;
 
 		$this->output
         ->set_status_header(200)
@@ -280,7 +283,6 @@ class Usuario extends CI_Controller {
 	public function createAjax()
 	{
 		
-
 		$usuario = $this->input->post("usuario");
 
 		$this->form_validation->set_rules($this->usuario_rule->apply());
@@ -293,7 +295,7 @@ class Usuario extends CI_Controller {
 
 			unset($usuario["rep_clave"]);
 			$usuario["clave"] = $this->encryption->encrypt($usuario["clave"]);
-
+			
 			$this->usuario_model->insert($usuario);
 			$data['result'] = 1;
 			$data['message'] = "Se creo el usuario";

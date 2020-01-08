@@ -19,7 +19,8 @@ class Generic_model extends My_model
 {
 
 	public $nameClass;
-	public $nameTable;
+	public $nameTable = '';
+	public $nameForeignKey = '';
 	
 	// Estes son los configuradores para el primary key de la tabla como por Ejemplo "id_user"
 	private $positionStart     = ''; // Puede ser ( id, i, identificaro, vacio o cualquier nombre )
@@ -54,8 +55,8 @@ class Generic_model extends My_model
 	 * @return string nombre de tabla
 	 */
 	public function getNameTable()
-	{
-		return $this->comvertNameTable(get_class($this));		
+	{		
+		return ($this->nameTable=='')? $this->comvertNameTable(get_class($this)): $this->nameTable;
 	}
 
 
@@ -67,10 +68,18 @@ class Generic_model extends My_model
 	 * @return integer       retorna el id asociado al nuevo registro 	
 	 */
 	public function insert($data)
-	{
+	{		
+		if(!isset($data['id_usuario_creacion']) || $data['id_usuario_creacion']==null || $data['id_usuario_creacion']==''){
+			$data['id_usuario_creacion'] = $this->session->userdata('id_usuario');			
+		} 
+
+		if(!isset($data['fecha_creacion']) || $data['fecha_creacion']==null || $data['fecha_creacion']==''){
+			$data['fecha_creacion'] = date("Y-m-d H:i:s");		
+		} 
+
+
 		$this->nameTable = $this->getNameTable();
 		$res = $this->db->insert($this->nameTable, $data);
-
 		return $res;
 	}
 
@@ -84,6 +93,14 @@ class Generic_model extends My_model
 	 */
 	public function update($data, $array)
 	{
+		if(!isset($data['id_usuario_modificacion']) || $data['id_usuario_modificacion']==null || $data['id_usuario_modificacion']==''){
+			$data['id_usuario_modificacion'] =  $this->session->userdata('id_usuario');		
+		} 
+
+		if(!isset($data['fecha_modificacion']) || $data['fecha_modificacion']==null || $data['fecha_modificacion']==''){
+			$data['fecha_modificacion'] = date("Y-m-d H:i:s");		
+		} 
+
 		$this->nameTable = $this->getNameTable();
 		$this->db->where( $array );
 		$this->db->update($this->nameTable, $data);
@@ -269,7 +286,7 @@ class Generic_model extends My_model
 		$positionSeparator = ( $this->positionSeparator=='nameTable' )? $this->nameTable: $this->positionSeparator;
 		$positionEnd       = ( $this->positionEnd=='nameTable' )? $this->nameTable: $this->positionEnd;
 		
-		return $positionStart.$positionSeparator.$positionEnd;
+		return ($this->nameForeignKey == '')? $positionStart.$positionSeparator.$positionEnd: $this->nameForeignKey;
 	}
 
 	private function obtenerDatosDeConfiguracion()
@@ -281,6 +298,21 @@ class Generic_model extends My_model
 		$this->positionEnd       = $this->config->item('gm_positionEnd');
 		$this->typeResult        = $this->config->item('gm_type_result');		
 
+	}
+
+	protected function tableName($name)
+	{
+		if(isset($name) && $name != '' && $name != null ){
+			$this->nameTable = $name;			
+		}
+	}
+
+	protected function foreignKeyName($name)
+	{
+		if(isset($name) && $name != '' && $name != null ){
+			$this->nameForeignKey = $name;			
+		}
+		
 	}
 
 

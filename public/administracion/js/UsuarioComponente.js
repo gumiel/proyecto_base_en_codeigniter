@@ -1,33 +1,61 @@
-
-var ctnBotonera         = new ContainerJS("#ctnBotonera");
-
-var ctnTabla            = new ContainerJS("#ctnTabla");
+/*--------------------------------------*/
+/* Contenedores */
+/*--------------------------------------*/
+var ctnBotonera           = new ContainerJS("#ctnBotonera");
+var ctnBuscador           = new ContainerJS("#ctnBuscador");
+var ctnTabla              = new ContainerJS("#ctnTabla");
 var ctnModalCrearUsuario  = new ContainerJS("#modalCrearUsuario");
-// var ctnModalEditarActor = new ContainerJS("#modalEditarActor");
+var ctnModalEditarUsuario = new ContainerJS("#modalEditarUsuario");
 
+
+
+
+
+/*--------------------------------------*/
+/* Tablas */
+/*--------------------------------------*/
 var tblUsuario = new CDataTable('#tblUsuario');
 
 
 
+
+
+/*--------------------------------------*/
+/* Registrar tablas en los componentes*/
+/*--------------------------------------*/
 ctnTabla.registerTable(tblUsuario, 'tblUsuario');
 
+ctnBuscador.registerId('formBuscador', '$formBuscador');
 ctnModalCrearUsuario.registerId('formCrearUsuario', '$formCrearUsuario');
-// ctnModalEditarActor.registerId('formEditarActor');
-// ctnModalEditarActor.registerElement('#formEditarActor', 'formEditarActor');
+// ctnModalEditarActor.registerId('formEditarUsuario');
+ctnModalEditarUsuario.registerElement('#formEditarUsuario', 'formEditarUsuario');
 
+
+ctnBuscador._iniciar = function(){
+    var self = this;    
+    self.$formBuscador.submitValidation(function(resultado){
+        
+        if(resultado) 
+        {
+            var data = self.$formBuscador.serialize();
+            ctnTabla.llenarTabla(data);
+        }
+
+    });
+};
 
 ctnTabla._iniciar = function(){
     var self = this;
     self.llenarTabla();
 };
 
-ctnTabla.llenarTabla = function(res){
+ctnTabla.llenarTabla = function(dataFilter){
 
     var self = this;
 	self.tblUsuario.clean(); // Limpia primeramente la tabla si es que tiene algun dato           
 
     var url  = '/administracion/usuarioComponente/listaAjax';
-    var data = '';
+    var data = dataFilter;
 
     CallRest.post(url, data, function(res){
         $.each(res.usuarios, function(index, usuario) {
@@ -55,41 +83,41 @@ ctnBotonera._iniciar = function(){
 		ctnModalCrearUsuario.ele.modal();
 	});
 
-//     self.ele.find('#btnEditar').click(function(event) {
-//         ctnModalEditarActor.obtenerActor();
-//         ctnModalEditarActor.ele.modal();
-//     });
+    self.ele.find('#btnEditar').click(function(event) {
+        ctnModalEditarUsuario.obtenerUsuario();
+        ctnModalEditarUsuario.ele.modal();
+    });
 
     self.ele.find('#btnActualizar').click(function(event) {
         ctnTabla.llenarTabla();
     });
 
-//     self.ele.find('#btnEliminar').click(function(event) {
-//         bootbox.confirm("¿Desea elimnar este registro?", function(res){ 
+    self.ele.find('#btnEliminar').click(function(event) {
+        bootbox.confirm("¿Desea elimnar este registro?", function(res){ 
             
-//             if(res){
-//                 var self = this;
-//                 var dataActor = ctnActor.tblActor.getIds();
-//                 var actor_id  = dataActor[0].actor_id;   
+            if(res){
+                var self = this;
+                var dataUsuario = ctnTabla.tblUsuario.getIds();
+                var id_usuario  = dataUsuario[0].id_usuario;   
 
-//                 var url = '/actor/delete' 
-//                 var data = {actor:{actor_id: actor_id}};
+                var url = "/administracion/usuario/deleteUsuarioAjax"; 
+                var data = {usuario:{id_usuario: id_usuario}};
                 
-//                 CallRest.post(url, data, function(res)
-//                 {
-//                     if(res.result==1)
-//                     {
-//                         Notificacions.success();  
-//                         ctnActor.llenarTabla();                  
-//                     }else{
-//                         Notificacions.errors()
-//                     }
-//                 });
-//             }            
+                CallRest.post(url, data, function(res){
 
-//         });
-//     });
-}
+                    if(res.result==1)
+                    {
+                        Notificacions.success();  
+                        ctnTabla.llenarTabla();                  
+                    }else{
+                        Notificacions.errors();
+                    }
+                });
+            }            
+
+        });
+    });
+};
 
 ctnModalCrearUsuario._iniciar = function(){
 	
@@ -118,27 +146,28 @@ ctnModalCrearUsuario._iniciar = function(){
 
 };
 
-// ctnModalEditarActor._iniciar = function(){
-//     // alert(this._prueba.html());
-//     var self = this;    
+ctnModalEditarUsuario._iniciar = function(){
+    
+    var self = this;    
 
-//     this.formEditarActor.validate({
-//         rules: {
-//             "actor[first_name]": {
-//                 required: true
-//             },
-//             "actor[last_name]": {
-//                 required: true
-//             },
-//             "actor[actor_id]": {
-//                 required: true
-//             }
-//         }
-//     });
+    self.formEditarUsuario.validate({
+        rules: {
+            "usuario[cuenta]": {
+                required: true
+            },
+            "usuario[email]": {
+                required: true,
+                email: true,
+            },
+            "usuario[rep_clave]": {
+                equalTo: '#clave'
+            },
+        }
+    });
 
-//     self.editarActor();        
+    self.editarUsuario();        
 
-// }
+};
 
 ctnModalCrearUsuario.insertarUsuario = function(){
 
@@ -166,78 +195,79 @@ ctnModalCrearUsuario.insertarUsuario = function(){
     });
 };
 
-// ctnModalEditarActor.obtenerActor = function(){
-//     var self = this;
-//     var dataActor = ctnActor.tblActor.getIds();
-//     var actor_id  = dataActor[0].actor_id;   
+ctnModalEditarUsuario.obtenerUsuario = function(){
+    var self = this;
+    var dataUsuario = ctnTabla.tblUsuario.getIds();
+    var id_usuario  = dataUsuario[0].id_usuario;   
 
-//     var url = '/actor/get' 
-//     var data = {actor:{actor_id: actor_id}};
+    var url = '/administracion/usuario/getUsuarioAjax';
+    var data = {usuario:{id_usuario: id_usuario}};
 
 
-//     CallRest.post(url, data, function(res)
-//     {
-//         if(res.result==1)
-//         {            
-//             self.llenarFormularioEdicion(res.actor);      
-//         }else{
-//             Notificacions.errors()
-//         }
-//     });
-// }
+    CallRest.post(url, data, function(res){
+        if(res.result==1)
+        {            
+            self.llenarFormularioEdicion(res.usuario);      
+        }else{
+            Notificacions.errors();
+        }
+    });
+};
 
-// ctnModalEditarActor.editarActor = function(){    
-//     var self = this;    
+ctnModalEditarUsuario.editarUsuario = function(){    
+    var self = this;    
 
-//     this.formEditarActor.submitValidation(function(resultado){
+    self.formEditarUsuario.submitValidation(function(resultado){
         
-//         if(resultado) 
-//         {
-//             var url  = "/actor/edit";            
-//             var data = self.formEditarActor.serialize();
+        if(resultado) 
+        {
+            var url  = "/administracion/usuario/editAjax";            
+            var data = self.formEditarUsuario.serialize();
             
-//             CallRest.post(url, data, function(res)
-//             {
-//                 if(res.result==1)
-//                 {
-//                     self.ele.modal("hide");
-//                     self.limpiarFormulario();
-//                     Notificacions.success();  
-//                     ctnActor.llenarTabla();                  
-//                 }else{
-//                     Notificacions.errors()
-//                 }
-//             });
-//         }
+            CallRest.post(url, data, function(res){
+                if(res.result==1)
+                {
+                    self.ele.modal("hide");
+                    self.limpiarFormulario();
+                    Notificacions.success();  
+                    ctnTabla.llenarTabla();                  
+                }else{
+                    Notificacions.errors();
+                }
+            });
+        }
 
-//     });
-// }
+    });
+};
 
 ctnModalCrearUsuario.limpiarFormulario = function(){
 	var self = this;
-    self.$formCrearActor.trigger("reset");
+    self.$formCrearUsuario.trigger("reset");
 };
 
-// ctnModalEditarActor.limpiarFormulario = function(){
-//     this.formEditarActor.trigger("reset");
-// }
+ctnModalEditarUsuario.limpiarFormulario = function(){
+    var self = this;
+    self.formEditarUsuario.trigger("reset");
+};
 
-// ctnModalEditarActor.llenarFormularioEdicion = function(actor){
-//     var self = this;
-//     self.limpiarFormulario();
-//     console.log("aqui");
-//     self.ele.find("input[name='actor[first_name]']").val(actor.first_name);
-//     self.ele.find("input[name='actor[last_name]']").val(actor.last_name);
-//     self.ele.find("input[name='actor[actor_id]']").val(actor.actor_id);
-// }
+ctnModalEditarUsuario.llenarFormularioEdicion = function(data){
+    var self = this;
+    self.limpiarFormulario();
+    
+    self.ele.find("input[name='usuario[cuenta]']").val(data.cuenta);
+    self.ele.find("input[name='usuario[email]']").val(data.email);
+    self.ele.find("input[name='usuario[id_usuario]']").val(data.id_usuario);
+};
 
 
 
 
 jQuery(document).ready(function($) {
-	// console.log("/*-*/-*/-*/");
+	
 	ctnTabla.init();
 	ctnBotonera.init();
 	ctnModalCrearUsuario.init();
-	// ctnModalEditarActor.init();
+	ctnModalEditarUsuario.init();
+    ctnBuscador.init();
+
 });

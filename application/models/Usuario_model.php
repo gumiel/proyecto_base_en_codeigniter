@@ -12,6 +12,7 @@ class Usuario_model extends Generic_model {
 	public function listUsuario()
 	{
 		$res = $this->db->get('usuario');
+		$this->db->where('estado_activo', "activo");
 		return $res->result_array();
 	}
 

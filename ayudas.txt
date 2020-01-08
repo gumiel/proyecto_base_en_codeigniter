@@ -1,0 +1,12 @@
+- Para creacion te tablas
+ALTER TABLE `nuc_ruta` ADD `id_usuario_creacion` INT NOT NULL;
+ALTER TABLE `nuc_ruta` ADD `id_usuario_modificacion` INT NOT NULL;
+ALTER TABLE `nuc_ruta` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE `nuc_ruta` ADD `fecha_modificacion` DATETIME NULL;
+ALTER TABLE `nuc_ruta` ADD `estado_registro` VARCHAR(20) NOT NULL DEFAULT 'activo';
+
+ALTER TABLE `nuc_ruta` CHANGE `id_usuario_creacion` INT NOT NULL;
+ALTER TABLE `nuc_ruta` CHANGE `id_usuario_modificacion` INT NOT NULL;
+ALTER TABLE `nuc_ruta` CHANGE `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE `nuc_ruta` CHANGE `fecha_modificacion` DATETIME NULL;
+ALTER TABLE `nuc_ruta` CHANGE `estado_registro` VARCHAR(20) NOT NULL DEFAULT 'activo';

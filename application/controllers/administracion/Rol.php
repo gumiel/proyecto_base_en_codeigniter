@@ -22,8 +22,24 @@ class Rol extends CI_Controller {
 
 	public function listAjax()
 	{
-		$rols = $this->rol_model->getAll();
-		$data['rols'] = $rols;
+		$rol = $this->input->post('rol');
+
+		$data = array();
+
+		if ( $rol != null && sizeof($rol)>0 && $rol['label']!='' && $rol['text']!='' )
+		{									
+			$roles = $this->rol_model->search($rol['label'], $rol["text"]);
+		} else
+		{
+			$roles = $this->rol_model->getAll(["estado_registro"=>"activo"]);
+		}
+
+		
+		
+
+
+		
+		$data['roles'] = $roles;
 		$data['result'] = 1;
 		$this->utils->json($data);
 	}

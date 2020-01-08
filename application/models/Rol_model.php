@@ -18,6 +18,13 @@ class Rol_model extends Generic_model {
 		return $res->result_array();
 	}
 
+	public function search($label='', $text='')
+	{		
+		$this->db->like($label, $text, 'BOTH');
+		$res = $this->db->get('rol');
+		return $res->result_array();
+	}
+
 }
 
 /* End of file Rol_model.php */
