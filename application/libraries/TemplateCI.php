@@ -86,9 +86,10 @@ class TemplateCI
 					["name" => "Inicio", "url" => "principal/inicio", "icon" => "fa fa-dashboard" ],			
 					["name" => "Usuarios", "url" => "#", "icon" => "fa fa-user", 
 						'subMenu'=> [
-										["name" => "Usuarios", "url" => "/administracion/usuario/index"],
-										["name" => "Roles", "url" => "/administracion/rol/index"],
-										["name" => "Rutas", "url" => "/administracion/ruta/index"],
+										["name" => "Usuarios", "url" => "/nucleo/nuc_usuario/index"],
+										["name" => "Roles", "url" => "/nucleo/nuc_rol/index"],
+										["name" => "Permisos", "url" => "/nucleo/nuc_permiso/index"],
+										["name" => "Rutas", "url" => "/nucleo/nuc_ruta/index"],
 									] 
 					],
 					["name" => "Cobranza", "url" => "principal/inicio", "icon" => "fa fa-bank", 

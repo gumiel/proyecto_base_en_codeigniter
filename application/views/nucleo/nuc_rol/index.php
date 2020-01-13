@@ -1,8 +1,8 @@
 <?php 
-$this->templateci->setTitlePage("Permisos");
-$this->templateci->setDescriptionPage("Permisos");
+$this->templateci->setTitlePage("Roles");
+$this->templateci->setDescriptionPage("Roles");
 
-$this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
+$this->templateci->addJs("public/nucleo/nuc_rol/index.js");
  ?>
 
 <?php $this->load->view('template/up'); ?>
@@ -22,7 +22,7 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
           <i class="glyphicon glyphicon-refresh"></i> <br>Actualizar
       </button>
       <button type="button" class="btn btn-default btn-sm text-center" id="btnAsignarRuta"> 
-          <i class="glyphicon glyphicon-list"></i> <br>Asignar Rutas
+          <i class="glyphicon glyphicon-refresh"></i> <br>Asignar permisos
       </button>
 
     <?php echo buttons_close() ?>
@@ -42,10 +42,10 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
     <?php echo section_open("ctnBuscador", "Buscador"); ?>
           <?php echo form_open_multipart_ci('', ["id"=>"formBuscador"]); ?>
             <div class="col-md-4">
-              <?php echo form_dropdown_ci('Buscar', 'permiso[label]', [ ''=>'Seleccione', 'denominacion'=>'Denominacion', 'descripcion'=>'Descripcion']); ?>
+              <?php echo form_dropdown_ci('Buscar' , 'rol[label]', [ ''=>'Seleccione', 'denominacion'=>'Denominacion', 'descripcion'=>'Descripcion' ]); ?>
             </div>
             <div class="col-md-6">
-              <?php echo form_input_ci(false, 'permiso[text]', '', ["id"=>"permiso[permiso]"]); ?>
+              <?php echo form_input_ci(false, 'rol[text]', '', ["id"=>"rol[rol]"]); ?>
             </div>
             <div class="col-md-2">
               <button class="btn btn-success">Buscar</button>
@@ -61,7 +61,7 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
 
 
 
-    <?php echo section_open("ctnTabla", "Lista de Permisos"); ?>
+    <?php echo section_open("ctnTabla", "Lista de Roles"); ?>
 
           <table id="tblList" class="table table-striped table-hover">
             <thead>
@@ -88,19 +88,19 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
   <div class="modal fade" id="modalCreate">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?php echo form_open_multipart_ci('#', ["id"=>"formCreate"]); ?>
+        <?php echo form_open_multipart_ci('rol/create', ["id"=>"formCreate"]); ?>
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Crear Permiso</h4>
+          <h4 class="modal-title">Crear Rol</h4>
         </div>
         <div class="modal-body">
         
             <div class="box-body">
               
-              <?php echo form_input_ci("Denominación", 'permiso[denominacion]', ""); ?>
+              <?php echo form_input_ci("Denominación", 'rol[denominacion]', ""); ?>
               
-              <?php echo form_input_ci("Descripción", 'permiso[descripcion]', ''); ?>
+              <?php echo form_input_ci("Descripción", 'rol[descripcion]', ''); ?>
 
             </div>
 
@@ -127,18 +127,18 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
   <div class="modal fade" id="modalEdit">
     <div class="modal-dialog">
       <div class="modal-content">
-        <?php echo form_open_multipart_ci('#', ['id'=>'formEdit']); ?>
+        <?php echo form_open_multipart_ci('rol/edit', ['id'=>'formEdit']); ?>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Editar Permiso</h4>
+          <h4 class="modal-title">Editar Rol</h4>
         </div>
         <div class="modal-body">
         
             <div class="box-body">
 
-              <?php echo form_input_ci("Denominación", 'permiso[denominacion]', ""); ?>
+              <?php echo form_input_ci("Denominación", 'rol[denominacion]', ""); ?>
               
-              <?php echo form_input_ci("Descripción", 'permiso[descripcion]', ''); ?>
+              <?php echo form_input_ci("Descripción", 'rol[descripcion]', ''); ?>
 
             </div>
 
@@ -146,7 +146,7 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary">Guardar</button>
-          <?php echo form_hidden('permiso[id_permiso]', ''); ?>
+          <?php echo form_hidden('rol[id_rol]', ''); ?>
         </div>
         <?php echo form_close(); ?>
       </div>
@@ -160,44 +160,54 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
 
 
 
-
   <div class="modal fade" id="modalAsignarRuta">
     <div class="modal-dialog">
       <div class="modal-content">
+
+        <?php echo form_open_multipart_ci('rol/asignarRuta', ["id"=>"formAsignarRuta"]); ?>
+
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Asignar Rutas</h4>
+          <h4 class="modal-title">Asignar Ruta</h4>
         </div>
         <div class="modal-body">
         
             <div class="box-body">
               
-              <div>
-                <a href="#" class="btn btn-info" id="actualizarPermisoRuta">
-                  <span class="glyphicon glyphicon-refresh"></span> Actualizar
-                </a>
+              <div class="col-md-4">
+                <select name="origen" id="origen" multiple="multiple" size="8" class="form-control">
+                  <option value="1">Opción 1</option>
+                  <option value="2">Opción 2</option>
+                  <option value="3">Opción 3</option>
+                  <option value="4">Opción 4</option>
+                  <option value="5">Opción 5</option>
+                  <option value="6">Opción 6</option>
+                  <option value="7">Opción 7</option>
+                  <option value="8">Opción 8</option>
+                </select>
               </div>
-                <table id="tblListRutas" class="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th data-priority="1" width="15"></th>
-                      <th data-priority="2" >Ruta</th>
-                      <th data-priority="3" >Url</th>
-                      <th data-priority="4" >Descripcion</th>                                
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              <div>
-                
+              <div  class="col-md-4">
+                <input type="button" class="btn pasar izq" value="Pasar »">
+                <input type="button" class="btn quitar der" value="« Quitar"><br />
+                <input type="button" class="btn pasartodos izq" value="Todos »">
+                <input type="button" class="btn quitartodos der" value="« Todos">
               </div>
-
+              <div class="col-md-4">
+                <select name="rutas[][id_ruta]" id="destino" multiple="multiple" size="8" class="form-control"></select>
+              </div  class="col-md-4">
             </div>
 
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <input type="hidden" name="rol[id_rol]" value="">
+        </div>
+        <?php echo form_close(); ?>
       </div>
     </div>
   </div>
+
 
 
   

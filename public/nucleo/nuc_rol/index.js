@@ -5,22 +5,15 @@ var ctnBotonera           = new ContainerJS("#ctnBotonera");
 var ctnBuscador           = new ContainerJS("#ctnBuscador");
 var ctnTabla              = new ContainerJS("#ctnTabla");
 
-var ctnModalCreate      = new ContainerJS("#modalCreate");
-var ctnModalEdit        = new ContainerJS("#modalEdit");
-var ctnModalAsignarRuta = new ContainerJS("#modalAsignarRuta");
+var ctnModalCreate = new ContainerJS("#modalCreate");
+var ctnModalEdit   = new ContainerJS("#modalEdit");
 
 
 
 /*--------------------------------------*/
 /* Tablas */
 /*--------------------------------------*/
-var tblList      = new CDataTable('#tblList');
-var tblListRutas = new CDataTable('#tblListRutas');
-
-
-
-
-
+var tblList = new CDataTable('#tblList');
 
 
 
@@ -29,13 +22,6 @@ var tblListRutas = new CDataTable('#tblListRutas');
 /* Registrar tablas en los componentes*/
 /*--------------------------------------*/
 ctnTabla.registerTable(tblList, 'tblList');
-ctnModalAsignarRuta.registerTable(tblListRutas, 'tblListRutas');
-
-
-
-
-
-
 
 /*--------------------------------------*/
 /* Registrar tablas en los componentes*/
@@ -70,10 +56,10 @@ ctnBotonera._iniciar = function(){
             
             if(res){
                 var dataFind = ctnTabla.tblList.getIds();
-                var id_permiso  = dataFind[0].id_permiso;   
+                var id_rol  = dataFind[0].id_rol;   
 
-                var url = "/nucleo/nuc_permiso/deleteAjax"; 
-                var data = {permiso:{id_permiso: id_permiso}};
+                var url = "/nucleo/nuc_rol/deleteAjax"; 
+                var data = {rol:{id_rol: id_rol}};
                 
                 CallRest.post(url, data, function(res){
 
@@ -88,19 +74,6 @@ ctnBotonera._iniciar = function(){
             }            
 
         });
-    });
-
-    self.ele.find("#btnAsignarRuta").click(function(event){
-
-        var dataFind = ctnTabla.tblList.getIds();
-        var id_permiso  = dataFind[0].id_permiso;
-
-        if( typeof id_permiso != "undefined" )
-        {
-            ctnModalAsignarRuta.ele.modal();
-            ctnModalAsignarRuta.llenarTablaRutas(id_permiso);
-        }
-
     });
 
 };
@@ -130,10 +103,10 @@ ctnModalCreate._iniciar = function(){
 
 	self.$formCreate.validate({
         rules: {
-            "permiso[denominacion]": {
+            "rol[denominacion]": {
                 required: true
             },
-            "permiso[descripcion]": {
+            "rol[descripcion]": {
                 required: true,
             }
         },
@@ -149,7 +122,7 @@ ctnModalCreate.insertar = function(){
         
         if(resultado) 
         {
-            var url  = "/nucleo/nuc_permiso/createAjax";            
+            var url  = "/nucleo/nuc_rol/createAjax";            
             var data = self.$formCreate.serialize();
             
             CallRest.post(url, data, function(res) {
@@ -173,12 +146,14 @@ ctnModalEdit._iniciar = function(){
 
     self.$formEdit.validate({
         rules: {
-            "permiso[denominacion]": {
+            rules: {
+            "rol[denominacion]": {
                 required: true
             },
-            "permiso[descripcion]": {
+            "rol[descripcion]": {
                 required: true,
             }
+        },
         }
     });
 
@@ -192,7 +167,7 @@ ctnModalEdit.editarDatos = function(){
         
         if(resultado) 
         {
-            var url  = "/nucleo/nuc_permiso/editAjax";            
+            var url  = "/nucleo/nuc_rol/editAjax";            
             var data = self.$formEdit.serialize();
             
             CallRest.post(url, data, function(res){
@@ -216,16 +191,16 @@ ctnTabla.llenarTabla = function(dataFilter){
 	var self = this;
 	self.tblList.clean(); // Limpia primeramente la tabla si es que tiene algun dato           
 
-    var url  = '/nucleo/nuc_permiso/listAjax';
+    var url  = '/nucleo/nuc_rol/listAjax';
     var data = dataFilter;
 
     CallRest.post(url, data, function(res){
-        $.each(res.permisos, function(index, data) {
+        $.each(res.roles, function(index, rol) {
             var row = "";
             row += "<tr>";
-            row += "    <td><input type='hidden'name='id_permiso' value='"+data.id_permiso+"' /></td>";
-            row += "    <td>"+data.denominacion+"</td>";
-            row += "    <td>"+data.descripcion+"</td>";
+            row += "    <td><input type='hidden'name='id_rol' value='"+rol.id_rol+"' /></td>";
+            row += "    <td>"+rol.denominacion+"</td>";
+            row += "    <td>"+rol.descripcion+"</td>";
             row += "</tr>";
 
             self.tblList.append(row);                 
@@ -250,16 +225,16 @@ ctnModalEdit.obtenerDatos = function()
 {
 	var self = this;
     var dataFind = ctnTabla.tblList.getIds();
-    var id_permiso  = dataFind[0].id_permiso;   
+    var id_rol  = dataFind[0].id_rol;   
 
-    var url = '/nucleo/nuc_permiso/getAjax';
-    var data = {permiso:{id_permiso: id_permiso}};
+    var url = '/nucleo/nuc_rol/getAjax';
+    var data = {rol:{id_rol: id_rol}};
 
 
     CallRest.post(url, data, function(res){
         if(res.result==1)
         {            
-            self.llenarFormularioEdicion(res.permiso);      
+            self.llenarFormularioEdicion(res.rol);      
         }else{
             Notificacions.errors();
         }
@@ -271,81 +246,15 @@ ctnModalEdit.llenarFormularioEdicion = function(data)
 	var self = this;
     self.limpiarFormulario();
     
-    self.ele.find("input[name='permiso[denominacion]']").val(data.denominacion);
-    self.ele.find("input[name='permiso[descripcion]']").val(data.descripcion);
-    self.ele.find("input[name='permiso[id_permiso]']").val(data.id_permiso);
+    self.ele.find("input[name='rol[denominacion]']").val(data.denominacion);
+    self.ele.find("input[name='rol[descripcion]']").val(data.descripcion);
+    self.ele.find("input[name='rol[id_rol]']").val(data.id_rol);
 };
 
 ctnModalEdit.limpiarFormulario = function(){
 	var self = this;
     self.$formEdit.trigger("reset");
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ctnModalAsignarRuta._iniciar = function(){
-    var self = this;
-
-    self.ele.find("#actualizarPermisoRuta").click(function(event){
-
-    });
-};
-
-ctnModalAsignarRuta.llenarTablaRutas = function(idPermiso){
-    var self = this;
-
-    
-        
-        self.tblListRutas.clean();
-
-        var url  = '/nucleo/nuc_permiso_ruta/listPorPermisoAjax';
-        var data = { "permiso":{ "id_permiso":idPermiso}};
-
-        CallRest.post(url, data, function(res){
-            $.each(res.permiso_rutas, function(index, data) {
-                var row = "";
-                row += "<tr>";
-                row += "    <td><input type='hidden'name='id_permiso_ruta' value='"+data.id_permiso_ruta+"' /></td>";
-                row += "    <td>"+data.denominacion+"</td>";
-                row += "    <td>"+data.url+"</td>";
-                row += "    <td>"+data.descripcion+"</td>";
-                row += "</tr>";
-
-                self.tblListRutas.append(row);                 
-            });
-
-            // self.tblListRutas.simple();
-        });
-
-    
-
-
-};
-
-
-
-
-
-
-
 
 
 
@@ -364,5 +273,7 @@ jQuery(document).ready(function($)
 	ctnTabla.init();
 	ctnModalCreate.init();
 	ctnModalEdit.init();
-    ctnModalAsignarRuta.init();
+
 });
+
+
