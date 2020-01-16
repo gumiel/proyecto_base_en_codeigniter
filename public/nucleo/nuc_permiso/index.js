@@ -306,14 +306,28 @@ ctnModalAsignarRuta._iniciar = function(){
 
     self.ele.find("#actualizarPermisoRuta").click(function(event){
 
+        var dataFind = ctnTabla.tblList.getIds();
+        var id_permiso  = dataFind[0].id_permiso;
+
+        if( typeof id_permiso != "undefined" )
+        {            
+            self.llenarTablaRutas(id_permiso);
+        }
+    });
+
+    self.ele.on("click", "input[name='asignacionRuta']", function(ele){
+        var idRuta = $(this).val();
+        
+        if(idRuta!=null){
+            self.cambiarAsignacionRuta(idRuta);
+        }
+
     });
 };
 
 ctnModalAsignarRuta.llenarTablaRutas = function(idPermiso){
     var self = this;
 
-    
-        
         self.tblListRutas.clean();
 
         var url  = '/nucleo/nuc_permiso_ruta/listPorPermisoAjax';
@@ -322,8 +336,10 @@ ctnModalAsignarRuta.llenarTablaRutas = function(idPermiso){
         CallRest.post(url, data, function(res){
             $.each(res.permiso_rutas, function(index, data) {
                 var row = "";
+                var checkbox = (data.id_permiso_ruta!=null)? "checked='checked'":"";
                 row += "<tr>";
-                row += "    <td><input type='hidden'name='id_permiso_ruta' value='"+data.id_permiso_ruta+"' /></td>";
+                row += "    <td><input type='hidden' name='id_permiso_ruta' value='"+data.id_permiso_ruta+"' /></td>";
+                row += "    <td><input type='checkbox' name='asignacionRuta' "+checkbox +" value='"+data.id_ruta+"' ></td>";
                 row += "    <td>"+data.denominacion+"</td>";
                 row += "    <td>"+data.url+"</td>";
                 row += "    <td>"+data.descripcion+"</td>";
@@ -332,7 +348,7 @@ ctnModalAsignarRuta.llenarTablaRutas = function(idPermiso){
                 self.tblListRutas.append(row);                 
             });
 
-            // self.tblListRutas.simple();
+            self.tblListRutas.simple();
         });
 
     
@@ -340,7 +356,27 @@ ctnModalAsignarRuta.llenarTablaRutas = function(idPermiso){
 
 };
 
+ctnModalAsignarRuta.cambiarAsignacionRuta = function(idRuta){
 
+    var self = this;
+
+    var dataFind = ctnTabla.tblList.getIds();
+    var id_permiso  = dataFind[0].id_permiso;
+
+    var url  = "/nucleo/nuc_permiso_ruta/cambiarAsignacionRuta";            
+    var data = { permiso_ruta: { id_ruta: idRuta, id_permiso: id_permiso}};
+    
+    CallRest.post(url, data, function(res){
+        if(res.result==1)
+        {            
+            Notificacions.success(); 
+            self.llenarTablaRutas(id_permiso);
+        }else{
+            Notificacions.errors();
+        }
+    });
+
+};
 
 
 

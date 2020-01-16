@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Roles");
 $this->templateci->setDescriptionPage("Roles");
 
-$this->templateci->addJs("public/nucleo/nuc_rol/index.js");
+$this->templateci->addJs("public/nucleo/nuc_rol/index.js?data=".date('YmdHis'));
  ?>
 
 <?php $this->load->view('template/up'); ?>
@@ -21,8 +21,8 @@ $this->templateci->addJs("public/nucleo/nuc_rol/index.js");
       <button type="button" class="btn btn-default btn-sm text-center" id="btnActualizar"> 
           <i class="glyphicon glyphicon-refresh"></i> <br>Actualizar
       </button>
-      <button type="button" class="btn btn-default btn-sm text-center" id="btnAsignarRuta"> 
-          <i class="glyphicon glyphicon-refresh"></i> <br>Asignar permisos
+      <button type="button" class="btn btn-default btn-sm text-center" id="btnAsignarPermiso"> 
+          <i class="glyphicon glyphicon-list"></i> <br>Asignar Permisos
       </button>
 
     <?php echo buttons_close() ?>
@@ -153,6 +153,47 @@ $this->templateci->addJs("public/nucleo/nuc_rol/index.js");
     </div>
   </div>
 
+
+
+
+
+  <div class="modal fade" id="modalAsignarPermiso" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
+          <h4 class="modal-title">Asignar Permisos</h4>
+        </div>
+        <div class="modal-body">
+        
+            <div class="box-body">
+              
+              <p>
+                <a href="#" class="btn btn-info" id="actualizarRolPermiso">
+                  <span class="glyphicon glyphicon-refresh"></span> Actualizar
+                </a>
+              </p>
+                <table id="tblListPermisos" class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th data-priority="1" width="15"></th>
+                      <th data-priority="2" ></th>                                
+                      <th data-priority="3" >Permiso</th>                      
+                      <th data-priority="4" >Descripcion</th>                                
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              <div>
+                
+              </div>
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

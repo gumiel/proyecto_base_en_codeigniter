@@ -6,6 +6,9 @@ var CallRest = {
 		xhrFields: { withCredentials:true },
 		data: {},
 		async: true,
+		beforeSend: function(request) {
+			request.setRequestHeader("typeCallRest", "json");
+		},
 	},
 	post: function(url, data, callback){
 

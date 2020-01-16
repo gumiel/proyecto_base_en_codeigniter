@@ -13,11 +13,18 @@ class Nuc_Permiso_Ruta_model extends Generic_Model {
 
 	public function listPorPermiso($idPermiso){
 
-		$this->db->select('nuc_ruta.denominacion, nuc_ruta.url, nuc_ruta.descripcion, ');
-		$this->db->join('nuc_ruta', 'nuc_ruta.id_ruta = nuc_permiso_ruta.id_ruta', 'inner');
-		$this->db->where('nuc_permiso_ruta.id_permiso', $idPermiso);
-		$this->db->where('nuc_permiso_ruta.estado_registro', 'activo');
-		$result = $this->db->get('nuc_permiso_ruta');
+		$this->db->select('nuc_ruta.denominacion, 
+							nuc_ruta.url, 
+							nuc_ruta.descripcion, 
+							nuc_permiso_ruta.id_permiso_ruta, 
+							nuc_permiso_ruta.id_permiso, 
+							nuc_ruta.id_ruta');
+		$this->db->join('nuc_permiso_ruta', 
+						"nuc_ruta.id_ruta = nuc_permiso_ruta.id_ruta and nuc_permiso_ruta.estado_registro = 'activo' and nuc_permiso_ruta.id_permiso = ".$idPermiso." ", 'left');
+		$this->db->where('nuc_ruta.estado_registro', 'activo');
+		$this->db->order_by('nuc_permiso_ruta.id_permiso_ruta', 'desc');
+		$result = $this->db->get('nuc_ruta');
+		
 		return $result->result();
 
 	}

@@ -4,8 +4,10 @@
 var ctnBotonera           = new ContainerJS("#ctnBotonera");
 var ctnBuscador           = new ContainerJS("#ctnBuscador");
 var ctnTabla              = new ContainerJS("#ctnTabla");
+
 var ctnModalCrearUsuario  = new ContainerJS("#modalCrearUsuario");
 var ctnModalEditarUsuario = new ContainerJS("#modalEditarUsuario");
+var ctnModalAsignarRol    = new ContainerJS("#modalAsignarRol");
 
 
 
@@ -15,7 +17,7 @@ var ctnModalEditarUsuario = new ContainerJS("#modalEditarUsuario");
 /* Tablas */
 /*--------------------------------------*/
 var tblUsuario = new CDataTable('#tblUsuario');
-
+var tblListRol = new CDataTable('#tblListRol');
 
 
 
@@ -24,7 +26,15 @@ var tblUsuario = new CDataTable('#tblUsuario');
 /* Registrar tablas en los componentes*/
 /*--------------------------------------*/
 ctnTabla.registerTable(tblUsuario, 'tblUsuario');
+ctnModalAsignarRol.registerTable(tblListRol, 'tblListRol');
 
+
+
+
+
+/*--------------------------------------*/
+/* Registrar tablas en los componentes*/
+/*--------------------------------------*/
 ctnBuscador.registerId('formBuscador', '$formBuscador');
 ctnModalCrearUsuario.registerId('formCrearUsuario', '$formCrearUsuario');
 // ctnModalEditarActor.registerId('formEditarUsuario');
@@ -116,6 +126,19 @@ ctnBotonera._iniciar = function(){
             }            
 
         });
+    });
+
+    self.ele.find("#btnAsignarRol").click(function(event){
+
+        var dataFind = ctnTabla.tblUsuario.getIds();
+        var id_usuario  = dataFind[0].id_usuario;
+
+        if( typeof id_usuario != "undefined" )
+        {
+            ctnModalAsignarRol.ele.modal();
+            ctnModalAsignarRol.llenarTablaRoles(id_usuario);
+        }
+
     });
 };
 
@@ -259,6 +282,80 @@ ctnModalEditarUsuario.llenarFormularioEdicion = function(data){
     self.ele.find("input[name='usuario[id_usuario]']").val(data.id_usuario);
 };
 
+ctnModalAsignarRol._iniciar = function(){
+    var self = this;
+
+    self.ele.find("#actualizarUsuarioRol").click(function(event){
+
+        var dataFind = ctnTabla.tblUsuario.getIds();
+        var id_usuario  = dataFind[0].id_usuario;
+
+        if( typeof id_usuario != "undefined" )
+        {            
+            self.llenarTablaRoles(id_usuario);
+        }
+    });
+
+    self.ele.on("click", "input[name='asignacionRol']", function(ele){
+        var idUsuario = $(this).val();
+        
+        if(idUsuario!=null){
+            self.cambiarAsignacionRol(idUsuario);
+        }
+
+    });
+};
+
+
+ctnModalAsignarRol.llenarTablaRoles = function(idUsuario){
+    var self = this;
+
+    self.tblListRol.clean();
+
+    var url  = '/nucleo/nuc_usuario_rol/listPorUsuarioAjax';
+    var data = { "nuc_usuario":{ "id_usuario":idUsuario}};
+
+    CallRest.post(url, data, function(res){
+        $.each(res.usuario_roles, function(index, data) {
+            var row = "";
+            var checkbox = (data.id_usuario_rol!=null)? "checked='checked'":"";
+            row += "<tr>";
+            row += "    <td><input type='hidden' name='id_usuario_rol' value='"+data.id_usuario_rol+"' /></td>";
+            row += "    <td><input type='checkbox' name='asignacionRol' "+checkbox +" value='"+data.id_rol+"' ></td>";
+            row += "    <td>"+data.denominacion+"</td>";
+            row += "    <td>"+data.descripcion+"</td>";
+            row += "</tr>";
+
+            self.tblListRol.append(row);                 
+        });
+
+        self.tblListRol.simple();
+    });
+
+};
+
+
+ctnModalAsignarRol.cambiarAsignacionRol = function(idRol){
+
+    var self = this;
+
+    var dataFind = ctnTabla.tblUsuario.getIds();
+    var id_usuario  = dataFind[0].id_usuario;
+
+    var url  = "/nucleo/nuc_usuario_rol/cambiarAsignacionRol";            
+    var data = { nuc_usuario_rol: { id_rol: idRol, id_usuario: id_usuario}};
+    
+    CallRest.post(url, data, function(res){
+        if(res.result==1)
+        {            
+            Notificacions.success(); 
+            self.llenarTablaRoles(id_usuario);
+        }else{
+            Notificacions.errors();
+        }
+    });
+
+};
 
 
 
@@ -269,5 +366,6 @@ jQuery(document).ready(function($) {
 	ctnModalCrearUsuario.init();
 	ctnModalEditarUsuario.init();
     ctnBuscador.init();
+    ctnModalAsignarRol.init();
 
 });

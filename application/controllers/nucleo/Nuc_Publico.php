@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Publico extends CI_Controller {
+class Nuc_Publico extends CI_Controller {
 
 	public function __construct()
 	{
@@ -12,7 +12,8 @@ class Publico extends CI_Controller {
 
 		$this->load->helper('form_ci_helper');
 
-		$this->load->model('usuario_model');
+		$this->load->model('nuc_usuario_model');
+		$this->load->model('nuc_tipo_usuario_model');
 	}
 
 	public function index()
@@ -23,7 +24,7 @@ class Publico extends CI_Controller {
 	public function login()
 	{
 		
-		$this->load->view('publico/login');
+		$this->load->view('nucleo/nuc_publico/login');
 	}
 
 	public function loginProcess()
@@ -41,27 +42,29 @@ class Publico extends CI_Controller {
 		if ($this->form_validation->run() == true)
 		{		
 			
-			$usuarioFind = $this->usuario_model->get( [ "cuenta"=>$usuario['cuenta'] ] );
+			$usuarioFind = $this->nuc_usuario_model->get( [ "cuenta"=>$usuario['cuenta'] ] );
+			$tipoUsuario = $this->nuc_tipo_usuario_model->get( [ "id_tipo_usuario"=>$usuarioFind->id_tipo_usuario ]);
 			$newSession = array(
 		        'id_usuario'     => $usuarioFind->id_usuario,		        
-		        'cuenta'  => $usuarioFind->cuenta
+		        'cuenta'  => $usuarioFind->cuenta,
+		        'tipo_usuario' => $tipoUsuario->denominacion
 			);
 
 			$this->session->set_userdata($newSession);
 			$this->session->set_flashdata('message', [ "success"=>"Ingresaste al sistema" ]);
 			
-			redirect('principal/inicio','refresh');
+			redirect('/nucleo/nuc_principal/inicio','refresh');
 		} else
 		{
 			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);
-			redirect('/publico/publico/login','refresh');
+			redirect('/nucleo/nuc_publico/login','refresh');
 		}
 
 	}
 
 	public function payment()
 	{
-		$this->load->view('/publico/publico/payment');
+		$this->load->view('/nucleo/nuc_publico/payment');
 	}
 
 	public function crearCaptcha()
@@ -90,9 +93,9 @@ class Publico extends CI_Controller {
 
 		$this->form_validation->set_message(__FUNCTION__, 'El password no coincide');	
 
-		$usuarioFind = $this->usuario_model->get( [ "cuenta"=>$cuenta ] );
+		$usuarioFind = $this->nuc_usuario_model->get( [ "cuenta"=>$cuenta ] );
 
-		return ($this->encryption->decrypt($usuarioFind->clave)==$password);
+		return (isset($usuarioFind->clave) && $this->encryption->decrypt($usuarioFind->clave)==$password);
 
 	}
 

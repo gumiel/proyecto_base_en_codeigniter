@@ -16,7 +16,7 @@ class Captcha_ci
 	public function crear()
 	{
 
-		$this->ci->config->load('config_captcha_ci');
+		$this->ci->config->load('otros/config_captcha_ci');
 
 		$this->permitted_chars = $this->ci->config->item('permitted_chars');
 		$string_length = 6;
@@ -63,6 +63,7 @@ class Captcha_ci
 		$textcolors = [$black, $white];
 		 
 		$fonts = $this->ci->config->item('fonts');
+		
 		$string_length = 6;
 		 
 		for($i = 0; $i < $string_length; $i++) 
@@ -88,7 +89,7 @@ class Captcha_ci
 
 	public function generarString($input, $strength = 5) 
 	{
-		$this->ci->config->load('config_captcha_ci');
+		$this->ci->config->load('otros/config_captcha_ci');
 
 	    $input_length = strlen($input);
 	    $random_string = '';

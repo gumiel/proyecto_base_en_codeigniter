@@ -25,9 +25,9 @@
   <div class="login-box-body">
     <p class="login-box-msg">Inicia sesión para comenzar</p>
 
-    <form action="<?php echo site_url("/publico/publico/loginProcess") ?>" method="post">
+    <form action="<?php echo site_url("/nucleo/nuc_publico/loginProcess") ?>" method="post">
       <div class="form-group has-feedback">
-        <input type="text" name="usuario[cuenta]" class="form-control" placeholder="Usuario" autofocus>
+        <input type="text" name="usuario[cuenta]" class="form-control" placeholder="Usuario" autofocus autocomplete="off">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -35,7 +35,7 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div>
-          <label>CAPTCHA:</label><img src="<?php echo site_url("publico/publico/crearCaptcha") ?>" alt="CAPTCHA" class="captcha-image">
+          <label>CAPTCHA:</label><img src="<?php echo site_url("nucleo/nuc_publico/crearCaptcha") ?>" alt="CAPTCHA" class="captcha-image">
           
           <button type="button" class="refresh-captcha btn btn-default "><i class="glyphicon glyphicon-refresh"></i></button>
           <p>Ingresar texto de captcha:<input  name="captcha" id="captcha" class="form-control" value="" ></p>
@@ -67,7 +67,7 @@
 <script>
     var refreshButton = document.querySelector(".refresh-captcha");
     refreshButton.onclick = function() {
-      document.querySelector(".captcha-image").src = '<?php echo site_url("publico/publico/crearCaptcha/") ?>?date=' + Date.now();
+      document.querySelector(".captcha-image").src = '<?php echo site_url("/nucleo/nuc_publico/crearCaptcha/") ?>?date=' + Date.now();
     }
   </script>
 </body>

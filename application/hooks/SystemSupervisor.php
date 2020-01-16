@@ -16,7 +16,7 @@ class SystemSupervisor
 
 	public function checkLogin()
 	{		
-		$this->ci->config->load('SystemSupervisor/config');
+		$this->ci->config->load('otros/config_system_supervisor');
 
 		$default_page_private = $this->ci->config->item('default_page_private');
 		$default_page_public  = $this->ci->config->item('default_page_public');
@@ -29,14 +29,39 @@ class SystemSupervisor
 		$method = $this->ci->router->fetch_method();
 		$currentRoute = $this->getUriCurrent();
 		
-		if ( $this->ci->session->has_userdata($sessions_id) == FALSE && $process_login != $currentRoute )
+		if ( $this->ci->session->has_userdata($sessions_id) == FALSE )
 		{ 										
-			$typePage = $this->verifyRoutePublicPage( $currentRoute, $pages_public);
+			if($process_login == $currentRoute)
+			{
+				$typePage = $this->verifyRoutePublicPage( $currentRoute, $pages_public );
 
-			if( $typePage=='PRIVATE') // verifica si la ruta actual es PRIVADA
-				redirect( $default_page_public,'refresh' );	
+				if( $typePage=='PRIVATE'){ // verifica si la ruta actual es PRIVADA
+					if($process_login != $currentRoute){						
+						redirect( $default_page_public,'refresh' );
+					}
+				}				
+			}
+			
+		} else{
+			
+			$tipoUsuario = $this->ci->session->userdata('tipo_usuario');
+			// echo $tipoUsuario; exit;
+			if($tipoUsuario!='SuperAdmin')
+			{		
+				array_push($pages_public, $process_login);
+				$typePage = $this->verifyRoutePublicPage( $currentRoute, $pages_public );
+				
+				if( $typePage=='PRIVATE'){ // verifica si la ruta actual es PRIVADA
 
-		} 
+					$pagesPublicDB = $this->getUrlToDB( $this->ci->session->userdata($sessions_id) );
+					
+					if( !$this->validRoute($currentRoute, $pagesPublicDB) ){
+						redirect( $default_page_public,'refresh' );
+					}
+
+				}
+			}
+		}
 
 	}
 
@@ -69,6 +94,36 @@ class SystemSupervisor
 		return $res;
 	}
 
+	private function getUrlToDB($sessionsId)
+	{
+		$this->ci->db->select('nuc_ruta.url');
+		$this->ci->db->join('nuc_usuario_rol', 'nuc_usuario_rol.id_usuario = nuc_usuario.id_usuario', 'inner');
+		$this->ci->db->join('nuc_rol', 'nuc_usuario_rol.id_rol = nuc_rol.id_rol', 'inner');
+		$this->ci->db->join('nuc_rol_permiso', 'nuc_rol.id_rol = nuc_rol_permiso.id_rol', 'inner');
+		$this->ci->db->join('nuc_permiso', 'nuc_permiso.id_permiso = nuc_rol_permiso.id_permiso', 'inner');
+		$this->ci->db->join('nuc_permiso_ruta', 'nuc_permiso_ruta.id_permiso = nuc_permiso.id_permiso', 'inner');
+		$this->ci->db->join('nuc_ruta', 'nuc_ruta.id_ruta = nuc_permiso_ruta.id_ruta', 'inner');
+		$this->ci->db->where('nuc_usuario.id_usuario', $sessionsId);
+		$result = $this->ci->db->get('nuc_usuario');
+
+		$res = array();
+		foreach ($result->result_array() as $data) {
+			array_push($res, $data['url']);			
+		}
+		return $res;
+	}
+
+	private function validRoute($currentRoute, $pagesPublicDB)
+	{
+		$res = false;
+		foreach ($pagesPublicDB as $value) {
+			if( $value == $currentRoute ){
+				$res = true;
+				break;
+			}
+		}
+		return $res;
+	}
 
 }
 /*

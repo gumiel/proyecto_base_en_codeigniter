@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Permisos");
 $this->templateci->setDescriptionPage("Permisos");
 
-$this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
+$this->templateci->addJs("public/nucleo/nuc_permiso/index.js?data=".date('YmdHis'));
  ?>
 
 <?php $this->load->view('template/up'); ?>
@@ -161,29 +161,30 @@ $this->templateci->addJs("public/nucleo/nuc_permiso/index.js");
 
 
 
-  <div class="modal fade" id="modalAsignarRuta">
+  <div class="modal fade" id="modalAsignarRuta" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
           <h4 class="modal-title">Asignar Rutas</h4>
         </div>
         <div class="modal-body">
         
             <div class="box-body">
               
-              <div>
+              <p>
                 <a href="#" class="btn btn-info" id="actualizarPermisoRuta">
                   <span class="glyphicon glyphicon-refresh"></span> Actualizar
                 </a>
-              </div>
+              </p>
                 <table id="tblListRutas" class="table table-striped table-hover">
                   <thead>
                     <tr>
                       <th data-priority="1" width="15"></th>
-                      <th data-priority="2" >Ruta</th>
-                      <th data-priority="3" >Url</th>
-                      <th data-priority="4" >Descripcion</th>                                
+                      <th data-priority="2" ></th>                                
+                      <th data-priority="3" >Ruta</th>
+                      <th data-priority="4" >Url</th>
+                      <th data-priority="5" >Descripcion</th>                                
                     </tr>
                   </thead>
                   <tbody></tbody>

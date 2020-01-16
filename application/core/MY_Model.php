@@ -291,7 +291,7 @@ class Generic_model extends My_model
 
 	private function obtenerDatosDeConfiguracion()
 	{
-		$this->config->load('config_generic_model');
+		$this->config->load('otros/config_generic_model');
 
 		$this->positionStart     = $this->config->item('gm_positionStart');
 		$this->positionSeparator = $this->config->item('gm_positionSeparator');

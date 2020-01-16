@@ -26,6 +26,23 @@ class Nuc_Permiso_Ruta extends CI_Controller {
 		$this->utils->json($data);	
 	}
 
+	public function cambiarAsignacionRuta()
+	{
+		$permiso_ruta = $this->input->post("permiso_ruta");
+		
+		$cantidad = $this->nuc_permiso_ruta_model->count($permiso_ruta);
+		
+		if( $cantidad >=1 ){
+			$this->nuc_permiso_ruta_model->delete($permiso_ruta);
+		
+		}else{
+			$this->nuc_permiso_ruta_model->insert($permiso_ruta);
+		}
+
+		$data['result'] = 1;
+		$this->utils->json($data);	
+	}
+
 }
 
 /* End of file Nuc_Permiso_Ruta.php */

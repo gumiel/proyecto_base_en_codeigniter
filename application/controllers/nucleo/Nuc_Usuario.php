@@ -13,6 +13,7 @@ class Nuc_Usuario extends CI_Controller {
 		
 		$this->load->library('rules/Usuario_rule');		
 		$this->load->model('nuc_usuario_model');
+		$this->load->model('nuc_tipo_usuario_model');
 
 	}
 
@@ -46,7 +47,7 @@ class Nuc_Usuario extends CI_Controller {
 	public function desconectar()
 	{
 		$this->session->sess_destroy();
-		$this->config->load('SystemSupervisor/config');
+		$this->config->load('/otros/config_system_supervisor.php');
 		redirect($this->config->item('page_login'),'refresh');
 	}
 
@@ -103,7 +104,7 @@ class Nuc_Usuario extends CI_Controller {
 		$usuario = $this->input->post("usuario");
 
 		$this->form_validation->set_rules($this->usuario_rule->apply());
-		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']');
+		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']|callback__verificar_super_admin');
 		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
 
 		if ( isset($usuario["clave"]) && $usuario["clave"] != '')
@@ -143,7 +144,7 @@ class Nuc_Usuario extends CI_Controller {
 		$usuario = $this->input->post("usuario");
 		$data = array();
 
-		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
+		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario|callback__verificar_super_admin');
 
 		if ( $this->form_validation->run() )
 		{
@@ -275,6 +276,22 @@ class Nuc_Usuario extends CI_Controller {
 		{			
 			$usuario = $this->nuc_usuario_model->getById($idUsuario);			
 			return ( isset($usuario) );
+		} else
+		{
+			return FALSE;
+		}
+	}
+
+	public function _verificar_super_admin($idUsuario)
+	{
+		$this->form_validation->set_message(__FUNCTION__, 'El Usuario Super Admin no puede cambiar ni eliminar ningun datos');
+		if ($idUsuario > 0)
+		{			
+			$usuario = $this->nuc_usuario_model->getById($idUsuario);			
+			$tipoUsuario = $this->nuc_tipo_usuario_model->getById($usuario->id_tipo_usuario);			
+
+			return ( $tipoUsuario->denominacion!='SuperAdmin' );
+
 		} else
 		{
 			return FALSE;

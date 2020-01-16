@@ -12,7 +12,7 @@ $this->templateci->setDescriptionPage("Paguina de inicio");
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Titulo</h3>
+        <h3 class="box-title">Titualo</h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -23,12 +23,7 @@ $this->templateci->setDescriptionPage("Paguina de inicio");
         </div>
       </div>
       <div class="box-body">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Para crear una copia automatica de bd ingresar aqui <?php echo anchor('/gestionarBackup/backup/index', 'Crear BD', ''); ?>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">

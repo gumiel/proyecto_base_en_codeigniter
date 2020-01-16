@@ -5,7 +5,8 @@ class TemplateCI
 {
 	protected $ci;
 
-	public $title = "ADMINISTRADOR";
+	public $title = "ADMIN DEV";
+	public $icono = "";
 	public $titlePage = "";
 	public $descriptionPage = "";
 
@@ -77,13 +78,14 @@ class TemplateCI
 	public function __construct()
 	{
         $this->ci =& get_instance();
+        $this->icono = base_url('/public/images/favicon.ico');
 	}
 
 	public function menuPrincipal()
 	{
 		// Para saber los iconos ingresar a http://localhost/codeigniter/recursos/AdminLTE-master/pages/UI/icons.html
 		$res = [ 
-					["name" => "Inicio", "url" => "principal/inicio", "icon" => "fa fa-dashboard" ],			
+					["name" => "Inicio", "url" => "/nucleo/nuc_principal/inicio", "icon" => "fa fa-dashboard" ],			
 					["name" => "Usuarios", "url" => "#", "icon" => "fa fa-user", 
 						'subMenu'=> [
 										["name" => "Usuarios", "url" => "/nucleo/nuc_usuario/index"],
@@ -218,6 +220,7 @@ class TemplateCI
 	
 	public function setTitlePage($title){
 		$this->titlePage = $title;
+		// $this->icono = '111'.base_url('/public/images/favicon.ico');
 	}
 
 	public function setDescriptionPage($descriptionPage)
