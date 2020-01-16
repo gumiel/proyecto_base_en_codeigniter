@@ -7,7 +7,7 @@ var CallRest = {
 		data: {},
 		async: true,
 		beforeSend: function(request) {
-			request.setRequestHeader("typeCallRest", "json");
+			request.setRequestHeader("callRest", "json");
 		},
 	},
 	post: function(url, data, callback){

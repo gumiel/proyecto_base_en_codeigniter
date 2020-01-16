@@ -29,6 +29,8 @@ class Nuc_Publico extends CI_Controller {
 
 	public function loginProcess()
 	{
+		$this->config->load('otros/config_system_supervisor');
+
 		$usuario = $this->input->post("usuario");
 		$captcha = $this->input->post("captcha");
 		
@@ -44,6 +46,7 @@ class Nuc_Publico extends CI_Controller {
 			
 			$usuarioFind = $this->nuc_usuario_model->get( [ "cuenta"=>$usuario['cuenta'] ] );
 			$tipoUsuario = $this->nuc_tipo_usuario_model->get( [ "id_tipo_usuario"=>$usuarioFind->id_tipo_usuario ]);
+			
 			$newSession = array(
 		        'id_usuario'     => $usuarioFind->id_usuario,		        
 		        'cuenta'  => $usuarioFind->cuenta,
@@ -53,7 +56,8 @@ class Nuc_Publico extends CI_Controller {
 			$this->session->set_userdata($newSession);
 			$this->session->set_flashdata('message', [ "success"=>"Ingresaste al sistema" ]);
 			
-			redirect('/nucleo/nuc_principal/inicio','refresh');
+
+			redirect($this->config->item('default_page_private'),'refresh');
 		} else
 		{
 			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);

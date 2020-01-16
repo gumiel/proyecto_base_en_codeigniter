@@ -20,9 +20,6 @@ class Nuc_Principal extends CI_Controller {
 
 	public function inicio()
 	{		
-		foreach (getallheaders() as $nombre => $valor) {
-		    echo "$nombre: $valor<br>";
-		}
 		$this->load->view('nucleo/nuc_principal/inicio');
 	}
 
