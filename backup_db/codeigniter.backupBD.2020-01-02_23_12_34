@@ -1,0 +1,206 @@
+#
+# TABLE STRUCTURE FOR: cobrado_mensual
+#
+
+DROP TABLE IF EXISTS `cobrado_mensual`;
+
+CREATE TABLE `cobrado_mensual` (
+  `id_cobrado_mensual` int(11) NOT NULL AUTO_INCREMENT,
+  `monto_mensual` float NOT NULL,
+  `id_factura` int(11) NOT NULL,
+  `id_cobrado_total` int(11) NOT NULL,
+  PRIMARY KEY (`id_cobrado_mensual`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: cobrado_total
+#
+
+DROP TABLE IF EXISTS `cobrado_total`;
+
+CREATE TABLE `cobrado_total` (
+  `id_cobrado_total` int(11) NOT NULL AUTO_INCREMENT,
+  `monto_total` float NOT NULL,
+  `fecha_cobro` date NOT NULL,
+  PRIMARY KEY (`id_cobrado_total`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: consumidor
+#
+
+DROP TABLE IF EXISTS `consumidor`;
+
+CREATE TABLE `consumidor` (
+  `id_consumidor` int(11) NOT NULL,
+  `nombres` varchar(100) NOT NULL,
+  `paterno` varchar(100) NOT NULL,
+  `materno` varchar(100) NOT NULL,
+  `doc_identidad` int(11) NOT NULL,
+  `direccion` varchar(200) NOT NULL,
+  `genero` varchar(10) NOT NULL,
+  `codigo` int(11) NOT NULL,
+  `nro_medidor` int(11) NOT NULL,
+  `estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: factura
+#
+
+DROP TABLE IF EXISTS `factura`;
+
+CREATE TABLE `factura` (
+  `id_factura` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_emision` date NOT NULL,
+  `fecha_vencimiento` date NOT NULL,
+  `monto_deuda` float NOT NULL,
+  `nro_factura` int(11) NOT NULL,
+  `id_consumidor` int(11) NOT NULL,
+  UNIQUE KEY `id_factura_2` (`id_factura`),
+  KEY `id_factura` (`id_factura`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: logs
+#
+
+DROP TABLE IF EXISTS `logs`;
+
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `errno` int(2) NOT NULL,
+  `errtype` varchar(32) NOT NULL,
+  `errstr` text NOT NULL,
+  `errfile` varchar(255) NOT NULL,
+  `errline` int(4) NOT NULL,
+  `user_agent` varchar(120) NOT NULL,
+  `ip_address` varchar(45) NOT NULL DEFAULT '0',
+  `time` datetime NOT NULL,
+  PRIMARY KEY (`id`,`ip_address`,`user_agent`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: menu
+#
+
+DROP TABLE IF EXISTS `menu`;
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `ruta` varchar(200) NOT NULL,
+  `tipo` varchar(20) NOT NULL DEFAULT '' COMMENT 'Los tipos son "administracion, sistema"',
+  `icono` varchar(500) NOT NULL,
+  `id_menu_padre` int(11) NOT NULL,
+  PRIMARY KEY (`id_menu`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+INSERT INTO `menu` (`id_menu`, `nombre`, `descripcion`, `ruta`, `tipo`, `icono`, `id_menu_padre`) VALUES (1, Administracion, Administracion del sistema, , administracion, , 0);
+INSERT INTO `menu` (`id_menu`, `nombre`, `descripcion`, `ruta`, `tipo`, `icono`, `id_menu_padre`) VALUES (2, Menus, Menus principal, , administracion, , 1);
+INSERT INTO `menu` (`id_menu`, `nombre`, `descripcion`, `ruta`, `tipo`, `icono`, `id_menu_padre`) VALUES (3, Administracion de menu, Administracion de menus, /Menu/lista, , , 2);
+INSERT INTO `menu` (`id_menu`, `nombre`, `descripcion`, `ruta`, `tipo`, `icono`, `id_menu_padre`) VALUES (6, Gestión de usuarios, Gestión de usuarios, , administracion, , 0);
+INSERT INTO `menu` (`id_menu`, `nombre`, `descripcion`, `ruta`, `tipo`, `icono`, `id_menu_padre`) VALUES (7, Usuarios, Administracion de usuarios, /usuario/lista, , , 6);
+
+
+#
+# TABLE STRUCTURE FOR: permiso
+#
+
+DROP TABLE IF EXISTS `permiso`;
+
+CREATE TABLE `permiso` (
+  `id_permiso` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_permiso` varchar(200) NOT NULL,
+  `estado` int(11) NOT NULL,
+  `id_ruta` int(11) NOT NULL,
+  PRIMARY KEY (`id_permiso`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# TABLE STRUCTURE FOR: rol
+#
+
+DROP TABLE IF EXISTS `rol`;
+
+CREATE TABLE `rol` (
+  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
+  `denominacion` varchar(20) NOT NULL,
+  `descripcion` varchar(300) NOT NULL,
+  PRIMARY KEY (`id_rol`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+INSERT INTO `rol` (`id_rol`, `denominacion`, `descripcion`) VALUES (1, admin, administrador);
+INSERT INTO `rol` (`id_rol`, `denominacion`, `descripcion`) VALUES (3, invitado, usuario que solo es invitado y ve lo basico);
+
+
+#
+# TABLE STRUCTURE FOR: rol_asignado
+#
+
+DROP TABLE IF EXISTS `rol_asignado`;
+
+CREATE TABLE `rol_asignado` (
+  `id_rol_asignado` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL,
+  `fecha_asignacion` datetime NOT NULL,
+  PRIMARY KEY (`id_rol_asignado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: ruta
+#
+
+DROP TABLE IF EXISTS `ruta`;
+
+CREATE TABLE `ruta` (
+  `id_ruta` int(11) NOT NULL AUTO_INCREMENT,
+  `denominacion` varchar(30) NOT NULL,
+  `descripcion` varchar(300) NOT NULL,
+  `id_rol` int(11) NOT NULL,
+  PRIMARY KEY (`id_ruta`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `ruta` (`id_ruta`, `denominacion`, `descripcion`, `id_rol`) VALUES (1, adsd, asdasd, 0);
+
+
+#
+# TABLE STRUCTURE FOR: ruta_asignado
+#
+
+DROP TABLE IF EXISTS `ruta_asignado`;
+
+CREATE TABLE `ruta_asignado` (
+  `id_ruta_asignado` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `id_ruta` int(11) NOT NULL,
+  `fecha_asignacion` datetime NOT NULL,
+  PRIMARY KEY (`id_ruta_asignado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: usuario
+#
+
+DROP TABLE IF EXISTS `usuario`;
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(20) NOT NULL,
+  `cuenta` varchar(20) NOT NULL,
+  `clave` varchar(500) NOT NULL,
+  `fecha_creacion` datetime NOT NULL,
+  `fecha_modificacion` datetime DEFAULT NULL,
+  `id_usuario_creacion` int(11) NOT NULL,
+  `id_usuario_modificacion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+INSERT INTO `usuario` (`id_usuario`, `email`, `cuenta`, `clave`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES (14, admin@gmail.com, admin, e30493eb2e6264065df10b128e6aded536a74d77a6fae40799db22dc809cee2473a84c6cc21fa70bf5bdc79e2063a97da2eea8c27262528ca38cf14ffb82d2fdiXRFemRaeERVMCwbThJ3JB+xUhmf0cgmxkELY/MiKsY=, 2019-12-27 06:12:00, NULL, 1, NULL);
+INSERT INTO `usuario` (`id_usuario`, `email`, `cuenta`, `clave`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES (16, henry@gmail.com, henry, e30493eb2e6264065df10b128e6aded536a74d77a6fae40799db22dc809cee2473a84c6cc21fa70bf5bdc79e2063a97da2eea8c27262528ca38cf14ffb82d2fdiXRFemRaeERVMCwbThJ3JB+xUhmf0cgmxkELY/MiKsY=, 2019-12-27 00:00:00, NULL, 1, NULL);
+INSERT INTO `usuario` (`id_usuario`, `email`, `cuenta`, `clave`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES (17, jojo@asd.com, jojo, 21add872ffe4eb3aa44da991f5489a0535656de1652c32eec5b439c7bd1116a4947f7b206fa708edc981ff2abaf1be40a2f3bce6a762adac204031de5c2bc4faDZIN0Aq56JFBY0DI+CYeEbPapN8jq1yNOcvxn9lkx7c=, 0000-00-00 00:00:00, NULL, 0, NULL);
+INSERT INTO `usuario` (`id_usuario`, `email`, `cuenta`, `clave`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creacion`, `id_usuario_modificacion`) VALUES (18, segundo@gmail.com, segundo, e4a5c758c25dab7f0cc06cd4ff0de201ac32d7e5da0ed3a66fa0da5a10863a16058fc06137ef1c9bde376fbecb2c1efbdb487a9dba2935e8f4f65a6915ef09dbYasNh+/S8YLrqGuMiBPiq/gNYTkZoVll1G/++kL9XA4=, 0000-00-00 00:00:00, NULL, 0, NULL);
+
+
