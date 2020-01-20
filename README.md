@@ -2,9 +2,9 @@ Este es un proyecto en Codeigniter que tiene desarrollado partes muy importantes
 
 ## DEMO
 La demo del uso esta en proceso pero lo pueden ver en.<br>
-Url: https://goo.gl/K6xJ2h<br>
+Url(Actualizado 20-01-2020): http://bit.ly/2tn2tNT<br>
 Usuario: admin<br>
-Contraseña: admin<br>
+Contraseña: 123<br>
 Solo se tiene como ejemplo la creacion de usuarios pero se puede ver la estructura.
 <img src="http://res.cloudinary.com/daid2fusr/image/upload/v1526505003/inicio_cvrqjv.jpg" >
 
