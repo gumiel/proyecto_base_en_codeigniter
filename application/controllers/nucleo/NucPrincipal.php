@@ -19,7 +19,7 @@ class NucPrincipal extends CI_Controller {
 	}
 
 	public function inicio()
-	{		
+	{				
 		$this->load->view('nucleo/NucPrincipal/inicio');
 	}
 

@@ -23,7 +23,7 @@ $this->templateci->setDescriptionPage("Paguina de inicio");
         </div>
       </div>
       <div class="box-body">
-        Para crear una copia automatica de bd ingresar aqui <?php echo anchor('/gestionarBackup/backup/index', 'Crear BD', ''); ?>
+        Para crear una copia automatica de bd ingresar aqui <?php echo anchor('/mod_control_panel/CpAdminBackup/index', 'Crear BD', ''); ?>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">

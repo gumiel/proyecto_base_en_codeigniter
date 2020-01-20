@@ -85,7 +85,7 @@ class TemplateCI
 	{
 		// Para saber los iconos ingresar a http://localhost/codeigniter/recursos/AdminLTE-master/pages/UI/icons.html
 		$res = [ 
-					["name" => "Inicio", "url" => "/nucleo/nuc_principal/inicio", "icon" => "fa fa-dashboard" ],			
+					["name" => "Inicio", "url" => "/nucleo/NucPrincipal/inicio", "icon" => "fa fa-dashboard" ],			
 					["name" => "Usuarios", "url" => "#", "icon" => "fa fa-user", 
 						'subMenu'=> [
 										["name" => "Usuarios", "url" => "/nucleo/NucUsuario/index"],
@@ -102,9 +102,9 @@ class TemplateCI
 					],
 				];
 
-		$sql = "SELECT id_menu, nombre as name, ruta as url, icono as icon, '' as subMenu, id_menu_padre FROM menu";
-		$query = $this->ci->db->query($sql);
-		$result = $query->result_array();
+		// $sql = "SELECT id_menu, nombre as name, ruta as url, icono as icon, '' as subMenu, id_menu_padre FROM menu";
+		// $query = $this->ci->db->query($sql);
+		// $result = $query->result_array();
 		
 		// $res = array();
 
@@ -134,42 +134,6 @@ class TemplateCI
 		
 		return $res;
 	}
-
-	public function obtenerSubMenu($id_menu_padre, $result)
-	{	
-		if(isset($result)){
-			foreach ($result as $menu) 
-			{
-				if( $menu['url']=='' &&  $menu['id_menu_padre'] == $id_menu_padre )
-				{
-					array_push($result, array('name'=> $menu['name'],
-										'url'=> $menu['url'],
-										'icon'=> $menu['icon']
-										)
-							);
-					$result = array_shift($result); // quita el primer elemento
-					
-				} else{
-
-					array_push($result, 
-								array('name'=> $menu['name'],
-									'url'=> $menu['url'],
-									'icon'=> $menu['icon'],
-									'subMenu'=> $this->obtenerSubMenu($menu['id_menu_padre'], $result)
-								)
-							);
-				}
-
-				
-			}
-		}
-		else{
-			return false;
-		}
-		
-	}
-
-	
 
 	public function listCss()
 	{		
