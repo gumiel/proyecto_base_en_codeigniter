@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Ruta extends CI_Controller {
+class NucRuta extends CI_Controller {
 
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class Nuc_Ruta extends CI_Controller {
 	public function index()
 	{		
 		$data = array();
-		$this->load->view('/nucleo/nuc_ruta/index', $data, FALSE);
+		$this->load->view('/nucleo/NucRuta/index', $data, FALSE);
 
 	}
 

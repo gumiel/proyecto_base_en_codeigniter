@@ -64,7 +64,7 @@ ctnTabla.llenarTabla = function(dataFilter){
     var self = this;
 	self.tblUsuario.clean(); // Limpia primeramente la tabla si es que tiene algun dato           
 
-    var url  = '/nucleo/nuc_usuario/listaAjax';
+    var url  = '/nucleo/NucUsuario/listaAjax';
     var data = dataFilter;
 
     CallRest.post(url, data, function(res){
@@ -110,7 +110,7 @@ ctnBotonera._iniciar = function(){
                 var dataUsuario = ctnTabla.tblUsuario.getIds();
                 var id_usuario  = dataUsuario[0].id_usuario;   
 
-                var url = "/nucleo/nuc_usuario/deleteUsuarioAjax"; 
+                var url = "/nucleo/NucUsuario/deleteUsuarioAjax"; 
                 var data = {usuario:{id_usuario: id_usuario}};
                 
                 CallRest.post(url, data, function(res){
@@ -199,7 +199,7 @@ ctnModalCrearUsuario.insertarUsuario = function(){
         
         if(resultado) 
         {
-            var url  = "/nucleo/nuc_usuario/createAjax";            
+            var url  = "/nucleo/NucUsuario/createAjax";            
             var data = self.$formCrearUsuario.serialize();
             
             CallRest.post(url, data, function(res) {
@@ -223,7 +223,7 @@ ctnModalEditarUsuario.obtenerUsuario = function(){
     var dataUsuario = ctnTabla.tblUsuario.getIds();
     var id_usuario  = dataUsuario[0].id_usuario;   
 
-    var url = '/nucleo/nuc_usuario/getUsuarioAjax';
+    var url = '/nucleo/NucUsuario/getUsuarioAjax';
     var data = {usuario:{id_usuario: id_usuario}};
 
 
@@ -244,7 +244,7 @@ ctnModalEditarUsuario.editarUsuario = function(){
         
         if(resultado) 
         {
-            var url  = "/nucleo/nuc_usuario/editAjax";            
+            var url  = "/nucleo/NucUsuario/editAjax";            
             var data = self.formEditarUsuario.serialize();
             
             CallRest.post(url, data, function(res){
@@ -312,7 +312,7 @@ ctnModalAsignarRol.llenarTablaRoles = function(idUsuario){
 
     self.tblListRol.clean();
 
-    var url  = '/nucleo/nuc_usuario_rol/listPorUsuarioAjax';
+    var url  = '/nucleo/NucUsuarioRol/listPorUsuarioAjax';
     var data = { "nuc_usuario":{ "id_usuario":idUsuario}};
 
     CallRest.post(url, data, function(res){
@@ -342,7 +342,7 @@ ctnModalAsignarRol.cambiarAsignacionRol = function(idRol){
     var dataFind = ctnTabla.tblUsuario.getIds();
     var id_usuario  = dataFind[0].id_usuario;
 
-    var url  = "/nucleo/nuc_usuario_rol/cambiarAsignacionRol";            
+    var url  = "/nucleo/NucUsuarioRol/cambiarAsignacionRol";            
     var data = { nuc_usuario_rol: { id_rol: idRol, id_usuario: id_usuario}};
     
     CallRest.post(url, data, function(res){

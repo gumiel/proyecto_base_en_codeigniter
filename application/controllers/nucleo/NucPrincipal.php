@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH.'validator/Base.php';
 
-class Nuc_Principal extends CI_Controller {
+class NucPrincipal extends CI_Controller {
 
 	use Base;
 
@@ -20,7 +20,7 @@ class Nuc_Principal extends CI_Controller {
 
 	public function inicio()
 	{		
-		$this->load->view('nucleo/nuc_principal/inicio');
+		$this->load->view('nucleo/NucPrincipal/inicio');
 	}
 
 	public function dos()

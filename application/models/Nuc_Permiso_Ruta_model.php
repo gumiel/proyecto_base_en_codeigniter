@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Permiso_Ruta_model extends Generic_Model {
+class Nuc_permiso_ruta_model extends Generic_Model {
 
 	public function __construct()
 	{

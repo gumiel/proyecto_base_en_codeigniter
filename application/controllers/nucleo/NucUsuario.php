@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Usuario extends CI_Controller {
+class NucUsuario extends CI_Controller {
 
 	public $arregloMenus =array();
 	// use UsuarioRule;
@@ -23,7 +23,7 @@ class Nuc_Usuario extends CI_Controller {
 		// throw new Exception('Error: Division by zero.', E_USER_ERROR);
 		$data = array();		
 		$data["usuarios"] = $this->nuc_usuario_model->listUsuario();
-		$this->load->view('/nucleo/nuc_usuario/index', $data);
+		$this->load->view('/nucleo/NucUsuario/index', $data);
 	}
 
 	public function listaAjax()
@@ -85,6 +85,7 @@ class Nuc_Usuario extends CI_Controller {
 
 			unset($usuario["rep_clave"]);
 			$usuario["clave"] = $this->encryption->encrypt($usuario["clave"]);
+			$usuario["id_tipo_usuario"] = 2;
 			
 			$this->nuc_usuario_model->insert($usuario);
 			$data['result'] = 1;
@@ -104,8 +105,8 @@ class Nuc_Usuario extends CI_Controller {
 		$usuario = $this->input->post("usuario");
 
 		$this->form_validation->set_rules($this->usuario_rule->apply());
-		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']|callback__verificar_super_admin');
-		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario');
+		$this->form_validation->set_rules('usuario[cuenta]', 'Cuenta', 'trim|required|callback__verificar_cuenta_repetida['.$usuario['id_usuario'].']');
+		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario|callback__verificar_super_admin');
 
 		if ( isset($usuario["clave"]) && $usuario["clave"] != '')
 		{
@@ -143,7 +144,7 @@ class Nuc_Usuario extends CI_Controller {
 	{
 		$usuario = $this->input->post("usuario");
 		$data = array();
-
+		
 		$this->form_validation->set_rules('usuario[id_usuario]', 'ID', 'trim|required|callback__verificar_id_usuario|callback__verificar_super_admin');
 
 		if ( $this->form_validation->run() )
@@ -228,6 +229,7 @@ class Nuc_Usuario extends CI_Controller {
 		$this->utils->json($data);
 
 	}
+	
 
 
 
@@ -283,12 +285,12 @@ class Nuc_Usuario extends CI_Controller {
 	}
 
 	public function _verificar_super_admin($idUsuario)
-	{
-		$this->form_validation->set_message(__FUNCTION__, 'El Usuario Super Admin no puede cambiar ni eliminar ningun datos');
+	{	
+		$this->form_validation->set_message(__FUNCTION__, 'Al Usuario "Super Admin" no puede cambiar ni ser eliminado ningun datos');
 		if ($idUsuario > 0)
 		{			
 			$usuario = $this->nuc_usuario_model->getById($idUsuario);			
-			$tipoUsuario = $this->nuc_tipo_usuario_model->getById($usuario->id_tipo_usuario);			
+			$tipoUsuario = $this->nuc_tipo_usuario_model->getById($usuario->id_tipo_usuario);	
 
 			return ( $tipoUsuario->denominacion!='SuperAdmin' );
 

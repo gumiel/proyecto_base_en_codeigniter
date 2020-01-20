@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Rol extends CI_Controller {
+class NucRol extends CI_Controller {
 
 
 
@@ -15,7 +15,7 @@ class Nuc_Rol extends CI_Controller {
 
 	public function index()
 	{		
-		$this->load->view('/nucleo/nuc_rol/index', null, FALSE);
+		$this->load->view('/nucleo/NucRol/index', null, FALSE);
 	}
 
 	public function listAjax()

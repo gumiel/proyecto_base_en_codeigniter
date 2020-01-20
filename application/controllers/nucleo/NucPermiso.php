@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Permiso extends CI_Controller {
+class NucPermiso extends CI_Controller {
 
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class Nuc_Permiso extends CI_Controller {
 	public function index()
 	{		
 		$data = array();
-		$this->load->view('/nucleo/nuc_permiso/index', $data, FALSE);
+		$this->load->view('/nucleo/NucPermiso/index', $data, FALSE);
 
 	}
 
@@ -31,10 +31,6 @@ class Nuc_Permiso extends CI_Controller {
 		{
 			$permisos = $this->nuc_permiso_model->getAll(["estado_registro"=>"activo"]);
 		}
-
-		
-		
-
 
 		
 		$data['permisos'] = $permisos;

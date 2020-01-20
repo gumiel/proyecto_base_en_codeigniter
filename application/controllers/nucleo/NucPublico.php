@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Publico extends CI_Controller {
+class NucPublico extends CI_Controller {
 
 	public function __construct()
 	{
@@ -18,13 +18,13 @@ class Nuc_Publico extends CI_Controller {
 
 	public function index()
 	{
-		
+		echo "sss";
 	}
 
 	public function login()
 	{
 		
-		$this->load->view('nucleo/nuc_publico/login');
+		$this->load->view('nucleo/NucPublico/login');
 	}
 
 	public function loginProcess()
@@ -61,14 +61,14 @@ class Nuc_Publico extends CI_Controller {
 		} else
 		{
 			$this->session->set_flashdata('message', [ "error"=>validation_errors() ]);
-			redirect('/nucleo/nuc_publico/login','refresh');
+			redirect('/nucleo/NucPublico/login','refresh');
 		}
 
 	}
 
 	public function payment()
 	{
-		$this->load->view('/nucleo/nuc_publico/payment');
+		$this->load->view('/nucleo/NucPublico/payment');
 	}
 
 	public function crearCaptcha()

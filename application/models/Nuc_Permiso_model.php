@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Permiso_model extends Generic_model {
+class Nuc_permiso_model extends Generic_model {
 
 	public function __construct()
 	{
 		parent::__construct();		
-		
+
 		// $this->tableName('permiso');
 		$this->foreignKeyName('id_permiso');
 	}

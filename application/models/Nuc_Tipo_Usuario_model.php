@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Tipo_Usuario_model extends Generic_Model {
+class Nuc_tipo_Usuario_model extends Generic_Model {
 
 	public function __construct()
 	{

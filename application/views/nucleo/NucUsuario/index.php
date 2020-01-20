@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Usuarios");
 $this->templateci->setDescriptionPage("Usuarios");
 
-$this->templateci->addJs("public/nucleo/nuc_usuario/index.js?data=".date('YmdHis'));
+$this->templateci->addJs("public/nucleo/NucUsuario/index.js?data=".date('YmdHis'));
  ?>
 
 <?php $this->load->view('template/up'); ?>

@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Roles");
 $this->templateci->setDescriptionPage("Roles");
 
-$this->templateci->addJs("public/nucleo/nuc_rol/index.js?data=".date('YmdHis'));
+$this->templateci->addJs("public/nucleo/NucRol/index.js?data=".date('YmdHis'));
  ?>
 
 <?php $this->load->view('template/up'); ?>

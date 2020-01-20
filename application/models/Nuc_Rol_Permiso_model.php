@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Nuc_Rol_Permiso_model extends Generic_Model {
+class Nuc_rol_permiso_model extends Generic_Model {
 
 	public function __construct()
 	{
