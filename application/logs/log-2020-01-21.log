@@ -1,0 +1,20 @@
+ERROR - 2020-01-21 16:16:53 --> Severity: Notice --> Undefined variable: data C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 30
+ERROR - 2020-01-21 16:16:53 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 30
+ERROR - 2020-01-21 16:16:53 --> Severity: Notice --> Undefined variable: data C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 31
+ERROR - 2020-01-21 16:16:53 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 31
+ERROR - 2020-01-21 16:16:53 --> Severity: Notice --> Undefined variable: data C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 22
+ERROR - 2020-01-21 16:18:14 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php:30) C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Common.php 570
+ERROR - 2020-01-21 16:18:14 --> Severity: Error --> Allowed memory size of 134217728 bytes exhausted (tried to allocate 528384 bytes) C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\DB_driver.php 703
+ERROR - 2020-01-21 16:18:48 --> Severity: Notice --> Undefined variable: id_menu_padre C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 27
+ERROR - 2020-01-21 16:18:48 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 - Invalid query: select id_menu, codigo, nombre, id_menu_padre from nuc_menu where id_menu_padre = 
+ERROR - 2020-01-21 16:19:55 --> Severity: Notice --> Undefined variable: data C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 22
+ERROR - 2020-01-21 16:23:00 --> Severity: error --> Exception: syntax error, unexpected '$this' (T_VARIABLE) C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucPrincipal.php 34
+ERROR - 2020-01-21 21:30:11 --> Severity: error --> Exception: Unable to locate the model you have specified: Usuario_model C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-01-21 21:30:15 --> Severity: error --> Exception: Unable to locate the model you have specified: Usuario_model C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-01-21 21:30:57 --> Unable to load the requested class: Lib_log
+ERROR - 2020-01-21 21:31:01 --> Unable to load the requested class: Lib_log
+ERROR - 2020-01-21 21:31:11 --> Unable to load the requested class: Lib_log
+ERROR - 2020-01-21 21:31:40 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 40
+ERROR - 2020-01-21 21:31:49 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 40
+ERROR - 2020-01-21 21:32:10 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-01-21 21:44:56 --> 404 Page Not Found: mod_compras/ComCompra/index

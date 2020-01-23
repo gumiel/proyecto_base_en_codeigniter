@@ -1,0 +1,26 @@
+ERROR - 2020-01-23 13:37:24 --> Severity: error --> Exception: Unable to locate the model you have specified: Usuario_model C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-01-23 13:37:30 --> 404 Page Not Found: mod_compras/ComAtributoCompra/listAjax
+ERROR - 2020-01-23 13:37:58 --> 404 Page Not Found: mod_compras/ComAtributoCompra/listAjax
+ERROR - 2020-01-23 13:38:41 --> Query error: Table 'proyecto_base_en_codeigniter.nuc_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `nuc_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-23 13:39:32 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_atributo_producto C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-01-23 13:40:01 --> 404 Page Not Found: mod_compras/ComAtributoCompra/listAjax
+ERROR - 2020-01-23 17:33:39 --> 404 Page Not Found: Usuario/createUsuario
+ERROR - 2020-01-23 17:34:02 --> 404 Page Not Found: Usuario/createUsuario
+ERROR - 2020-01-23 17:37:20 --> 404 Page Not Found: mod_compras/ComProducto/createAjax
+ERROR - 2020-01-23 17:38:17 --> 404 Page Not Found: mod_compras/ComProducto/createAjax
+ERROR - 2020-01-23 17:44:25 --> Severity: 4096 --> Object of class ComProducto could not be converted to string C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:25 --> Severity: Notice --> Undefined property: ComProducto::$ C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:25 --> Severity: Notice --> Trying to get property 'load' of non-object C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:25 --> Severity: error --> Exception: Call to a member function model() on null C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:28 --> Severity: 4096 --> Object of class ComProducto could not be converted to string C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:28 --> Severity: Notice --> Undefined property: ComProducto::$ C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:28 --> Severity: Notice --> Trying to get property 'load' of non-object C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:28 --> Severity: error --> Exception: Call to a member function model() on null C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 10
+ERROR - 2020-01-23 17:44:57 --> Severity: error --> Exception: Unable to locate the model you have specified: Com_producto C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-01-23 17:45:00 --> Severity: error --> Exception: Unable to locate the model you have specified: Com_producto C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-01-23 17:46:06 --> Severity: error --> Exception: Unable to locate the model you have specified: Com_valor_producto C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-01-23 19:50:34 --> Query error: Unknown column 'id_usuario_creacion' in 'field list' - Invalid query: INSERT INTO `com_producto` (`codigo`, `nombre`, `descripcion`, `id_usuario_creacion`, `fecha_creacion`) VALUES ('CP-6223', 'pintura', 'pintura para pared', '14', '2020-01-23 19:50:34')
+ERROR - 2020-01-23 19:54:07 --> Query error: Unknown column 'id_usuario_creacion' in 'field list' - Invalid query: INSERT INTO `com_producto` (`codigo`, `nombre`, `descripcion`, `id_usuario_creacion`, `fecha_creacion`) VALUES ('CP-6223', 'pintura', 'pintura para pared', '14', '2020-01-23 19:54:07')
+ERROR - 2020-01-23 19:54:31 --> Query error: Unknown column 'id_usuario_creacion' in 'field list' - Invalid query: INSERT INTO `com_producto` (`codigo`, `nombre`, `descripcion`, `id_usuario_creacion`, `fecha_creacion`) VALUES ('CP-6223', 'pintura', 'pintura para pared', '14', '2020-01-23 19:54:31')

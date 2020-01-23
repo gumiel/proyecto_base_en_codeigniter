@@ -5,7 +5,7 @@ require APPPATH.'validator/Base.php';
 
 class NucPrincipal extends CI_Controller {
 
-	use Base;
+	public $arregloMenus = array();
 
 	public function __construct()
 	{
@@ -15,7 +15,28 @@ class NucPrincipal extends CI_Controller {
 
 	public function index()
 	{
-		
+		$idPadre = 0;
+		$this->llamada($idPadre);
+		echo "<pre>";
+		var_dump($this->arregloMenus);
+		echo "</pre>";
+	}
+
+	public function llamada($idPadre){
+		$sql = "select id_menu, codigo, nombre, id_menu_padre from nuc_menu where id_menu_padre = ".$idPadre;
+		$query = $this->db->query($sql);
+		$menus = $query->result();
+		echo $sql.'<br>';
+		if( count($menus)>0 )
+		{
+			foreach ($menus as $menu) 
+			{	array_push($this->arregloMenus, $menu);
+
+				
+
+				$this->llamada($menu->id_menu);
+			}
+		}
 	}
 
 	public function inicio()

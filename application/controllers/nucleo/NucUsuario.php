@@ -19,8 +19,7 @@ class NucUsuario extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('lib_log');
-		// throw new Exception('Error: Division by zero.', E_USER_ERROR);
+		
 		$data = array();		
 		$data["usuarios"] = $this->nuc_usuario_model->listUsuario();
 		$this->load->view('/nucleo/NucUsuario/index', $data);

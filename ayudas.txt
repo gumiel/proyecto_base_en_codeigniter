@@ -1,9 +1,9 @@
 -- Para creacion te tablas
-ALTER TABLE `nuc_permiso_menu` ADD `id_usuario_creacion` INT NOT NULL;
-ALTER TABLE `nuc_permiso_menu` ADD `id_usuario_modificacion` INT NULL;
-ALTER TABLE `nuc_permiso_menu` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
-ALTER TABLE `nuc_permiso_menu` ADD `fecha_modificacion` DATETIME NULL;
-ALTER TABLE `nuc_permiso_menu` ADD `estado_registro` VARCHAR(20) NOT NULL DEFAULT 'activo';
+ALTER TABLE `com_producto` ADD `id_usuario_creacion` INT NOT NULL;
+ALTER TABLE `com_producto` ADD `id_usuario_modificacion` INT NULL;
+ALTER TABLE `com_producto` ADD `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE `com_producto` ADD `fecha_modificacion` DATETIME NULL;
+ALTER TABLE `com_producto` ADD `estado_registro` VARCHAR(20) NOT NULL DEFAULT 'activo';
 
 ALTER TABLE `nuc_ruta` CHANGE `id_usuario_creacion` INT NOT NULL;
 ALTER TABLE `nuc_ruta` CHANGE `id_usuario_modificacion` INT NULL;
