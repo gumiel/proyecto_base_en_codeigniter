@@ -94,6 +94,11 @@ class TemplateCI
 										["name" => "Rutas", "url" => "/nucleo/NucRuta/index"],
 									] 
 					],
+					["name" => "Modulo de Pagos", "url" => "principal/inicio", "icon" => "fa fa-bank", 
+						'subMenu'=> [
+										["name" => "Producto", "url" => "/mod_compras/comProducto/"],
+									] 
+					],
 					["name" => "Cobranza", "url" => "principal/inicio", "icon" => "fa fa-bank", 
 						'subMenu'=> [
 										["name" => "Cobros Simples", "url" => "/mod_pagos/cobradoTotal/simple"],

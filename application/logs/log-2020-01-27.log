@@ -1,0 +1,17 @@
+ERROR - 2020-01-27 00:37:11 --> 404 Page Not Found: mod_compras/CobradoTotal/simple
+ERROR - 2020-01-27 00:37:37 --> 404 Page Not Found: mod_compras/CobradoTotal/simple
+ERROR - 2020-01-27 00:37:42 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-27 00:37:42 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-27 00:38:41 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-27 00:38:41 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-27 00:55:07 --> 404 Page Not Found: NucMenu/index
+ERROR - 2020-01-27 00:55:10 --> 404 Page Not Found: NucMenu/index
+ERROR - 2020-01-27 00:55:18 --> 404 Page Not Found: NucMenu/index
+ERROR - 2020-01-27 00:55:27 --> 404 Page Not Found: NucMenu/index
+ERROR - 2020-01-27 00:55:36 --> 404 Page Not Found: nucleo/%20NucMenu/index
+ERROR - 2020-01-27 00:59:51 --> Severity: error --> Exception: Call to undefined function createTreeView() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucMenu.php 64
+ERROR - 2020-01-27 01:02:09 --> Severity: error --> Exception: Call to undefined function createTreeView() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucMenu.php 57
