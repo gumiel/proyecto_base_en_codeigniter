@@ -24,3 +24,37 @@ ERROR - 2020-01-23 17:46:06 --> Severity: error --> Exception: Unable to locate 
 ERROR - 2020-01-23 19:50:34 --> Query error: Unknown column 'id_usuario_creacion' in 'field list' - Invalid query: INSERT INTO `com_producto` (`codigo`, `nombre`, `descripcion`, `id_usuario_creacion`, `fecha_creacion`) VALUES ('CP-6223', 'pintura', 'pintura para pared', '14', '2020-01-23 19:50:34')
 ERROR - 2020-01-23 19:54:07 --> Query error: Unknown column 'id_usuario_creacion' in 'field list' - Invalid query: INSERT INTO `com_producto` (`codigo`, `nombre`, `descripcion`, `id_usuario_creacion`, `fecha_creacion`) VALUES ('CP-6223', 'pintura', 'pintura para pared', '14', '2020-01-23 19:54:07')
 ERROR - 2020-01-23 19:54:31 --> Query error: Unknown column 'id_usuario_creacion' in 'field list' - Invalid query: INSERT INTO `com_producto` (`codigo`, `nombre`, `descripcion`, `id_usuario_creacion`, `fecha_creacion`) VALUES ('CP-6223', 'pintura', 'pintura para pared', '14', '2020-01-23 19:54:31')
+ERROR - 2020-01-23 22:00:38 --> Severity: Notice --> Array to string conversion C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\DB_query_builder.php 683
+ERROR - 2020-01-23 22:00:38 --> Query error: Unknown column 'Array' in 'where clause' - Invalid query: SELECT *
+FROM `com_producto`
+WHERE `id_producto` = `Array`
+AND `estado_registro` = 'activo'
+ERROR - 2020-01-23 22:01:10 --> Query error: Column 'id_producto' in where clause is ambiguous - Invalid query: SELECT *
+FROM `com_producto`
+INNER JOIN `com_valor_producto` ON `com_valor_producto`.`id_producto` = `producto`.`id_producto`
+INNER JOIN `com_atributo_producto` ON `com_atributo_producto`.`id_atributo_producto` = `com_valor_producto`.`id_atributo_producto`
+WHERE `id_producto` = '5'
+ERROR - 2020-01-23 22:01:56 --> Query error: Column 'id_producto' in where clause is ambiguous - Invalid query: SELECT *
+FROM `com_producto`
+INNER JOIN `com_valor_producto` ON `com_valor_producto`.`id_producto` = `producto`.`id_producto`
+INNER JOIN `com_atributo_producto` ON `com_atributo_producto`.`id_atributo_producto` = `com_valor_producto`.`id_atributo_producto`
+WHERE `id_producto` = '5'
+ERROR - 2020-01-23 22:02:14 --> Query error: Column 'id_producto' in where clause is ambiguous - Invalid query: SELECT *
+FROM `com_producto`
+INNER JOIN `com_valor_producto` ON `com_valor_producto`.`id_producto` = `producto`.`id_producto`
+INNER JOIN `com_atributo_producto` ON `com_atributo_producto`.`id_atributo_producto` = `com_valor_producto`.`id_atributo_producto`
+WHERE `id_producto` = '5'
+ERROR - 2020-01-23 22:02:36 --> Query error: Unknown column 'producto.id_producto' in 'on clause' - Invalid query: SELECT *
+FROM `com_producto`
+INNER JOIN `com_valor_producto` ON `com_valor_producto`.`id_producto` = `producto`.`id_producto`
+INNER JOIN `com_atributo_producto` ON `com_atributo_producto`.`id_atributo_producto` = `com_valor_producto`.`id_atributo_producto`
+WHERE `com_producto`.`id_producto` = '5'
+ERROR - 2020-01-23 22:03:13 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 71
+ERROR - 2020-01-23 22:04:30 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 71
+ERROR - 2020-01-23 22:04:34 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 71
+ERROR - 2020-01-23 22:04:55 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 71
+ERROR - 2020-01-23 22:06:48 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 73
+ERROR - 2020-01-23 22:07:14 --> Severity: error --> Exception: syntax error, unexpected '$data' (T_VARIABLE) C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 75
+ERROR - 2020-01-23 22:07:31 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 73
+ERROR - 2020-01-23 22:08:45 --> Severity: Warning --> Attempt to assign property 'com_producto' of non-object C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 73
+ERROR - 2020-01-23 22:08:45 --> Severity: Warning --> Attempt to modify property 'com_producto' of non-object C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 74
