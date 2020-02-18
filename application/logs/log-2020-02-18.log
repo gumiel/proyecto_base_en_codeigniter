@@ -1,0 +1,7 @@
+ERROR - 2020-02-18 17:36:59 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-02-18 20:08:54 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-02-18 20:11:49 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-02-18 20:18:45 --> Severity: error --> Exception: syntax error, unexpected ';', expecting ')' C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 238
+ERROR - 2020-02-18 20:18:52 --> Severity: error --> Exception: syntax error, unexpected ';', expecting ')' C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 238
+ERROR - 2020-02-18 20:18:58 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 238
+ERROR - 2020-02-18 20:19:36 --> 404 Page Not Found: Usuario/editUsuario
