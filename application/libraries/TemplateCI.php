@@ -86,12 +86,15 @@ class TemplateCI
 		// Para saber los iconos ingresar a http://localhost/codeigniter/recursos/AdminLTE-master/pages/UI/icons.html
 		$res = [ 
 					["name" => "Inicio", "url" => "/nucleo/NucPrincipal/inicio", "icon" => "fa fa-dashboard" ],			
-					["name" => "Usuarios", "url" => "#", "icon" => "fa fa-user", 
+					["name" => "Nucleo", "url" => "#", "icon" => "fa fa-fw fa-gear", 
 						'subMenu'=> [
 										["name" => "Usuarios", "url" => "/nucleo/NucUsuario/index"],
 										["name" => "Roles", "url" => "/nucleo/NucRol/index"],
 										["name" => "Permisos", "url" => "/nucleo/NucPermiso/index"],
-										["name" => "Rutas", "url" => "/nucleo/NucRuta/index"],
+										["name" => "Rutas", "url" => "/nucleo/NucRuta/index",
+											'subMenu'=> [
+											["name" => "Producto", "url" => "/mod_compras/comProducto/"],
+										]],
 									] 
 					],
 					["name" => "Modulo de Pagos", "url" => "principal/inicio", "icon" => "fa fa-bank", 
@@ -99,46 +102,60 @@ class TemplateCI
 										["name" => "Producto", "url" => "/mod_compras/comProducto/"],
 									] 
 					],
-					["name" => "Cobranza", "url" => "principal/inicio", "icon" => "fa fa-bank", 
-						'subMenu'=> [
-										["name" => "Cobros Simples", "url" => "/mod_pagos/cobradoTotal/simple"],
-										["name" => "Cobros con Cheques", "url" => "/mod_pagos/cobradoTotal/simple"],
-									] 
-					],
+
 				];
-
-		// $sql = "SELECT id_menu, nombre as name, ruta as url, icono as icon, '' as subMenu, id_menu_padre FROM menu";
-		// $query = $this->ci->db->query($sql);
-		// $result = $query->result_array();
-		
-		// $res = array();
-
-		// foreach ($result as $menu) 
-		// {
-		// 	if( $menu['url']=='' && $menu['id_menu_padre']=='0')
-		// 	{
-		// 		array_push($res, array('name'=> $menu['name'],
-		// 							'url'=> $menu['url'],
-		// 							'icon'=> $menu['icon']
-		// 							)
-		// 				);
-		// 		$res = array_shift($res); // quita el primer elemento
-				
-		// 	} else{
-		// 		array_push($res, 
-		// 					array('name'=> $menu['name'],
-		// 						'url'=> $menu['url'],
-		// 						'icon'=> $menu['icon'],
-		// 						'subMenu'=> $this->obtenerSubMenu($menu['id_menu_padre'], $result)
-		// 					)
-		// 				);
-		// 	}
-
-			
-		// }
 		
 		return $res;
 	}
+
+	public function menuPrincipal2()
+    {
+        $sql = "SELECT id, label, link, parent FROM menus ORDER BY parent, sort, label";
+        $result = $this->ci->db->query($sql);
+        
+        $datas = $result->result_array();
+        
+        
+        $menus = array(
+                'items' => array(),
+                'parents' => array()
+        );
+
+        foreach ($datas as $items) {
+            // Create current menus item id into array
+            $menus['items'][$items['id']] = $items;
+            // Creates list of all items with children
+            $menus['parents'][$items['parent']][] = $items['id'];
+        }
+
+
+
+        // Print all tree view menus 
+        echo $this->createTreeView(0, $menus);
+
+    }
+
+	public function createTreeView($parent, $menu) {
+        $html = "";
+		if (isset($menu['parents'][$parent])) 
+		{
+			// $html .= "<ul class='tree'>";
+            foreach ($menu['parents'][$parent] as $itemId) {
+                if(!isset($menu['parents'][$itemId])) {
+                    $html .= "<li><label for='subfolder2'> -1- <a href='".$menu['items'][$itemId]['link']."'>".$menu['items'][$itemId]['label']."</a></label> <input type='checkbox' name='subfolder2'/></li>";
+                }
+                if(isset($menu['parents'][$itemId])) {
+                    $html .= "
+                    <li class='treeview'><a href='".$menu['items'][$itemId]['link']."'><i class='fa fa-circle-o text-red'></i>".$menu['items'][$itemId]['label']."</a>";
+                    $html .= $this->createTreeView($itemId, $menu);
+                    $html .= "</li>";
+                }
+            }
+            // $html .= "</ul>";
+        }
+        return $html;
+
+    }
 
 	public function listCss()
 	{		

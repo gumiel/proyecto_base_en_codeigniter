@@ -36,7 +36,7 @@ class NucUsuario extends CI_Controller {
 			$data["usuarios"] = $this->nuc_usuario_model->searchUsuario($usuario['label'], $usuario['text']);
 		} else
 		{
-			$data["usuariosa"] = $this->nuc_usuario_model->listUsuaraaio();
+			$data["usuarios"] = $this->nuc_usuario_model->listUsuario();
 		}
 		
 		$data["result"] = 1;

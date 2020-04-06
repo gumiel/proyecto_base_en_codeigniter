@@ -1,0 +1,83 @@
+ERROR - 2020-04-06 01:46:46 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 01:54:47 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 01:55:17 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 01:55:19 --> Severity: error --> Exception: Unable to locate the model you have specified: Usuario_model C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-04-06 01:55:21 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 01:55:25 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 01:55:25 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 01:56:33 --> Severity: error --> Exception: Unable to locate the model you have specified: Usuario_model C:\xampp\htdocs\proyecto_base_en_codeigniter\system\core\Loader.php 344
+ERROR - 2020-04-06 01:56:35 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 01:56:35 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 02:00:42 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 02:00:42 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 02:05:06 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 02:05:06 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 02:05:42 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 02:05:42 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 02:05:52 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 02:05:52 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 02:06:01 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 02:06:01 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 02:09:30 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 02:09:30 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 02:13:32 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:34:57 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:35:02 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:35:10 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:36:04 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:37:46 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:38:08 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:38:09 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:38:09 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:38:10 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:38:12 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:39:53 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-04-06 02:45:56 --> Query error: Table 'proyecto_base_en_codeigniter.permiso' doesn't exist - Invalid query: SELECT *
+FROM `permiso`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:00:45 --> Query error: Table 'proyecto_base_en_codeigniter.permiso' doesn't exist - Invalid query: SELECT *
+FROM `permiso`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:01:15 --> Query error: Table 'proyecto_base_en_codeigniter.permiso' doesn't exist - Invalid query: SELECT *
+FROM `permiso`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:07:27 --> Query error: Table 'proyecto_base_en_codeigniter.permiso' doesn't exist - Invalid query: SELECT *
+FROM `permiso`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:07:40 --> Query error: Table 'proyecto_base_en_codeigniter.permiso' doesn't exist - Invalid query: SELECT *
+FROM `permiso`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:19:59 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 03:19:59 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:20:21 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 03:20:21 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:21:10 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:21:10 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuario() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-04-06 03:21:54 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-06 03:22:09 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'

@@ -1,0 +1,1 @@
+En esta carpeta estaran todos los JS de las aplicaciones views

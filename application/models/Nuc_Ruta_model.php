@@ -7,7 +7,7 @@ class Nuc_ruta_model extends Generic_Model {
 	{
 		parent::__construct();
 		
-		// $this->tableName('permiso');
+		// $this->tableName('nuc_ruta');
 		$this->foreignKeyName('id_ruta');
 	}
 

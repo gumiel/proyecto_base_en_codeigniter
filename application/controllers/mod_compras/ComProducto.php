@@ -25,10 +25,10 @@ class ComProducto extends CI_Controller {
 
 		if ( $usuario != null && sizeof($usuario)>0 && $usuario['label']!='' && $usuario['text']!='' )
 		{			
-			$data["usuarios"] = $this->nuc_usuario_model->searchUsuario($usuario['label'], $usuario['text']);
+			// $data["usuarios"] = $this->nuc_usuario_model->searchUsuario($usuario['label'], $usuario['text']);
 		} else
 		{
-			$data["usuariosa"] = $this->com_producto->listUsuaraaio();
+			// $data["usuariosa"] = $this->com_producto->listUsuario();
 		}
 		
 		$data["result"] = 1;

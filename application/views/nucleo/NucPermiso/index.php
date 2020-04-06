@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Permisos");
 $this->templateci->setDescriptionPage("Permisos");
 
-$this->templateci->addJs("public/nucleo/NucPermiso/index.js?data=".date('YmdHis'));
+$this->templateci->addJs("public/views/nucleo/NucPermiso/index.js?data=".date('YmdHis'));
  ?>
 
 <?php $this->load->view('template/up'); ?>

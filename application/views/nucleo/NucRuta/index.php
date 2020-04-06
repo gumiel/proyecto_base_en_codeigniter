@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Ruta");
 $this->templateci->setDescriptionPage("Ruta");
 
-$this->templateci->addJs("public/nucleo/NucRuta/index.js");
+$this->templateci->addJs("public/views/nucleo/NucRuta/index.js");
  ?>
 
 <?php $this->load->view('template/up'); ?>

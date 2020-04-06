@@ -1,0 +1,31 @@
+ERROR - 2020-01-31 02:32:35 --> 404 Page Not Found: nucleo/NucMenu/inicio
+ERROR - 2020-01-31 02:40:16 --> Severity: Notice --> Undefined property: TemplateCI::$db C:\xampp\htdocs\proyecto_base_en_codeigniter\application\libraries\TemplateCI.php 146
+ERROR - 2020-01-31 02:40:16 --> Severity: error --> Exception: Call to a member function query() on null C:\xampp\htdocs\proyecto_base_en_codeigniter\application\libraries\TemplateCI.php 146
+ERROR - 2020-01-31 02:43:57 --> Severity: error --> Exception: syntax error, unexpected '}' C:\xampp\htdocs\proyecto_base_en_codeigniter\application\libraries\TemplateCI.php 190
+ERROR - 2020-01-31 02:50:53 --> Severity: error --> Exception: Call to undefined method Nuc_usuario_model::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucUsuario.php 39
+ERROR - 2020-01-31 02:50:56 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-31 02:50:56 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-31 02:52:59 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-31 02:52:59 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-31 02:53:03 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-31 02:53:03 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-31 02:53:09 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-31 02:53:09 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-31 02:53:21 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-31 02:53:21 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-31 02:53:33 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-01-31 02:53:33 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31
+ERROR - 2020-01-31 03:25:19 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucMenu.php 56
+ERROR - 2020-01-31 03:25:54 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\nucleo\NucMenu.php 56

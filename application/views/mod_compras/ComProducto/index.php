@@ -2,7 +2,7 @@
 $this->templateci->setTitlePage("Productos");
 $this->templateci->setDescriptionPage("Productos");
 
-$this->templateci->addJs("public/mod_compras/ComProducto/index.js?data=".date('YmdHis'));
+$this->templateci->addJs("public/views/mod_compras/ComProducto/index.js?data=".date('YmdHis'));
  ?>
 
 <?php $this->load->view('template/up'); ?>
