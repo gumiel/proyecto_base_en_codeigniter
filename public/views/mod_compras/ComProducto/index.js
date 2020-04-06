@@ -35,7 +35,8 @@ ctnModalCrear.registerId('formCrear', '$formCrear');
 
 
 
-ctnBotonera._iniciar = function(){
+ctnBotonera._iniciar = function()
+{
 	var self = this;
 
 	/*-------------------------*/
@@ -44,6 +45,12 @@ ctnBotonera._iniciar = function(){
 		ctnModalCrear.limpiarFormulario();
 	});
 
+	/*-------------------------*/
+	self.ele.find("#btnEditar").click(function(){
+		ctnModalCrear.ele.modal();
+		ctnModalCrear.limpiarFormulario();
+		ctnModalCrear.llenarFormularioEdicion();
+	});
 };
 
 ctnTabla._iniciar = function(){
@@ -78,7 +85,8 @@ ctnModalCrear._iniciar = function()
 
 };
 
-ctnModalCrear.agregarAtributo = function(){
+ctnModalCrear.agregarAtributo = function()
+{
 	var self = this;
 	self.ele.find("#btnAgregarAtributo").click(function()
 	{
@@ -136,7 +144,8 @@ ctnModalCrear.sincronizarAtributosConSelect = function()
 
 
 
-ctnModalCrear.listarAtributosProducto = function(){
+ctnModalCrear.listarAtributosProducto = function()
+{
 	var self = this;
 	var url = "/mod_compras/ComAtributoProducto/listAjax";            
     var data = [];
@@ -187,7 +196,8 @@ ctnModalCrear.procesarCreacion = function()
     });
 };
 
-ctnTabla.llenarTabla = function(dataFilter){
+ctnTabla.llenarTabla = function(dataFilter)
+{
 	var self = this;
 
 	self.tblList.clean(); // Limpia primeramente la tabla si es que tiene algun dato           
@@ -196,12 +206,14 @@ ctnTabla.llenarTabla = function(dataFilter){
     var data = dataFilter;
 
     CallRest.post(url, data, function(res){
-        $.each(res.permisos, function(index, data) {
+        $.each(res.com_productos, function(index, data) {
             var row = "";
             row += "<tr>";
-            row += "    <td><input type='hidden'name='id_permiso' value='"+data.id_permiso+"' /></td>";
-            row += "    <td>"+data.denominacion+"</td>";
-            row += "    <td>"+data.descripcion+"</td>";
+            row += "    <td><input type='hidden'name='id_producto' value='"+data.id_producto+"' /></td>";
+            row += "    <td>"+data.codigo+"</td>";
+            row += "    <td>"+data.nombre+"</td>";
+            row += "    <td>"+data.fecha_creacion+"</td>";
+            row += "    <td>"+data.fecha_modificacion+"</td>";
             row += "</tr>";
 
             self.tblList.append(row);                 
@@ -209,6 +221,69 @@ ctnTabla.llenarTabla = function(dataFilter){
 
         self.tblList.simpleSelect();
     });
+};
+
+ctnModalCrear.llenarFormularioEdicion = function()
+{
+	var self = this;
+    
+    if(ctnTabla.tblList.getIds().length>0){
+    	var dataFind = ctnTabla.tblList.getIds();	
+    	var id_producto  = dataFind[0].id_producto;   
+    	var url = '/mod_compras/ComProducto/getAjax';
+    	var data = {com_producto:{id_producto: id_producto}};
+
+    	CallRest.post(url, data, function(res){
+	        if(res.result==1)
+	        {            
+	            self.ele.find("input[name='com_producto[codigo]']").val(res.com_producto.codigo);
+	            self.ele.find("input[name='com_producto[nombre]']").val(res.com_producto.nombre);
+	            self.ele.find("input[name='com_producto[descripcion]']").val(res.com_producto.descripcion);
+
+	            res.com_producto.com_atributos_valores.forEach( function(element, index) {
+	            	
+
+
+
+	            	var id = res.com_producto.id_producto;
+					var text = self.ele.find('#listaAtributos option:selected').text();
+		
+					if(id>=1){
+						var campo = '<div class="form-group">'+
+						            '	<label class="col-sm-4 control-label">'+
+						            '		'+text+
+						            '	</label>'+
+						            '	<div class="col-sm-6">'+
+						            '		<input type="text" name="com_valor_producto['+id+'][valor]" class="form-control" >'+
+						            '		<input type="hidden" name="com_valor_producto['+id+'][id_atributo_producto]" value="'+id+'" >'+
+						            '	</div>'+
+						            '	<div class="col-md-2">'+
+					                '		<button type="button" class="btn btn-default btn-xs btn-danger btnCerrarInputAtributo">'+
+									'			<span class="glyphicon glyphicon-remove"></span>'+
+									'		</button>'+
+					                '	</div>'+
+					                '</div>';
+						self.ele.find('#panelAtributos').append(campo);
+					}
+
+					self.ele.find('#listaAtributos  option:first').prop('selected', true);
+
+
+
+
+
+
+
+
+
+
+	            });
+
+	        }else{
+	            Notificacions.errors();
+	        }
+	    });
+    }    
 };
 
 

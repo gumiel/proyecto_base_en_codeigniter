@@ -25,17 +25,20 @@ class ComProducto extends CI_Controller {
 
 		if ( $usuario != null && sizeof($usuario)>0 && $usuario['label']!='' && $usuario['text']!='' )
 		{			
-			// $data["usuarios"] = $this->nuc_usuario_model->searchUsuario($usuario['label'], $usuario['text']);
+
+			// $data["com_productos"] = $this->com_producto->searchUsuario($usuario['label'], $usuario['text']);
 		} else
 		{
-			// $data["usuariosa"] = $this->com_producto->listUsuario();
+			$data["com_productos"] = $this->com_producto->getAll(['estado_registro'=>'activo']);
+			
 		}
 		
 		$data["result"] = 1;
 		$this->utils->json($data);
 	}
 
-	public function crearAjax(){
+	public function crearAjax()
+	{
 		$comProducto = $this->input->post('com_producto');
 		$comValorProductos = $this->input->post('com_valor_producto');
 		
@@ -53,6 +56,31 @@ class ComProducto extends CI_Controller {
 		}
 		
 
+		$this->utils->json($data);
+	}
+
+	public function getAjax()
+	{
+		$comProducto = $this->input->post('com_producto');
+		
+		
+		if( isset($comProducto) )
+		{
+			
+
+			$comProducto = $this->com_producto->get(["id_producto"=>$comProducto['id_producto'], "estado_registro"=>"activo"]);
+			$comAtributosValores = $this->com_valor_producto->listAtributosValoresByIdProducto($comProducto->id_producto);
+				
+			$data = array();
+			$data['com_producto'] = $comProducto;
+			$data['com_producto']->com_atributos_valores = $comAtributosValores;
+			
+			$data['result'] = 1;
+		}else
+		{
+			$data['result'] = 0;
+			$data['msg'] = 'No se inserto';
+		}
 		$this->utils->json($data);
 	}
 

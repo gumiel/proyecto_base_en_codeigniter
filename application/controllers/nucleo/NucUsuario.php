@@ -229,6 +229,16 @@ class NucUsuario extends CI_Controller {
 
 	}
 	
+	public function perfil()
+	{	
+		$usuario = $this->nuc_usuario_model->get(['cuenta'=>$this->session->userdata('cuenta')]);
+		
+		$data = array(
+					'cuenta'=>$this->session->userdata('cuenta'), 
+					'email'=>$usuario->email
+					);
+		$this->load->view('/nucleo/NucUsuario/perfil', $data);
+	}
 
 
 

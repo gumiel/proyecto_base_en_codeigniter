@@ -1,3 +1,12 @@
+ERROR - 2020-01-27 17:05:06 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:05:11 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:05:11 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:05:11 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:05:11 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:05:11 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:05:44 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:06:44 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
+ERROR - 2020-01-27 17:06:48 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 46
 ERROR - 2020-01-27 00:37:11 --> 404 Page Not Found: mod_compras/CobradoTotal/simple
 ERROR - 2020-01-27 00:37:37 --> 404 Page Not Found: mod_compras/CobradoTotal/simple
 ERROR - 2020-01-27 00:37:42 --> Severity: error --> Exception: Call to undefined method Com_producto::listUsuaraaio() C:\xampp\htdocs\proyecto_base_en_codeigniter\application\controllers\mod_compras\ComProducto.php 31

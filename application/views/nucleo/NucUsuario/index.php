@@ -52,7 +52,7 @@ $this->templateci->addJs("public/views/nucleo/NucUsuario/index.js?data=".date('Y
         </div>
       <?php echo form_close(); ?>
 
-  <?php echo section_close(); ?>
+    <?php echo section_close(); ?>
 
 
 
