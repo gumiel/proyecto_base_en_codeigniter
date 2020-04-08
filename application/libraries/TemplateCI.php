@@ -11,13 +11,13 @@ class TemplateCI
 	public $descriptionPage = "";
 
 	private $listCss = [
-				["url"=> "public/bower_components/bootstrap/dist/css/bootstrap.min.css"],
-				["url"=> "public/bower_components/font-awesome/css/font-awesome.min.css"],
-				["url"=> "public/bower_components/Ionicons/css/ionicons.min.css"],
-				["url"=> "public/dist/css/AdminLTE.min.css"],
-				["url"=> "public/dist/css/skins/_all-skins.min.css"],
-				["url"=> "public/dist/css/SourceSansPro.css"],
-				["url"=> "public/dist/css/app.css"],
+				["url"=> "public/template/bower_components/bootstrap/dist/css/bootstrap.min.css"],
+				["url"=> "public/template/bower_components/font-awesome/css/font-awesome.min.css"],
+				["url"=> "public/template/bower_components/Ionicons/css/ionicons.min.css"],
+				["url"=> "public/template/dist/css/AdminLTE.min.css"],
+				["url"=> "public/template/dist/css/skins/_all-skins.min.css"],
+				["url"=> "public/template/dist/css/SourceSansPro.css"],
+				["url"=> "public/template/dist/css/app.css"],
 			
 				/* Integracion con datatble */
 				["url"=> "public/libs/datatables/css/datatables.min.css"],
@@ -31,17 +31,17 @@ class TemplateCI
 
 
 	private $listJs = [
-				["url"=> "public/bower_components/jquery/dist/jquery.min.js"],
-				["url"=> "public/bower_components/bootstrap/dist/js/bootstrap.min.js"],
-				["url"=> "public/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"],
-				["url"=> "public/bower_components/fastclick/lib/fastclick.js"],
-				["url"=> "public/bower_components/bootstrap-notify/bootstrap-notify.min.js"],
-				["url"=> "public/bower_components/bootbox/bootbox.min.js"],
-				["url"=> "public/bower_components/jquery-validation/jquery.validate.min.js"],
-				["url"=> "public/bower_components/jquery-validation/jquery.validate.config.js"],
-				["url"=> "public/dist/js/adminlte.min.js"],
-				["url"=> "public/dist/js/app.js"],
-				["url"=> "public/dist/js/demo.js"],
+				["url"=> "public/libs/jquery/jquery.min.js"],
+				["url"=> "public/template/bower_components/bootstrap/dist/js/bootstrap.min.js"],
+				["url"=> "public/template/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"],
+				["url"=> "public/template/bower_components/fastclick/lib/fastclick.js"],
+				["url"=> "public/libs/bootstrap-notify/bootstrap-notify.min.js"],
+				["url"=> "public/libs/bootbox/js/bootbox.min.js"],
+				["url"=> "public/libs/jquery-validation/js/jquery.validate.min.js"],
+				["url"=> "public/configurations/config.jquery.validate.js"],
+				["url"=> "public/template/dist/js/adminlte.min.js"],
+				["url"=> "public/template/dist/js/app.js"],
+				["url"=> "public/template/dist/js/demo.js"],
 
 				/* Integracion con datatble */
 				["url"=> "public/libs/datatables/js/jquery.dataTables.min.js"],
@@ -78,7 +78,7 @@ class TemplateCI
 	public function __construct()
 	{
         $this->ci =& get_instance();
-        $this->icono = base_url('/public/images/favicon.ico');
+        $this->icono = base_url('/public/assets/images/favicon.ico');
 	}
 
 	public function menuPrincipal()

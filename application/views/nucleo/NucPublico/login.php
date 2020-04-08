@@ -19,7 +19,7 @@
 <?php $this->load->view('template/notify'); ?>
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>DEV</a>
+    <a href="#"><b>Admin</b>DEV</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
