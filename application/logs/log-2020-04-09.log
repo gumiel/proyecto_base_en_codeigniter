@@ -1,0 +1,6 @@
+ERROR - 2020-04-09 19:45:35 --> Query error: Table 'proyecto_base_en_codeigniter.com_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-04-09 19:45:35 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
