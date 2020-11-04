@@ -4,6 +4,7 @@ $config['sessions_id']          = "id_usuario"; // Este es el identificador de s
 $config['pages_public']         = [ "/nucleo/NucPublico/login", 
 									"/nucleo/NucPublico/payment", 
 									"/nucleo/NucPublico/crearCaptcha", 
+									"/login", 
 								];
 								
 $config['page_login']           = "/nucleo/NucPublico/login";

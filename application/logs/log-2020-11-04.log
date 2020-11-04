@@ -1,0 +1,12 @@
+ERROR - 2020-11-04 01:12:04 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2020-11-04 01:12:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2020-11-04 01:12:28 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2020-11-04 01:12:32 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2020-11-04 01:13:46 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: FATAL:  no existe la base de datos �proyecto_base_en_codeigniter� C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2020-11-04 01:13:46 --> Unable to connect to the database
+ERROR - 2020-11-04 01:31:41 --> Query error: Table 'proyecto_base_en_codeigniter.com_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_producto`
+WHERE `estado_registro` = 'activo'
+ERROR - 2020-11-04 01:31:41 --> Query error: Table 'proyecto_base_en_codeigniter.com_atributo_producto' doesn't exist - Invalid query: SELECT *
+FROM `com_atributo_producto`
+WHERE `estado_registro` = 'activo'
