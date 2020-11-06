@@ -1,0 +1,43 @@
+ERROR - 2020-11-06 12:09:02 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'proyecto_base_en_codeigniter' /var/www/html/proyecto_base_en_codeigniter/system/database/drivers/mysqli/mysqli_driver.php 201
+ERROR - 2020-11-06 12:09:02 --> Unable to connect to the database
+ERROR - 2020-11-06 12:10:23 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_usuario_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:11:51 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_usuario_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:15:53 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_tipo_usuario_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:16:11 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:16:11 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:16:11 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:16:11 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:16:11 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:16:11 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:16:11 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /var/www/html/proyecto_base_en_codeigniter/system/core/Exceptions.php:271) /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 84
+ERROR - 2020-11-06 12:17:49 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:49 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:49 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:49 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:49 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:49 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:49 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /var/www/html/proyecto_base_en_codeigniter/system/core/Exceptions.php:271) /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 84
+ERROR - 2020-11-06 12:17:52 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:52 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:52 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:52 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:52 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:52 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:17:52 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /var/www/html/proyecto_base_en_codeigniter/system/core/Exceptions.php:271) /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 84
+ERROR - 2020-11-06 12:18:02 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_usuario_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:18:08 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_usuario_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:18:38 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_usuario_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:18:44 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:18:44 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:18:44 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:18:44 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:18:44 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:18:44 --> Severity: Warning --> imagettftext(): Could not find/open font /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 81
+ERROR - 2020-11-06 12:18:44 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /var/www/html/proyecto_base_en_codeigniter/system/core/Exceptions.php:271) /var/www/html/proyecto_base_en_codeigniter/application/libraries/Captcha_ci.php 84
+ERROR - 2020-11-06 12:38:20 --> Severity: Notice --> Undefined property: NucUsuario::$nuc_usuario_model /var/www/html/proyecto_base_en_codeigniter/application/controllers/nucleo/NucUsuario.php 24
+ERROR - 2020-11-06 12:38:20 --> Severity: error --> Exception: Call to a member function listUsuario() on null /var/www/html/proyecto_base_en_codeigniter/application/controllers/nucleo/NucUsuario.php 24
+ERROR - 2020-11-06 12:39:37 --> Severity: Notice --> Undefined property: NucUsuario::$nuc_usuario_model /var/www/html/proyecto_base_en_codeigniter/application/controllers/nucleo/NucUsuario.php 24
+ERROR - 2020-11-06 12:39:37 --> Severity: error --> Exception: Call to a member function listUsuario() on null /var/www/html/proyecto_base_en_codeigniter/application/controllers/nucleo/NucUsuario.php 24
+ERROR - 2020-11-06 12:40:34 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_rol_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:41:00 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_permiso_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344
+ERROR - 2020-11-06 12:41:25 --> Severity: error --> Exception: Unable to locate the model you have specified: Nuc_ruta_model /var/www/html/proyecto_base_en_codeigniter/system/core/Loader.php 344

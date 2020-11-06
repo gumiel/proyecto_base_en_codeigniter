@@ -9,7 +9,7 @@ class NucRol extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->model('nuc_rol_model');
+		$this->load->model('Nuc_Rol_model', 'nuc_rol_model');
 
 	}
 

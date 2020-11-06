@@ -7,7 +7,7 @@ class NucRolPermiso extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->model('nuc_rol_permiso_model');
+		$this->load->model('Nuc_Rol_Permiso_model', 'nuc_rol_permiso_model');
 	}
 
 	public function index()

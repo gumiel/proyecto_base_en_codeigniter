@@ -12,8 +12,8 @@ class NucUsuario extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->library('rules/Usuario_rule');		
-		$this->load->model('nuc_usuario_model');
-		$this->load->model('nuc_tipo_usuario_model');
+		$this->load->model('Nuc_Usuario_model', 'nuc_usuario_model'); 
+		$this->load->model('Nuc_Tipo_Usuario_model', 'nuc_tipo_usuario_model');
 
 	}
 

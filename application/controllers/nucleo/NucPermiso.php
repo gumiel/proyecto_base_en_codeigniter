@@ -7,7 +7,7 @@ class NucPermiso extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->model('nuc_permiso_model');
+		$this->load->model('Nuc_Permiso_model', 'nuc_permiso_model');
 
 	}
 

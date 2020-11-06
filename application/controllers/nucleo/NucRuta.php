@@ -7,7 +7,7 @@ class NucRuta extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->model('nuc_ruta_model');
+		$this->load->model('Nuc_Ruta_model', 'nuc_ruta_model');
 
 	}
 

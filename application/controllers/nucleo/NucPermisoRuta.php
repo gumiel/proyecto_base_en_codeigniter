@@ -7,7 +7,7 @@ class NucPermisoRuta extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->model('nuc_permiso_ruta_model');
+		$this->load->model('Nuc_Permiso_Ruta_model', 'nuc_permiso_ruta_model');
 	}
 
 	public function index()

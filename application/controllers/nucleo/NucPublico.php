@@ -12,8 +12,8 @@ class NucPublico extends CI_Controller {
 
 		$this->load->helper('form_ci_helper');
 
-		$this->load->model('nuc_usuario_model');
-		$this->load->model('nuc_tipo_usuario_model');
+		$this->load->model('Nuc_Usuario_model', 'nuc_usuario_model');
+		$this->load->model('Nuc_Tipo_Usuario_model', 'nuc_tipo_usuario_model');
 	}
 
 	public function index()
