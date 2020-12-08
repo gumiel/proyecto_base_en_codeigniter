@@ -1,0 +1,8 @@
+ERROR - 2020-12-08 17:06:18 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2020-12-08 17:06:18 --> Unable to connect to the database
+ERROR - 2020-12-08 17:06:32 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2020-12-08 17:06:32 --> Unable to connect to the database
+ERROR - 2020-12-08 17:07:03 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2020-12-08 17:07:03 --> Unable to connect to the database
+ERROR - 2020-12-08 17:08:47 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\xampp\htdocs\proyecto_base_en_codeigniter\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2020-12-08 17:08:47 --> Unable to connect to the database

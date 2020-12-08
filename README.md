@@ -12,7 +12,7 @@ Solo se tiene como ejemplo la creacion de usuarios pero se puede ver la estructu
 
 ## ESTRUCTURA DE DIRECTORIO NUEVOS
 Estos son los nuevos archivos y carpetas que se crearon. Estos archivos son necesarios para desplegar la aplicacion pero no son obligatorios usarlos<br>
-
+  
 ```
 application/
 ----config/
